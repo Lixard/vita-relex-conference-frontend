@@ -4,6 +4,7 @@ import {EventsListPageComponent} from './pages/events-list-page/events-list-page
 import {AppComponent} from './app.component';
 import {MainPageComponent} from './pages/main-page/main-page.component';
 import {ConferencesListPageComponent} from './pages/conferences-list-page/conferences-list-page.component';
+import {AboutConferencePageComponent} from './pages/about-conference-page/about-conference-page.component';
 
 
 const routes: Routes = [
@@ -13,13 +14,19 @@ const routes: Routes = [
   },
   {
     path: 'conferences',
-    component: ConferencesListPageComponent
+    component: ConferencesListPageComponent,
+    children: [
+      {
+        path: 'about/:conference',
+        component: AboutConferencePageComponent
+      }
+    ]
   },
   {
     path: '',
     pathMatch: 'full',
     component: MainPageComponent
-  }
+  },
 ];
 
 

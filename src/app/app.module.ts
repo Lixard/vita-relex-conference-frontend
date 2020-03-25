@@ -14,13 +14,17 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { ConferencesListPageComponent } from './pages/conferences-list-page/conferences-list-page.component';
+import { AboutConferencePageComponent } from './pages/about-conference-page/about-conference-page.component';
+import { AboutEventPageComponent } from './pages/about-event-page/about-event-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EventsListPageComponent,
     MainPageComponent,
-    ConferencesListPageComponent
+    ConferencesListPageComponent,
+    AboutConferencePageComponent,
+    AboutEventPageComponent
   ],
   imports: [
     BrowserModule,
