@@ -1,9 +1,28 @@
-<p>
-  {{conference.conferenceName}}
-  <br>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h2>
+      {{conference.conferenceName}}
+      </h2>
+    </mat-card-title>
+  </mat-card-header>
   <mat-divider></mat-divider>
-  <br>
-  {{conference.details.htmlDescription}}
-  <br>
-
-</p>
+  <mat-card-content>
+    <br>
+    <h3>Location:</h3>
+    {{conference.details.location}}
+    <br>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <h2>About {{conference.conferenceName}}</h2>
+    <div>
+      {{conference.details.htmlDescription}}
+    </div>
+  </mat-card-content>
+  <mat-card-actions *ngIf="true">
+    <a mat-button style="font-size: 200%">
+      some button
+    </a>
+  </mat-card-actions>
+</mat-card>

@@ -1,6 +1,29 @@
-<p>
-  {{event.eventName}}
-  <br>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h2>
+        {{event.eventName}}
+      </h2>
+    </mat-card-title>
+  </mat-card-header>
   <mat-divider></mat-divider>
-  {{event.details.htmlDescription}}
-</p>
+  <mat-card-content>
+    <br>
+    <h3>Location:</h3>
+    {{event.details.location}}
+    <br>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <h2>About {{event.eventName}}</h2>
+    <div>
+      {{event.details.htmlDescription}}
+    </div>
+  </mat-card-content>
+  <mat-card-actions *ngIf="true">
+    <a mat-button style="font-size: 200%">
+      some button
+    </a>
+  </mat-card-actions>
+</mat-card>
+
