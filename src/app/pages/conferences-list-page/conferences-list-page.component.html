@@ -1,0 +1,25 @@
+<div *ngFor="let conference of conferences">
+  <mat-card >
+    <mat-card-header>
+      <mat-card-title>
+        {{conference.conferenceName}}
+      </mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <br>
+      {{conference.details.location}}
+      <br>
+      <div *ngIf="conference.shortHtmlDescription != undefined">
+        {{conference.shortHtmlDescription}}
+      </div>
+    </mat-card-content>
+    <mat-card-actions *ngIf="true">
+      <a mat-button routerLink="conference/{{conference.conferenceId}}">
+        Go to conference page for more information
+      </a>
+    </mat-card-actions>
+  </mat-card>
+  <br>
+</div>
+
