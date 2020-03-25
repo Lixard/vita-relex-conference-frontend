@@ -12,21 +12,10 @@ const routes: Routes = [
   {
     path: 'events',
     component: EventsListPageComponent,
-    children: [
-      {
-        path: 'about/:event',
-        component: AboutEventPageComponent,
-      }]
   },
   {
     path: 'conferences',
     component: ConferencesListPageComponent,
-    children: [
-      {
-        path: 'about/:conference',
-        component: AboutConferencePageComponent
-      }
-    ]
   },
   {
     path: '',
