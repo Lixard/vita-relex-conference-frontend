@@ -15,7 +15,8 @@
       </div>
     </mat-card-content>
     <mat-card-actions *ngIf="true">
-      <a mat-button  routerLink="about/{{conference.conferenceId}}">
+      {{conference.conferenceId}}
+      <a mat-button  routerLink="/about-conference/{{conference.conferenceId}}">
         Show more about {{conference.conferenceName}}:
       </a>
       <router-outlet></router-outlet>

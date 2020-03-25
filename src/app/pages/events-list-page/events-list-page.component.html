@@ -17,16 +17,10 @@
     </div>
     </mat-card-content>
   <mat-card-actions *ngIf="true">
-    <button
-      mat-button
-      (click)="addInSchedule()">
-      Add in schedule
-    </button>
-    <button
-      mat-button
-      (click)="addInSchedule()">
-      Go to event page for more information
-    </button>
+    <a mat-button  routerLink="/about-event/{{event.eventId}}">
+      Show more about {{event.eventName}}:
+    </a>
+    <router-outlet></router-outlet>
   </mat-card-actions>
 </mat-card>
   <br>
