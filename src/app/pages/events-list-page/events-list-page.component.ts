@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Event} from './Event';
+import {EventModel} from '../../models/event.model';
 import {HttpClient} from '@angular/common/http';
 
 @Component({
@@ -9,13 +9,13 @@ import {HttpClient} from '@angular/common/http';
 })
 export class EventsListPageComponent implements OnInit {
 
-  events: Event[];
+  events: EventModel[];
   panelOpenState: boolean;
 
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
-    this.httpClient.get<Event[]>('http://localhost:8080/events')
+    this.httpClient.get<EventModel[]>('http://localhost:8080/events')
       .subscribe(result => {
         this.events = result;
       });

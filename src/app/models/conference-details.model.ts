@@ -1,4 +1,4 @@
-export interface ConferenceDetails {
+export interface ConferenceDetailsModel {
   htmlDescription: string;
   location: string;
   dateStart: string;

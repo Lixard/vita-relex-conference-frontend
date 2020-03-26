@@ -1,4 +1,4 @@
-export interface EventDetails {
+export interface EventDetailsModel {
   shortHtmlDescription?: string;
   htmlDescription: string;
   location: string;

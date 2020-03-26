@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Event} from '../events-list-page/Event';
+import {EventModel} from '../../models/event.model';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
-import {Conference} from '../conferences-list-page/Conference';
 
 @Component({
   selector: 'app-events-list-of-conference-page',
@@ -11,13 +10,13 @@ import {Conference} from '../conferences-list-page/Conference';
 })
 export class EventsListOfConferencePageComponent implements OnInit {
 
-  events: Event[];
+  events: EventModel[];
 
   constructor(private httpClient: HttpClient, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     const conferenceId = this.route.snapshot.paramMap.get('conference');
-    this.httpClient.get<Event[]>(`http://localhost:8080/conferences/${conferenceId}/events`).subscribe(result => {
+    this.httpClient.get<EventModel[]>(`http://localhost:8080/conferences/${conferenceId}/events`).subscribe(result => {
       this.events = result;
     });
   }

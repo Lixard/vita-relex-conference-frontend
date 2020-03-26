@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import {Conference} from '../conferences-list-page/Conference';
+import {ConferenceModel} from '../../models/conference.model';
 
 @Component({
   selector: 'app-about-conference-page',
@@ -10,13 +10,13 @@ import {Conference} from '../conferences-list-page/Conference';
 })
 export class AboutConferencePageComponent implements OnInit {
 
-  conference: Conference;
+  conference: ConferenceModel;
 
   constructor(private route: ActivatedRoute, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
     const conferenceId = this.route.snapshot.paramMap.get('conference');
-    this.httpClient.get<Conference>(`http://localhost:8080/conferences/${conferenceId}`).subscribe(conference => {
+    this.httpClient.get<ConferenceModel>(`http://localhost:8080/conferences/${conferenceId}`).subscribe(conference => {
       this.conference = conference;
     });
 
