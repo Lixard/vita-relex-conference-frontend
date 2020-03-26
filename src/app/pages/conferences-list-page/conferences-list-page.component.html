@@ -18,7 +18,9 @@
       <a mat-button  routerLink="/about-conference/{{conference.conferenceId}}">
         Show more about {{conference.conferenceName}}
       </a>
-      <router-outlet></router-outlet>
+      <a mat-button  routerLink="/events/{{conference.conferenceId}}">
+        Show event within this conference
+      </a>
     </mat-card-actions>
   </mat-card>
   <br>
