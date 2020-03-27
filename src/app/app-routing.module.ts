@@ -13,12 +13,6 @@ const routes: Routes = [
   {
     path: 'events',
     component: EventsListPageComponent,
-    children: [
-      {
-        path: ':conference',
-        component: EventsListOfConferencePageComponent,
-      }
-    ]
   },
   {
     path: 'conferences',
