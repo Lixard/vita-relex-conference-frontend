@@ -22,10 +22,15 @@
       {{conference.details.htmlDescription}}
     </div>
   </mat-card-content>
-  <mat-card-actions *ngIf="true">
-    <a mat-button  routerLink="/events/{{conference.conferenceId}}">
-      Show event within the {{conference.conferenceName}}
-    </a>
-  </mat-card-actions>
-<!--  <app-events></app-events>-->
 </mat-card>
+<mat-toolbar color="primary">
+    <h1>
+      Events within {{conference.conferenceName}}
+    </h1>
+</mat-toolbar>
+<div *ngFor="let event of events">
+  <br>
+  <app-event [event]="event"></app-event>
+  <br>
+</div>
+
