@@ -16,7 +16,6 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { ConferencesListPageComponent } from './pages/conferences-list-page/conferences-list-page.component';
 import { AboutConferencePageComponent } from './pages/about-conference-page/about-conference-page.component';
 import { AboutEventPageComponent } from './pages/about-event-page/about-event-page.component';
-import { EventsListOfConferencePageComponent } from './pages/events-list-of-conference-page/events-list-of-conference-page.component';
 import { EventComponent } from './components/event/event.component';
 
 @NgModule({
