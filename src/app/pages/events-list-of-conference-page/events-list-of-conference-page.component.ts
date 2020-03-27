@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {EventModel} from '../../models/event.model';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
+import {ConferenceService} from '../../services/conference.service';
 
 @Component({
   selector: 'app-events-list-of-conference-page',

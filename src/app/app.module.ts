@@ -17,6 +17,7 @@ import { ConferencesListPageComponent } from './pages/conferences-list-page/conf
 import { AboutConferencePageComponent } from './pages/about-conference-page/about-conference-page.component';
 import { AboutEventPageComponent } from './pages/about-event-page/about-event-page.component';
 import { EventsListOfConferencePageComponent } from './pages/events-list-of-conference-page/events-list-of-conference-page.component';
+import { EventComponent } from './components/event/event.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { EventsListOfConferencePageComponent } from './pages/events-list-of-conf
     ConferencesListPageComponent,
     AboutConferencePageComponent,
     AboutEventPageComponent,
-    EventsListOfConferencePageComponent
+    EventsListOfConferencePageComponent,
+    EventComponent
   ],
   imports: [
     BrowserModule,

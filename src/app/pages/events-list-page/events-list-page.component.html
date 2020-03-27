@@ -1,26 +1,5 @@
 <div *ngFor="let event of events">
-<mat-card >
-    <mat-card-header>
-      <mat-card-title>
-        {{event.eventName}}
-        <br>
-        {{event.eventType}}
-      </mat-card-title>
-    </mat-card-header>
-  <mat-divider></mat-divider>
-  <mat-card-content>
-    <br>
-        {{event.details.location}}
-    <br>
-    <div *ngIf="event.details.shortHtmlDescription != undefined">
-      {{event.details.shortHtmlDescription}}
-    </div>
-    </mat-card-content>
-  <mat-card-actions *ngIf="true">
-    <a mat-button  routerLink="/about-event/{{event.eventId}}">
-      Show more about {{event.eventName}}
-    </a>
-  </mat-card-actions>
-</mat-card>
+  <br>
+  <app-event [event]="event"></app-event>
   <br>
 </div>
