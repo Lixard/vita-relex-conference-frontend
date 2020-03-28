@@ -11,6 +11,7 @@ import {EventModel} from '../../models/event.model';
 })
 export class AboutConferencePageComponent implements OnInit {
 
+  createNewEventVisible = false;
   conference: ConferenceModel;
 
   events: EventModel[];
@@ -28,4 +29,11 @@ export class AboutConferencePageComponent implements OnInit {
 
   }
 
+  showCreateNewEventComponent() {
+    this.createNewEventVisible = true;
+  }
+
+  hideCreateNewEventComponent() {
+    this.createNewEventVisible = false;
+  }
 }

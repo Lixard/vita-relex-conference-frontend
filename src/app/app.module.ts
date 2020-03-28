@@ -17,6 +17,13 @@ import { ConferencesListPageComponent } from './pages/conferences-list-page/conf
 import { AboutConferencePageComponent } from './pages/about-conference-page/about-conference-page.component';
 import { AboutEventPageComponent } from './pages/about-event-page/about-event-page.component';
 import { EventComponent } from './components/event/event.component';
+import { CreateNewEventComponent } from './components/create-new-event/create-new-event.component';
+import {FormsModule} from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {EditorModule} from '@tinymce/tinymce-angular';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -26,7 +33,8 @@ import { EventComponent } from './components/event/event.component';
     ConferencesListPageComponent,
     AboutConferencePageComponent,
     AboutEventPageComponent,
-    EventComponent
+    EventComponent,
+    CreateNewEventComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +46,13 @@ import { EventComponent } from './components/event/event.component';
     HttpClientModule,
     MatButtonModule,
     MatExpansionModule,
-    MatGridListModule
+    MatGridListModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    EditorModule,
+    MatAutocompleteModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
