@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {EventCreateModel, EventModel, EventType} from '../../models/event.model';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {EventDetailsModel} from '../../models/event-details.model';
 import {HttpClient} from '@angular/common/http';
 
@@ -36,12 +36,12 @@ export class CreateNewEventComponent implements OnInit {
 
   private buildForm() {
     this.form = this.formBuilder.group({
-      eventName: this.formBuilder.control(undefined),
-      eventType: this.formBuilder.control(EventType.LECTURE),
-      htmlDescription:  this.formBuilder.control(undefined),
-      location:  this.formBuilder.control(undefined),
-      timeStart:  this.formBuilder.control(undefined),
-      timeEnd:  this.formBuilder.control(undefined),
+      eventName: this.formBuilder.control(undefined , [Validators.max(50), Validators.required]),
+      eventType: this.formBuilder.control(EventType.LECTURE, [Validators.required]),
+      htmlDescription:  this.formBuilder.control(undefined, [Validators.required]),
+      location:  this.formBuilder.control(undefined, [Validators.max(50), Validators.required]),
+      timeStart:  this.formBuilder.control(undefined, [ Validators.required]),
+      timeEnd:  this.formBuilder.control(undefined, [ Validators.required]),
       });
   }
 
@@ -59,6 +59,6 @@ export class CreateNewEventComponent implements OnInit {
         // TO DO: insert user id when we add auth
       }};
     console.log(this.event);
-   // this.http.post('http://localhost:8080/events', this.event);
+    // this.http.post('http://localhost:8080/events', this.event);
   }
 }

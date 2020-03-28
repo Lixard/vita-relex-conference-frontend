@@ -24,6 +24,7 @@ import {MatInputModule} from '@angular/material/input';
 import {EditorModule} from '@tinymce/tinymce-angular';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSelectModule} from '@angular/material/select';
+import { CreateNewConferenceComponent } from './components/create-new-conference/create-new-conference.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {MatSelectModule} from '@angular/material/select';
     AboutConferencePageComponent,
     AboutEventPageComponent,
     EventComponent,
-    CreateNewEventComponent
+    CreateNewEventComponent,
+    CreateNewConferenceComponent
   ],
   imports: [
     BrowserModule,

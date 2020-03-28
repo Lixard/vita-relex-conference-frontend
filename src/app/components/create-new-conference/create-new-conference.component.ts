@@ -1,0 +1,59 @@
+import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {EventCreateModel, EventType} from '../../models/event.model';
+import {HttpClient} from '@angular/common/http';
+import {ConferenceCreateModel, ConferenceModel} from '../../models/conference.model';
+import {Timestamp} from 'rxjs/internal-compatibility';
+
+class ConferenceCreateForm {
+  conferenceName: string;
+  htmlDescription: string;
+  location: string;
+  dateStart: string;
+  dateEnd: string;
+}
+
+@Component({
+  selector: 'app-create-new-conference',
+  templateUrl: './create-new-conference.component.html',
+  styleUrls: ['./create-new-conference.component.scss']
+})
+export class CreateNewConferenceComponent implements OnInit {
+
+  form: FormGroup;
+
+  conference: ConferenceCreateModel;
+
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
+    this.buildForm();
+  }
+
+  ngOnInit(): void {
+  }
+
+  private buildForm() {
+    this.form = this.formBuilder.group({
+      conferenceName: this.formBuilder.control(undefined , [Validators.max(50), Validators.required]),
+      htmlDescription:  this.formBuilder.control(undefined, [Validators.required]),
+      location:  this.formBuilder.control(undefined, [Validators.max(50), Validators.required]),
+      dateStart:  this.formBuilder.control(undefined, [ Validators.required]),
+      dateEnd:  this.formBuilder.control(undefined, [ Validators.required]),
+    });
+  }
+
+  createNewConference(value: ConferenceCreateForm) {
+    this.conference = {
+      conferenceName: value.conferenceName,
+      owner: 1,
+      // TO DO insert user id
+      details:   {
+        htmlDescription: value.htmlDescription,
+        location: value.location,
+        dateStart: value.dateStart,
+        dateEnd: value.dateEnd,
+        createdAt: Date.now().toString()
+      }};
+    console.log(this.conference);
+    // this.http.post('http://localhost:8080/conferences', this.event);
+  }
+}

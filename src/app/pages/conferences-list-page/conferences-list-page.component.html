@@ -10,9 +10,6 @@
       <br>
       {{conference.details.location}}
       <br>
-      <div *ngIf="conference.shortHtmlDescription != undefined">
-        {{conference.shortHtmlDescription}}
-      </div>
     </mat-card-content>
     <mat-card-actions *ngIf="true">
       <a mat-button  routerLink="/about-conference/{{conference.conferenceId}}">
