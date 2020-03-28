@@ -1,34 +1,35 @@
-<form #form="ngForm">
+<form [formGroup]="form">
   <mat-card>
     <mat-card-content>
     <mat-form-field>
       <mat-label>Event name</mat-label>
-      <input matInput name="eventName" [(ngModel)]="event.eventName">
+      <input matInput required formControlName="eventName">
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Location</mat-label>
-      <input matInput name="location" [(ngModel)]="event.details.location">
+      <input matInput required formControlName="location">
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Time start</mat-label>
       <input matInput
-             name="timeStart"
              type="datetime-local"
-             [(ngModel)]="event.details.timeStart">
+             required
+             formControlName="timeStart">
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Time end</mat-label>
       <input matInput
-             name="timeEnd"
              type="datetime-local"
-             [(ngModel)]="event.details.timeEnd">
+             required
+             formControlName="timeEnd">
     </mat-form-field>
       <mat-form-field>
         <mat-label>Event type</mat-label>
-        <mat-select [(ngModel)]="event.eventType" name="eventType">
+        <mat-select required
+                    formControlName="eventType">
           <mat-option value = 'MEETUP'>
             Meet up
           </mat-option>
@@ -46,14 +47,16 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      {{event.eventType}}
 
-      <editor name="htmlDescription"
-              [(ngModel)]="event.details.htmlDescription">
+      <editor formControlName="htmlDescription"
+      apiKey="ik6qhdx6rm6ow9n0uy0y0xupyffdha7llh0nfxpuw2q15dw5"
+              [init]="{plugins: 'link'}">
     </editor>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-stroked-button color="accent">
+      <button mat-stroked-button color="accent"
+              [disabled]="!form.valid"
+              (click)="createNewEvent(form.value)">
         Create
       </button>
     </mat-card-actions>

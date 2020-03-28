@@ -18,7 +18,7 @@ import { AboutConferencePageComponent } from './pages/about-conference-page/abou
 import { AboutEventPageComponent } from './pages/about-event-page/about-event-page.component';
 import { EventComponent } from './components/event/event.component';
 import { CreateNewEventComponent } from './components/create-new-event/create-new-event.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {EditorModule} from '@tinymce/tinymce-angular';
@@ -52,7 +52,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     EditorModule,
     MatAutocompleteModule,
-    MatSelectModule
+    MatSelectModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
