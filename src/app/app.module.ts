@@ -26,7 +26,6 @@ import { EventComponent } from './components/event/event.component';
     ConferencesListPageComponent,
     AboutConferencePageComponent,
     AboutEventPageComponent,
-    EventsListOfConferencePageComponent,
     EventComponent
   ],
   imports: [
