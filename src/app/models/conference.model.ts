@@ -12,3 +12,11 @@ export interface ConferenceCreateModel {
   owner: number;
   details: ConferenceDetailsModel;
 }
+
+export class ConferenceCreateForm {
+  conferenceName: string;
+  htmlDescription: string;
+  location: string;
+  dateStart: string;
+  dateEnd: string;
+}

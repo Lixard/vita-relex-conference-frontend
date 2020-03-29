@@ -13,14 +13,15 @@ export class EventsListPageComponent implements OnInit {
   events: EventModel[];
   panelOpenState: boolean;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private eventService: EventService) { }
 
   ngOnInit(): void {
-    this.httpClient.get<EventModel[]>('http://localhost:8080/events')
+    this.eventService.getEvents()
       .subscribe(result => {
+        // У меня сгорело. Работает не так как должно
+        // @ts-ignore
         this.events = result;
       });
-
   }
 
   addInSchedule() {

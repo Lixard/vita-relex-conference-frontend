@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {ConferenceModel} from '../../models/conference.model';
 import {EventModel} from '../../models/event.model';
+import {ConferenceService} from '../../services/conference.service';
 
 @Component({
   selector: 'app-about-conference-page',
@@ -11,19 +12,21 @@ import {EventModel} from '../../models/event.model';
 })
 export class AboutConferencePageComponent implements OnInit {
 
-  createNewEventVisible = false;
   conference: ConferenceModel;
 
   events: EventModel[];
+  changeConferenceVisible = false;
+  createNewEventVisible = false;
 
-  constructor(private route: ActivatedRoute, private httpClient: HttpClient) { }
+  constructor(private route: ActivatedRoute, private conferenceService: ConferenceService) { }
 
   ngOnInit(): void {
-    const conferenceId = this.route.snapshot.paramMap.get('conference');
-    this.httpClient.get<ConferenceModel>(`http://localhost:8080/conferences/${conferenceId}`).subscribe(conference => {
+    const conferenceId = parseInt(this.route.snapshot.paramMap.get('conference'), 10);
+    this.conferenceService.getConferenceById(conferenceId).subscribe(conference => {
       this.conference = conference;
     });
-    this.httpClient.get<EventModel[]>(`http://localhost:8080/conferences/${conferenceId}/events`).subscribe(events => {
+    this.conferenceService.getEventsByConferenceId(conferenceId).subscribe(events => {
+      // @ts-ignore
       this.events = events;
     });
 
@@ -35,5 +38,13 @@ export class AboutConferencePageComponent implements OnInit {
 
   hideCreateNewEventComponent() {
     this.createNewEventVisible = false;
+  }
+
+  showChangeConference() {
+    this.changeConferenceVisible = true;
+  }
+
+  hideChangeConference() {
+    this.changeConferenceVisible = false;
   }
 }

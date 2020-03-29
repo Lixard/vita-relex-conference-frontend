@@ -26,6 +26,20 @@
     <a mat-button  routerLink="/about-conference/{{event.conferenceId}}">
       Show conference info
     </a>
+    <button mat-button
+            (click)="showChangeEvent()">
+      Change event
+    </button>
+    <button mat-button
+            *ngIf="changeEventVisible"
+            (click)="hideChangeEvent()">
+      Close change event place
+    </button>
   </mat-card-actions>
 </mat-card>
+<app-change-event
+  [event]="this.event"
+  *ngIf="changeEventVisible"
+  (close)="hideChangeEvent()"
+></app-change-event>
 

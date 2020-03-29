@@ -25,6 +25,8 @@ import {EditorModule} from '@tinymce/tinymce-angular';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSelectModule} from '@angular/material/select';
 import { CreateNewConferenceComponent } from './components/create-new-conference/create-new-conference.component';
+import { ChangeConferenceComponent } from './components/change-conference/change-conference.component';
+import { ChangeEventComponent } from './components/change-event/change-event.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { CreateNewConferenceComponent } from './components/create-new-conference
     AboutEventPageComponent,
     EventComponent,
     CreateNewEventComponent,
-    CreateNewConferenceComponent
+    CreateNewConferenceComponent,
+    ChangeConferenceComponent,
+    ChangeEventComponent
   ],
   imports: [
     BrowserModule,

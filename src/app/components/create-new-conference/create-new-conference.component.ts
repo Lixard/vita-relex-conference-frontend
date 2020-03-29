@@ -2,16 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {EventCreateModel, EventType} from '../../models/event.model';
 import {HttpClient} from '@angular/common/http';
-import {ConferenceCreateModel, ConferenceModel} from '../../models/conference.model';
+import {ConferenceCreateForm, ConferenceCreateModel, ConferenceModel} from '../../models/conference.model';
 import {Timestamp} from 'rxjs/internal-compatibility';
+import {ConferenceService} from '../../services/conference.service';
 
-class ConferenceCreateForm {
-  conferenceName: string;
-  htmlDescription: string;
-  location: string;
-  dateStart: string;
-  dateEnd: string;
-}
 
 @Component({
   selector: 'app-create-new-conference',
@@ -24,7 +18,7 @@ export class CreateNewConferenceComponent implements OnInit {
 
   conference: ConferenceCreateModel;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private formBuilder: FormBuilder, private conferenceService: ConferenceService) {
     this.buildForm();
   }
 
@@ -54,6 +48,7 @@ export class CreateNewConferenceComponent implements OnInit {
         createdAt: Date.now().toString()
       }};
     console.log(this.conference);
-    // this.http.post('http://localhost:8080/conferences', this.event);
+    close();
+    // this.conferenceService.create(this.conference);
   }
 }

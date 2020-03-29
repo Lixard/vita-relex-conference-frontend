@@ -10,10 +10,18 @@ export class EventComponent implements OnInit {
 
   @Input()
   event: EventModel;
+  changeEventVisible = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  showChangeEvent() {
+    this.changeEventVisible = true;
+  }
+
+  hideChangeEvent() {
+    this.changeEventVisible = false;
+  }
 }

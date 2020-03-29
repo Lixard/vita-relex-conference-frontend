@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ConferenceModel} from '../../models/conference.model';
+import {ConferenceService} from '../../services/conference.service';
 
 @Component({
   selector: 'app-conferences-list-page',
@@ -11,11 +12,12 @@ export class ConferencesListPageComponent implements OnInit {
 
   conferences: ConferenceModel[];
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private conferenceService: ConferenceService) { }
 
   ngOnInit(): void {
-    this.httpClient.get<ConferenceModel[]>('http://localhost:8080/conferences')
+    this.conferenceService.getConferences()
       .subscribe(result => {
+        // @ts-ignore
         this.conferences = result;
       });
   }

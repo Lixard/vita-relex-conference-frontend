@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {EventModel} from '../../models/event.model';
+import {EventService} from '../../services/event.service';
 
 @Component({
   selector: 'app-about-event-page',
@@ -10,14 +11,24 @@ import {EventModel} from '../../models/event.model';
 })
 export class AboutEventPageComponent implements OnInit {
   event: EventModel;
+  changeEventVisible = false;
 
-  constructor(private route: ActivatedRoute, private httpClient: HttpClient) { }
+  constructor(private route: ActivatedRoute, private eventService: EventService) { }
 
   ngOnInit(): void {
-    const eventId = this.route.snapshot.paramMap.get('event');
-    this.httpClient.get<EventModel>(`http://localhost:8080/events/${eventId}`).subscribe(event => {
+    const eventId = parseInt(this.route.snapshot.paramMap.get('event'), 10);
+    this.eventService.getEvent(eventId)
+      .subscribe(event => {
       this.event = event;
     });
 
+  }
+
+  showChangeEvent() {
+    this.changeEventVisible = true;
+  }
+
+  hideChangeEvent() {
+    this.changeEventVisible = false;
   }
 }

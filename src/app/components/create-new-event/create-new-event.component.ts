@@ -1,17 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {EventCreateModel, EventModel, EventType} from '../../models/event.model';
+import {EventCreateForm, EventCreateModel, EventModel, EventType} from '../../models/event.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {EventDetailsModel} from '../../models/event-details.model';
 import {HttpClient} from '@angular/common/http';
+import {EventService} from '../../services/event.service';
 
-class EventCreateForm {
-  eventName: string;
-  eventType: EventType;
-  htmlDescription: string;
-  location: string;
-  timeStart: string;
-  timeEnd: string;
-}
 
 @Component({
   selector: 'app-create-new-event',
@@ -27,7 +20,7 @@ export class CreateNewEventComponent implements OnInit {
 
   event: EventCreateModel;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private formBuilder: FormBuilder, private eventService: EventService) {
     this.buildForm();
   }
 
@@ -59,6 +52,7 @@ export class CreateNewEventComponent implements OnInit {
         // TO DO: insert user id when we add auth
       }};
     console.log(this.event);
-    // this.http.post('http://localhost:8080/events', this.event);
+    close();
+    // this.eventService.createEvent(this.event);
   }
 }

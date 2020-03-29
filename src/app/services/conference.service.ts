@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {ConferenceModel} from '../models/conference.model';
+import {ConferenceCreateModel, ConferenceModel} from '../models/conference.model';
 import {List} from '../models/list.model';
 
 @Injectable({
@@ -12,23 +12,23 @@ export class ConferenceService {
   constructor(private http: HttpClient) { }
 
   getConferences(): Observable<List<ConferenceModel>> {
-    return this.http.get<List<ConferenceModel>>('/conferences');
+    return this.http.get<List<ConferenceModel>>('/api/conferences');
   }
 
   getConferenceById(id: number): Observable<ConferenceModel> {
-    return this.http.get<ConferenceModel>(`/conferences/${id}`);
+    return this.http.get<ConferenceModel>(`/api/conferences/${id}`);
   }
 
   getEventsByConferenceId(id: number): Observable<List<Event>> {
-    return this.http.get<List<Event>>(`/conferences/${id}/events`);
+    return this.http.get<List<Event>>(`/api/conferences/${id}/events`);
   }
 
-  update(id: number, conference: ConferenceModel): Observable<ConferenceModel> {
-    return this.http.put<ConferenceModel>(`/conferences/${id}`, conference);
+  update(id: number, conference: ConferenceCreateModel): Observable<ConferenceModel> {
+    return this.http.put<ConferenceModel>(`/api/conferences/${id}`, conference);
   }
 
-  create(conference: ConferenceModel): Observable<ConferenceModel> {
-    return this.http.post<ConferenceModel>('/conferences', conference);
+  create(conference: ConferenceCreateModel): Observable<ConferenceModel> {
+    return this.http.post<ConferenceModel>('/api/conferences', conference);
   }
 
 }

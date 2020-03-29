@@ -23,3 +23,11 @@ export interface EventCreateModel {
   details: EventDetailsModel;
 }
 
+export class EventCreateForm {
+  eventName: string;
+  eventType: EventType;
+  htmlDescription: string;
+  location: string;
+  timeStart: string;
+  timeEnd: string;
+}
