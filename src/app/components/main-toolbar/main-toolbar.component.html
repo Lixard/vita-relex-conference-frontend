@@ -1,0 +1,27 @@
+<mat-toolbar color="primary">
+  <a mat-button routerLink="/">
+    <h1>
+      Conference project
+    </h1>
+  </a>
+  <a mat-button routerLink="events">
+    All events
+  </a>
+  <a mat-button routerLink="conferences">
+    Conferences
+  </a>
+  <button mat-button
+          (click)="openCreateConference()"
+          *ngIf="!createConferenceVision">
+    Create new conference
+  </button>
+  <button mat-button
+          (click)="hideCreateConference()"
+          *ngIf="createConferenceVision">
+    Close create new conference
+  </button>
+</mat-toolbar>
+<app-conference-editor (endChanging)="endCreating($event)"
+                       [conference]="undefined"
+                       *ngIf="createConferenceVision"
+></app-conference-editor>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ConferenceCreateModel} from './models/conference.model';
 
 @Component({
   selector: 'app-root',
@@ -6,14 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  createConferenceVision = false;
   title = 'frontend';
-
-  openCreateConference() {
-    this.createConferenceVision = true;
-  }
-
-  hideCreateConference() {
-    this.createConferenceVision = false;
-  }
 }

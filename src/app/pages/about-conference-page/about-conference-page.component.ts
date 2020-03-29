@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import {ConferenceModel} from '../../models/conference.model';
+import {ConferenceCreateModel, ConferenceModel} from '../../models/conference.model';
 import {EventModel} from '../../models/event.model';
 import {ConferenceService} from '../../services/conference.service';
 
@@ -46,5 +46,11 @@ export class AboutConferencePageComponent implements OnInit {
 
   hideChangeConference() {
     this.changeConferenceVisible = false;
+  }
+
+  endChanging($event: ConferenceCreateModel) {
+    console.log($event);
+    this.hideChangeConference();
+    // this.conferenceService.update(this.conference.conferenceId, $event);
   }
 }

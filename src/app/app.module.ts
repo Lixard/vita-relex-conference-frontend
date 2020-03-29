@@ -24,11 +24,11 @@ import {MatInputModule} from '@angular/material/input';
 import {EditorModule} from '@tinymce/tinymce-angular';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSelectModule} from '@angular/material/select';
-import { CreateNewConferenceComponent } from './components/create-new-conference/create-new-conference.component';
-import { ChangeConferenceComponent } from './components/change-conference/change-conference.component';
 import { ChangeEventComponent } from './components/change-event/change-event.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { ConferenceEditorComponent } from './components/conference-editor/conference-editor.component';
+import { MainToolbarComponent } from './components/main-toolbar/main-toolbar.component';
 
 @NgModule({
   declarations: [
@@ -40,9 +40,9 @@ import {MatNativeDateModule} from '@angular/material/core';
     AboutEventPageComponent,
     EventComponent,
     CreateNewEventComponent,
-    CreateNewConferenceComponent,
-    ChangeConferenceComponent,
     ChangeEventComponent,
+    ConferenceEditorComponent,
+    MainToolbarComponent,
   ],
   imports: [
     BrowserModule,
