@@ -38,8 +38,8 @@
     </button>
   </mat-card-actions>
 </mat-card>
-<app-change-event [event]="this.event"
+<app-event-editor [event]="this.event"
                   *ngIf="changeEventVisible"
-                  (endChanging)="hideChangeEvent()"
-></app-change-event>
+                  (endChanging)="changeEvent($event)"
+></app-event-editor>
 

@@ -17,18 +17,17 @@ import { ConferencesListPageComponent } from './pages/conferences-list-page/conf
 import { AboutConferencePageComponent } from './pages/about-conference-page/about-conference-page.component';
 import { AboutEventPageComponent } from './pages/about-event-page/about-event-page.component';
 import { EventComponent } from './components/event/event.component';
-import { CreateNewEventComponent } from './components/create-new-event/create-new-event.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {EditorModule} from '@tinymce/tinymce-angular';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSelectModule} from '@angular/material/select';
-import { ChangeEventComponent } from './components/change-event/change-event.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { ConferenceEditorComponent } from './components/conference-editor/conference-editor.component';
 import { MainToolbarComponent } from './components/main-toolbar/main-toolbar.component';
+import { EventEditorComponent } from './components/event-editor/event-editor.component';
 
 @NgModule({
   declarations: [
@@ -39,10 +38,9 @@ import { MainToolbarComponent } from './components/main-toolbar/main-toolbar.com
     AboutConferencePageComponent,
     AboutEventPageComponent,
     EventComponent,
-    CreateNewEventComponent,
-    ChangeEventComponent,
     ConferenceEditorComponent,
     MainToolbarComponent,
+    EventEditorComponent,
   ],
   imports: [
     BrowserModule,

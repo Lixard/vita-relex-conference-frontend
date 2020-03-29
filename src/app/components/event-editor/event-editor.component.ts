@@ -1,22 +1,24 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {EventCreateForm, EventCreateModel, EventModel, EventType} from '../../models/event.model';
-import {HttpClient} from '@angular/common/http';
+import {EventCreateForm, EventCreateModel, EventModel} from '../../models/event.model';
 import {EventService} from '../../services/event.service';
 
 @Component({
-  selector: 'app-change-event',
-  templateUrl: './change-event.component.html',
-  styleUrls: ['./change-event.component.scss']
+  selector: 'app-event-editor',
+  templateUrl: './event-editor.component.html',
+  styleUrls: ['./event-editor.component.scss']
 })
-export class ChangeEventComponent implements OnInit {
+export class EventEditorComponent implements OnInit {
+
   form: FormGroup;
 
   @Input()
   event: EventModel;
+  @Input()
+  conferenceId: number;
 
   @Output()
-  endChanging = new EventEmitter<void>();
+  endChanging = new EventEmitter<EventCreateModel>();
 
   changedEvent: EventCreateModel;
 
@@ -28,7 +30,17 @@ export class ChangeEventComponent implements OnInit {
   }
 
   private buildForm() {
-    this.form = this.formBuilder.group({
+    if (this.event === undefined) {
+      this.form = this.formBuilder.group({
+        eventName: this.formBuilder.control(undefined , [Validators.max(50), Validators.required]),
+        eventType: this.formBuilder.control(undefined, [Validators.required]),
+        htmlDescription:  this.formBuilder.control(undefined, [Validators.required]),
+        location:  this.formBuilder.control(undefined, [Validators.max(50), Validators.required]),
+        timeStart:  this.formBuilder.control(undefined, [ Validators.required]),
+        timeEnd:  this.formBuilder.control(undefined, [ Validators.required]),
+      });
+    } else {
+      this.form = this.formBuilder.group({
       eventName: this.formBuilder.control(this.event.eventName , [Validators.max(50), Validators.required]),
       eventType: this.formBuilder.control(this.event.eventType, [Validators.required]),
       htmlDescription:  this.formBuilder.control(this.event.details.htmlDescription, [Validators.required]),
@@ -36,24 +48,22 @@ export class ChangeEventComponent implements OnInit {
       timeStart:  this.formBuilder.control(this.event.details.timeStart, [ Validators.required]),
       timeEnd:  this.formBuilder.control(this.event.details.timeEnd, [ Validators.required]),
     });
+    }
   }
 
   changeEvent(value: EventCreateForm) {
     this.changedEvent = {
-      ...this.event,
       eventName: value.eventName,
       eventType: value.eventType,
+      conferenceId: this.conferenceId,
       details:   {
-        ...this.event.details,
         htmlDescription: value.htmlDescription,
         location: value.location,
         timeStart: value.timeStart,
         timeEnd: value.timeEnd,
+        createdBy: 1
         // TODO: insert user id when we add auth
       }};
-    console.log(this.changedEvent);
-    this.endChanging.emit();
-    // this.eventService.change(this.event.eventId, this.changedEvent);
+    this.endChanging.emit(this.changedEvent);
   }
-
 }

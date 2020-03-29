@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChangeEventComponent } from './change-event.component';
+import { EventEditorComponent } from './event-editor.component';
 
-describe('ChangeEventComponent', () => {
-  let component: ChangeEventComponent;
-  let fixture: ComponentFixture<ChangeEventComponent>;
+describe('EventEditorComponent', () => {
+  let component: EventEditorComponent;
+  let fixture: ComponentFixture<EventEditorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChangeEventComponent ]
+      declarations: [ EventEditorComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChangeEventComponent);
+    fixture = TestBed.createComponent(EventEditorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import {EventModel} from '../../models/event.model';
+import {EventCreateModel, EventModel} from '../../models/event.model';
 import {EventService} from '../../services/event.service';
 
 @Component({
@@ -30,5 +30,11 @@ export class AboutEventPageComponent implements OnInit {
 
   hideChangeEvent() {
     this.changeEventVisible = false;
+  }
+
+  changeEvent($event: EventCreateModel) {
+    console.log($event);
+    this.hideChangeEvent();
+    // this.eventService.change(this.event.eventId, $event);
   }
 }

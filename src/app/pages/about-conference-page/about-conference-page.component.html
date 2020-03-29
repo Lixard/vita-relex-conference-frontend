@@ -57,10 +57,10 @@
                        [conference]="this.conference"
 ></app-conference-editor>
 
-<app-create-new-event (endCreating)="hideCreateNewEventComponent()"
-                      *ngIf="createNewEventVisible"
-                      [conferenceId]="conference.conferenceId"
-></app-create-new-event>
+<app-event-editor (endChanging)="createNewEvent($event)"
+                  *ngIf="createNewEventVisible"
+                  [conferenceId]="conference.conferenceId"
+></app-event-editor>
 
 <div *ngFor="let event of events">
   <br>

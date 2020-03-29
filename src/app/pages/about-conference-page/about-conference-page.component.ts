@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {ConferenceCreateModel, ConferenceModel} from '../../models/conference.model';
-import {EventModel} from '../../models/event.model';
+import {EventCreateModel, EventModel} from '../../models/event.model';
 import {ConferenceService} from '../../services/conference.service';
+import {EventService} from '../../services/event.service';
+import {$e} from 'codelyzer/angular/styles/chars';
 
 @Component({
   selector: 'app-about-conference-page',
@@ -18,7 +20,7 @@ export class AboutConferencePageComponent implements OnInit {
   changeConferenceVisible = false;
   createNewEventVisible = false;
 
-  constructor(private route: ActivatedRoute, private conferenceService: ConferenceService) { }
+  constructor(private route: ActivatedRoute, private conferenceService: ConferenceService, private eventService: EventService) { }
 
   ngOnInit(): void {
     const conferenceId = parseInt(this.route.snapshot.paramMap.get('conference'), 10);
@@ -52,5 +54,11 @@ export class AboutConferencePageComponent implements OnInit {
     console.log($event);
     this.hideChangeConference();
     // this.conferenceService.update(this.conference.conferenceId, $event);
+  }
+
+  createNewEvent($event: EventCreateModel) {
+    console.log($event);
+    this.hideCreateNewEventComponent();
+    // this.eventService.createEvent($event);
   }
 }
