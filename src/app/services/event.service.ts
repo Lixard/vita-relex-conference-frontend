@@ -16,7 +16,7 @@ export class EventService {
   }
 
   getEvent(eventId: number): Observable<EventModel> {
-    return this.http.get<EventModel>('/api/events/${eventId}');
+    return this.http.get<EventModel>('/api/events/' + eventId);
   }
 
   createEvent(event: EventCreateModel) {
@@ -24,6 +24,6 @@ export class EventService {
   }
 
   change(eventId: number, event: EventCreateModel) {
-    this.http.put('/api/events/${eventId}', event);
+    this.http.put('/api/events/' + eventId, event);
   }
 }

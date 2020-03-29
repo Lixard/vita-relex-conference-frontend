@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ConferenceCreateForm, ConferenceCreateModel, ConferenceModel} from '../../models/conference.model';
 import {HttpClient} from '@angular/common/http';
@@ -15,6 +15,9 @@ export class ChangeConferenceComponent implements OnInit {
 
   @Input()
   conference: ConferenceModel;
+
+  @Output()
+  endChanging = new EventEmitter<void>();
 
   changedConference: ConferenceCreateModel;
 
@@ -47,7 +50,7 @@ export class ChangeConferenceComponent implements OnInit {
         dateEnd: value.dateEnd,
       }};
     console.log(this.changedConference);
-    close();
+    this.endChanging.emit();
     // this.conferenceService.update(this.conference.conferenceId, this.changedConference);
   }
 

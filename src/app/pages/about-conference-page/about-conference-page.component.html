@@ -45,13 +45,13 @@
 </mat-toolbar>
 
 <app-change-conference
-  (close)="hideChangeConference()"
+  (endChanging)="hideChangeConference()"
   *ngIf="changeConferenceVisible"
   [conference]="this.conference"
 ></app-change-conference>
 
 <app-create-new-event
-  (close)="hideCreateNewEventComponent()"
+  (endCreating)="hideCreateNewEventComponent()"
   *ngIf="createNewEventVisible"
   [conferenceId]="conference.conferenceId"
 ></app-create-new-event>

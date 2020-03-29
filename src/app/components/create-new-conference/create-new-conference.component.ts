@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {EventCreateModel, EventType} from '../../models/event.model';
 import {HttpClient} from '@angular/common/http';
@@ -13,6 +13,9 @@ import {ConferenceService} from '../../services/conference.service';
   styleUrls: ['./create-new-conference.component.scss']
 })
 export class CreateNewConferenceComponent implements OnInit {
+
+  @Output()
+  endCreating = new EventEmitter<void>();
 
   form: FormGroup;
 
@@ -48,7 +51,7 @@ export class CreateNewConferenceComponent implements OnInit {
         createdAt: Date.now().toString()
       }};
     console.log(this.conference);
-    close();
+    this.endCreating.emit();
     // this.conferenceService.create(this.conference);
   }
 }

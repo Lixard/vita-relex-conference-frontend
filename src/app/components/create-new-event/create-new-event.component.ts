@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {EventCreateForm, EventCreateModel, EventModel, EventType} from '../../models/event.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {EventDetailsModel} from '../../models/event-details.model';
@@ -15,6 +15,9 @@ export class CreateNewEventComponent implements OnInit {
 
   @Input()
   conferenceId: number;
+
+  @Output()
+  endCreating = new EventEmitter<void>();
 
   form: FormGroup;
 
@@ -52,7 +55,7 @@ export class CreateNewEventComponent implements OnInit {
         // TO DO: insert user id when we add auth
       }};
     console.log(this.event);
-    close();
+    this.endCreating.emit();
     // this.eventService.createEvent(this.event);
   }
 }

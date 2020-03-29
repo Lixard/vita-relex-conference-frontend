@@ -40,6 +40,6 @@
 <app-change-event
   [event]="this.event"
   *ngIf="changeEventVisible"
-  (close)="hideChangeEvent()"
+  (endChanging)="hideChangeEvent()"
 ></app-change-event>
 

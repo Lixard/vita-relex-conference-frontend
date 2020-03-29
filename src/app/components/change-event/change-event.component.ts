@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {EventCreateForm, EventCreateModel, EventModel, EventType} from '../../models/event.model';
 import {HttpClient} from '@angular/common/http';
@@ -14,6 +14,9 @@ export class ChangeEventComponent implements OnInit {
 
   @Input()
   event: EventModel;
+
+  @Output()
+  endChanging = new EventEmitter<void>();
 
   changedEvent: EventCreateModel;
 
@@ -49,7 +52,7 @@ export class ChangeEventComponent implements OnInit {
         // TODO: insert user id when we add auth
       }};
     console.log(this.changedEvent);
-    close();
+    this.endChanging.emit();
     // this.eventService.change(this.event.eventId, this.changedEvent);
   }
 
