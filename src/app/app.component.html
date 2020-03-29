@@ -10,17 +10,20 @@
   <a mat-button routerLink="conferences">
     Conferences
   </a>
-  <button mat-button (click)="openCreateConference()">
+  <button mat-button
+          (click)="openCreateConference()"
+          *ngIf="!createConferenceVision">
     Create new conference
   </button>
-  <button mat-button (click)="hideCreateConference()" *ngIf="createConferenceVision">
+  <button mat-button
+          (click)="hideCreateConference()"
+          *ngIf="createConferenceVision">
     Close create new conference
   </button>
 </mat-toolbar>
-<app-create-new-conference
-  (endCreating)="hideCreateConference()"
-  *ngIf="createConferenceVision"
+<app-create-new-conference (endCreating)="hideCreateConference()"
+                           *ngIf="createConferenceVision"
 ></app-create-new-conference>
-<div class="content">
+<div>
   <router-outlet></router-outlet>
 </div>

@@ -11,8 +11,9 @@
       {{conference.details.location}}
       <br>
     </mat-card-content>
-    <mat-card-actions *ngIf="true">
-      <a mat-button  routerLink="/about-conference/{{conference.conferenceId}}">
+    <mat-card-actions>
+      <a mat-button
+         routerLink="/about-conference/{{conference.conferenceId}}">
         Show more about {{conference.conferenceName}}
       </a>
     </mat-card-actions>

@@ -1,14 +1,19 @@
 <form [formGroup]="form">
   <mat-card>
     <mat-card-content>
+
       <mat-form-field>
         <mat-label>Conference name</mat-label>
-        <input matInput [required]="true" formControlName="conferenceName">
+        <input matInput
+               [required]="true"
+               formControlName="conferenceName">
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Location</mat-label>
-        <input matInput [required]="true" formControlName="location">
+        <input matInput
+               [required]="true"
+               formControlName="location">
       </mat-form-field>
 
       <mat-form-field>

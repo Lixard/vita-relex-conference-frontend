@@ -27,6 +27,7 @@
       Show conference info
     </a>
     <button mat-button
+            *ngIf="!changeEventVisible"
             (click)="showChangeEvent()">
       Change event
     </button>
@@ -37,9 +38,8 @@
     </button>
   </mat-card-actions>
 </mat-card>
-<app-change-event
-  [event]="this.event"
-  *ngIf="changeEventVisible"
-  (endChanging)="hideChangeEvent()"
+<app-change-event [event]="this.event"
+                  *ngIf="changeEventVisible"
+                  (endChanging)="hideChangeEvent()"
 ></app-change-event>
 

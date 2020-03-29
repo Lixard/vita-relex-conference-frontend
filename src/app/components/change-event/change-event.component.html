@@ -1,14 +1,19 @@
 <form [formGroup]="form">
   <mat-card>
     <mat-card-content>
+
       <mat-form-field>
         <mat-label>Event name</mat-label>
-        <input matInput [required]="true" formControlName="eventName">
+        <input matInput
+               [required]="true"
+               formControlName="eventName">
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Location</mat-label>
-        <input matInput [required]="true" formControlName="location">
+        <input matInput
+               [required]="true"
+               formControlName="location">
       </mat-form-field>
 
       <mat-form-field>
@@ -26,6 +31,7 @@
                [required]="true"
                formControlName="timeEnd">
       </mat-form-field>
+
       <mat-form-field>
         <mat-label>Event type</mat-label>
         <mat-select [required]="true"

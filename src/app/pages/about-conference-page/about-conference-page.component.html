@@ -28,32 +28,38 @@
       Events within {{conference.conferenceName}}
     </h1>
 
-  <button mat-button (click)="showCreateNewEventComponent()">
+  <button *ngIf="!createNewEventVisible"
+          mat-button
+          (click)="showCreateNewEventComponent()">
     Create new event
   </button>
-  <button *ngIf="createNewEventVisible" mat-button (click)="hideCreateNewEventComponent()">
+  <button *ngIf="createNewEventVisible"
+          mat-button
+          (click)="hideCreateNewEventComponent()">
     Close create new event place
   </button>
 
-  <button mat-button (click)="showChangeConference()">
+  <button *ngIf="!changeConferenceVisible"
+          mat-button
+          (click)="showChangeConference()">
     Change conference
   </button>
-  <button *ngIf="changeConferenceVisible" mat-button (click)="hideChangeConference()">
+  <button *ngIf="changeConferenceVisible"
+          mat-button
+          (click)="hideChangeConference()">
     Close change conference place
   </button>
 
 </mat-toolbar>
 
-<app-change-conference
-  (endChanging)="hideChangeConference()"
-  *ngIf="changeConferenceVisible"
-  [conference]="this.conference"
+<app-change-conference (endChanging)="hideChangeConference()"
+                       *ngIf="changeConferenceVisible"
+                       [conference]="this.conference"
 ></app-change-conference>
 
-<app-create-new-event
-  (endCreating)="hideCreateNewEventComponent()"
-  *ngIf="createNewEventVisible"
-  [conferenceId]="conference.conferenceId"
+<app-create-new-event (endCreating)="hideCreateNewEventComponent()"
+                      *ngIf="createNewEventVisible"
+                      [conferenceId]="conference.conferenceId"
 ></app-create-new-event>
 
 <div *ngFor="let event of events">
