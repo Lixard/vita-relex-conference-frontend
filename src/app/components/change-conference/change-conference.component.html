@@ -17,19 +17,23 @@
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Date start</mat-label>
+        <mat-label>Start date</mat-label>
         <input matInput
-               type="date"
-               [required]="true"
-               formControlName="dateStart">
+               [matDatepicker]="dateStart"
+               formControlName="dateStart"
+               [required]="true">
+        <mat-datepicker-toggle matSuffix [for]="dateStart"></mat-datepicker-toggle>
+        <mat-datepicker #dateStart></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Date end</mat-label>
+        <mat-label>End date</mat-label>
         <input matInput
-               type="date"
-               [required]="true"
-               formControlName="dateEnd">
+               [matDatepicker]="dateEnd"
+               formControlName="dateEnd"
+               [required]="true">
+        <mat-datepicker-toggle matSuffix [for]="dateEnd"></mat-datepicker-toggle>
+        <mat-datepicker #dateEnd></mat-datepicker>
       </mat-form-field>
 
       <editor [required]="true"

@@ -27,6 +27,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { CreateNewConferenceComponent } from './components/create-new-conference/create-new-conference.component';
 import { ChangeConferenceComponent } from './components/change-conference/change-conference.component';
 import { ChangeEventComponent } from './components/change-event/change-event.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,7 @@ import { ChangeEventComponent } from './components/change-event/change-event.com
     CreateNewEventComponent,
     CreateNewConferenceComponent,
     ChangeConferenceComponent,
-    ChangeEventComponent
+    ChangeEventComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,9 @@ import { ChangeEventComponent } from './components/change-event/change-event.com
     EditorModule,
     MatAutocompleteModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

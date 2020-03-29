@@ -1,8 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ConferenceCreateForm, ConferenceCreateModel, ConferenceModel} from '../../models/conference.model';
-import {HttpClient} from '@angular/common/http';
 import {ConferenceService} from '../../services/conference.service';
+import { MatNativeDateModule } from '@angular/material/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-change-conference',
@@ -33,8 +34,8 @@ export class ChangeConferenceComponent implements OnInit {
       conferenceName: this.formBuilder.control(this.conference.conferenceName , [Validators.max(50), Validators.required]),
       htmlDescription:  this.formBuilder.control(this.conference.details.htmlDescription, [Validators.required]),
       location:  this.formBuilder.control(this.conference.details.location, [Validators.max(50), Validators.required]),
-      dateStart:  this.formBuilder.control(this.conference.details.dateStart, [ Validators.required]),
-      dateEnd:  this.formBuilder.control(this.conference.details.dateEnd, [ Validators.required]),
+      dateStart:  this.formBuilder.control(moment(this.conference.details.dateStart).toDate(), [ Validators.required]),
+      dateEnd:  this.formBuilder.control(moment(this.conference.details.dateEnd).toDate(), [ Validators.required]),
     });
   }
 
@@ -46,8 +47,8 @@ export class ChangeConferenceComponent implements OnInit {
         ...this.conference.details,
         htmlDescription: value.htmlDescription,
         location: value.location,
-        dateStart: value.dateStart,
-        dateEnd: value.dateEnd,
+        dateStart: moment(value.dateStart).toISOString(),
+        dateEnd: moment(value.dateEnd).toISOString(),
       }};
     console.log(this.changedConference);
     this.endChanging.emit();
