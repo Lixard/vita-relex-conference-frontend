@@ -28,6 +28,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { ConferenceEditorComponent } from './components/conference-editor/conference-editor.component';
 import { MainToolbarComponent } from './components/main-toolbar/main-toolbar.component';
 import { EventEditorComponent } from './components/event-editor/event-editor.component';
+import { EventTypePipe } from './models/event-type.pipe';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { EventEditorComponent } from './components/event-editor/event-editor.com
     ConferenceEditorComponent,
     MainToolbarComponent,
     EventEditorComponent,
+    EventTypePipe,
   ],
   imports: [
     BrowserModule,

@@ -18,8 +18,7 @@
     <h2>About {{conference.conferenceName}}</h2>
     <mat-divider></mat-divider>
     <br>
-    <div>
-      {{conference.details.htmlDescription}}
+    <div [innerHTML]="conference.details.htmlDescription">
     </div>
   </mat-card-content>
 </mat-card>

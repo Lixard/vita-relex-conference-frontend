@@ -18,8 +18,7 @@
     <h2>About {{event.eventName}}</h2>
     <mat-divider></mat-divider>
     <br>
-    <div>
-      {{event.details.htmlDescription}}
+    <div [innerHTML]="event.details.htmlDescription">
     </div>
   </mat-card-content>
   <mat-card-actions *ngIf="true">
