@@ -1,6 +1,6 @@
 import {EventDetailsModel} from './event-details.model';
 
-export enum EventType{
+export enum EventType {
   MEETUP = 'MEETUP',
   LECTURE = 'LECTURE',
   SEMINAR = 'SEMINAR',

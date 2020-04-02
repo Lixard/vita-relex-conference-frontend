@@ -1,0 +1,19 @@
+<mat-card >
+  <mat-card-header>
+    <mat-card-title>
+      {{conference.conferenceName}}
+    </mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <br>
+    {{conference.details.location}}
+    <br>
+  </mat-card-content>
+  <mat-card-actions>
+    <a mat-button
+       routerLink="{{conference.conferenceId}}">
+      Show more about {{conference.conferenceName}}
+    </a>
+  </mat-card-actions>
+</mat-card>

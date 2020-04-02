@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ConferenceCreateModel, ConferenceModel} from '../models/conference.model';
-import {List} from '../models/list.model';
+import {List} from '../../../core/models/list.model';
 
 @Injectable({
   providedIn: 'root'

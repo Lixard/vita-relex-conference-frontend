@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {EventType} from './event.model';
+import {EventType} from '../models/event.model';
 
 @Pipe({
   name: 'eventType'
 })
 export class EventTypePipe implements PipeTransform {
 
-  transform(value: EventType): string | undefined{
+  transform(value: EventType): string | undefined {
     if (value === undefined) {
       return undefined;
     }

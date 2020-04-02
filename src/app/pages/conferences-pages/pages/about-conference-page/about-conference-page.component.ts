@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import {ConferenceCreateModel, ConferenceModel} from '../../models/conference.model';
-import {EventCreateModel, EventModel} from '../../models/event.model';
-import {ConferenceService} from '../../services/conference.service';
-import {EventService} from '../../services/event.service';
+import {ConferenceCreateModel, ConferenceModel} from '../../../../entities/conference/models/conference.model';
+import {EventCreateModel, EventModel} from '../../../../entities/event/models/event.model';
+import {ConferenceService} from '../../../../entities/conference/services/conference.service';
+import {EventService} from '../../../../entities/event/services/event.service';
 import {$e} from 'codelyzer/angular/styles/chars';
 
 @Component({
@@ -23,7 +23,7 @@ export class AboutConferencePageComponent implements OnInit {
   constructor(private route: ActivatedRoute, private conferenceService: ConferenceService, private eventService: EventService) { }
 
   ngOnInit(): void {
-    const conferenceId = parseInt(this.route.snapshot.paramMap.get('conference'), 10);
+    const conferenceId = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     this.conferenceService.getConferenceById(conferenceId).subscribe(conference => {
       this.conference = conference;
     });

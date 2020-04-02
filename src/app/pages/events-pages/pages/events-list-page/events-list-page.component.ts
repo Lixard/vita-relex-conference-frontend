@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {EventModel} from '../../models/event.model';
-import {HttpClient} from '@angular/common/http';
-import {EventService} from '../../services/event.service';
+import {EventModel} from '../../../../entities/event/models/event.model';
+import {EventService} from '../../../../entities/event/services/event.service';
 
 @Component({
   selector: 'app-events',

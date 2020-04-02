@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
-import {EventCreateModel, EventModel} from '../../models/event.model';
-import {EventService} from '../../services/event.service';
+import {EventCreateModel, EventModel} from '../../../../entities/event/models/event.model';
+import {EventService} from '../../../../entities/event/services/event.service';
 
 @Component({
   selector: 'app-about-event-page',
@@ -16,7 +15,7 @@ export class AboutEventPageComponent implements OnInit {
   constructor(private route: ActivatedRoute, private eventService: EventService) { }
 
   ngOnInit(): void {
-    const eventId = parseInt(this.route.snapshot.paramMap.get('event'), 10);
+    const eventId = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     this.eventService.getEvent(eventId)
       .subscribe(event => {
       this.event = event;

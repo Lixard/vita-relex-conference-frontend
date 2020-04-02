@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {ConferenceModel} from '../../models/conference.model';
-import {ConferenceService} from '../../services/conference.service';
+import {ConferenceModel} from '../../../../entities/conference/models/conference.model';
+import {ConferenceService} from '../../../../entities/conference/services/conference.service';
 
 @Component({
   selector: 'app-conferences-list-page',

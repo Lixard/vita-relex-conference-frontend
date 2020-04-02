@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {ConferenceCreateModel} from './models/conference.model';
 
 @Component({
   selector: 'app-root',

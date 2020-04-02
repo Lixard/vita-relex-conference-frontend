@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ConferenceCreateForm, ConferenceCreateModel} from '../../models/conference.model';
-import {ConferenceService} from '../../services/conference.service';
-import {ConferenceDetailsModel} from '../../models/conference-details.model';
+import {ConferenceCreateForm, ConferenceCreateModel} from '../../entities/conference/models/conference.model';
+import {ConferenceService} from '../../entities/conference/services/conference.service';
+import {ConferenceDetailsModel} from '../../entities/conference/models/conference-details.model';
 
 @Component({
   selector: 'app-main-toolbar',

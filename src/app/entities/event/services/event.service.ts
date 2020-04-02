@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {List} from '../models/list.model';
+import {List} from '../../../core/models/list.model';
 import {EventCreateModel, EventModel} from '../models/event.model';
 
 @Injectable({
