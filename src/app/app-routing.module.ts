@@ -9,6 +9,10 @@ const routes: Routes = [
     component: MainPageComponent
   },
   {
+    path: 'login',
+    loadChildren: () => import('./pages/login-pages/login-pages-routing.module').then(m => m.LoginPagesRoutingModule)
+  },
+  {
     path: 'events',
     loadChildren: () => import('./pages/events-pages/events-pages-routing.module').then(m => m.EventsPagesRoutingModule)
   },

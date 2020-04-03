@@ -12,6 +12,7 @@ import {EventModule} from './entities/event/event.module';
 import {EventsPagesModule} from './pages/events-pages/events-pages.module';
 import {ConferencesPagesModule} from './pages/conferences-pages/conferences-pages.module';
 import {CoreModule} from './core/core.module';
+import {LoginPagesModule} from './pages/login-pages/login-pages.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {CoreModule} from './core/core.module';
     EventsPagesModule,
     ConferencesPagesModule,
     CoreModule,
+    LoginPagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
