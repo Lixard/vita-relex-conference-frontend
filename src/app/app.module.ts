@@ -13,12 +13,21 @@ import {EventsPagesModule} from './pages/events-pages/events-pages.module';
 import {ConferencesPagesModule} from './pages/conferences-pages/conferences-pages.module';
 import {CoreModule} from './core/core.module';
 import {LoginPagesModule} from './pages/login-pages/login-pages.module';
+import {UserComponent} from './entities/user/components/user/user.component';
+import {UserListPageComponent} from './pages/user-list-page/user-list-page.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
-    MainToolbarComponent
+    MainToolbarComponent,
+    UserComponent,
+    UserListPageComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +40,12 @@ import {LoginPagesModule} from './pages/login-pages/login-pages.module';
     EventsPagesModule,
     ConferencesPagesModule,
     CoreModule,
-    LoginPagesModule
+    LoginPagesModule,
+    MatIconModule,
+    MatCardModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,6 +10,9 @@
   <a mat-button routerLink="conferences">
     Conferences
   </a>
+  <a mat-button routerLink="users">
+    Users
+  </a>
   <button mat-button
           (click)="openCreateConference()"
           *ngIf="!createConferenceVision">
@@ -20,6 +23,14 @@
           *ngIf="createConferenceVision">
     Close create new conference
   </button>
+  <form #form="ngForm">
+    <mat-form-field appearance="outline">
+      <label>
+        <input matInput placeholder="Поиск" (keydown.enter)="searchTemplate($event.target.value)" routerLink="users">
+      </label>
+      <mat-icon matSuffix>account_circle</mat-icon>
+    </mat-form-field>
+  </form>
 </mat-toolbar>
 <app-conference-editor (endChanging)="endCreating($event)"
                        *ngIf="createConferenceVision"

@@ -1,0 +1,11 @@
+<div *ngFor="let user of users">
+  <mat-card class="user-card">
+    <mat-card-header>
+      <mat-icon class="user-icon">more_vert</mat-icon>
+      <div mat-card-avatar class="user-image"></div>
+      <mat-card-title> <a mat-button routerLink="/{{user.userId}}">{{user.username}}</a></mat-card-title>
+      <mat-card-subtitle>{{user.personalInfo.firstName}},{{user.personalInfo.lastName}}</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</div>
+

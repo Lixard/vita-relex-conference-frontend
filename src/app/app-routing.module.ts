@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {MainPageComponent} from './pages/main-page/main-page.component';
+import {UserListPageComponent} from './pages/user-list-page/user-list-page.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
     path: 'conferences',
     loadChildren: () => import('./pages/conferences-pages/conferences-pages-routing.module').then(m => m.ConferencesPagesRoutingModule)
   },
+  {
+    path: 'users',
+    component: UserListPageComponent
+  }
 ];
 
 @NgModule({
