@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {ConferenceCreateForm, ConferenceCreateModel} from '../../entities/conference/models/conference.model';
 import {ConferenceService} from '../../entities/conference/services/conference.service';
 import {ConferenceDetailsModel} from '../../entities/conference/models/conference-details.model';
+import {UserModel} from '../../entities/user/model/user.model';
+import {List} from '../../core/models/list.model';
+import {UserService} from '../../entities/user/service/user.service';
+
 
 @Component({
   selector: 'app-main-toolbar',
@@ -10,9 +14,11 @@ import {ConferenceDetailsModel} from '../../entities/conference/models/conferenc
 })
 export class MainToolbarComponent implements OnInit {
 
+  @Output()
+  users: List<UserModel>;
   createConferenceVision = false;
 
-  constructor(private conferenceService: ConferenceService) { }
+  constructor(private conferenceService: ConferenceService, private userService: UserService) { }
 
   ngOnInit(): void {
   }
@@ -29,5 +35,10 @@ export class MainToolbarComponent implements OnInit {
     console.log($event);
     this.hideCreateConference();
     // this.conferenceService.create($event);
+  }
+  searchTemplate(searchTemplate: string) {
+    this.userService.searchUsers(searchTemplate).subscribe(result => {
+      this.users = result;
+    });
   }
 }
