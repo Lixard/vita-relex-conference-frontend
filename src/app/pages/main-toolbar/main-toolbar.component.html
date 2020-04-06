@@ -20,6 +20,8 @@
           *ngIf="createConferenceVision">
     Close create new conference
   </button>
+  <div class="fill"></div>
+  <app-user-menu></app-user-menu>
 </mat-toolbar>
 <app-conference-editor (endChanging)="endCreating($event)"
                        *ngIf="createConferenceVision"
