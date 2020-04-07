@@ -2,11 +2,13 @@
   <mat-card class="user-card">
     <mat-card-header>
       <mat-icon class="user-icon">more_vert</mat-icon>
-      <div mat-card-avatar class="user-image" *ngIf="user.linkImage!=null; else elseBlock" [ngStyle]="{ 'background-image': 'url(' + user.linkImage + ')'}"></div>
+      <div mat-card-avatar class="user-image" (click)="openImage(user.linkImage)"  *ngIf="user.linkImage!=null; else elseBlock" [ngStyle]="{ 'background-image': 'url(' + user.linkImage + ')'}"></div>
       <ng-template #elseBlock><div mat-card-avatar class="user-image" [ngStyle]="{ 'background-image': 'url(https://mycoach.link/uploads/coach/20190923/15692616905d89087ab18e84.94207537.png)'}"></div></ng-template>
       <mat-card-title> <a mat-button routerLink="/{{user.userId}}">{{user.username}}</a></mat-card-title>
       <mat-card-subtitle>{{user.personalInfo.firstName}},{{user.personalInfo.lastName}}</mat-card-subtitle>
     </mat-card-header>
   </mat-card>
 </div>
+<app-image [URL]="linkImage" *ngIf="linkImage!=null" (click)="closeImage()"></app-image>
+
 

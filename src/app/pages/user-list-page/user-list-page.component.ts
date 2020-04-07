@@ -9,8 +9,8 @@ import {UserService} from '../../entities/user/service/user.service';
   styleUrls: ['./user-list-page.component.scss']
 })
 export class UserListPageComponent implements OnInit {
-
   users: UserModel[];
+  linkImage: string = null;
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
@@ -19,5 +19,13 @@ export class UserListPageComponent implements OnInit {
       this.users = result;
       console.log(result);
     });
+  }
+
+  openImage(linkImage: string) {
+    this.linkImage = linkImage;
+  }
+
+  closeImage() {
+    this.linkImage = null;
   }
 }
