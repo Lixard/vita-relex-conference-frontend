@@ -23,6 +23,8 @@
           *ngIf="createConferenceVision">
     Close create new conference
   </button>
+  <div class="fill"></div>
+
   <form #form="ngForm">
     <mat-form-field appearance="outline">
       <label>
@@ -31,6 +33,7 @@
       <mat-icon matSuffix>account_circle</mat-icon>
     </mat-form-field>
   </form>
+  <app-user-menu></app-user-menu>
 </mat-toolbar>
 <app-conference-editor (endChanging)="endCreating($event)"
                        *ngIf="createConferenceVision"

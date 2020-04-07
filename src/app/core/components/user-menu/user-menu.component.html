@@ -1,0 +1,20 @@
+<div>
+  <ng-container *ngIf="user.authenticated; else logInButton">
+    <span>{{user.username}}</span>
+
+    <button mat-stroked-button
+            (click)="handleLogoutClick()">
+      Log Out
+    </button>
+  </ng-container>
+
+  <ng-template #logInButton>
+    <a *ngIf="!user.authenticated"
+       mat-flat-button
+       color="accent"
+       routerLink="login"
+    >
+      Log In
+    </a>
+  </ng-template>
+</div>

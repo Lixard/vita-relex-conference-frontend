@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LoginData, LoginDataForm} from '../../../../core/models/login-data.model';
+import {AuthService} from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -13,7 +14,7 @@ export class LoginPageComponent implements OnInit {
 
   loginData: LoginData;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.buildForm();
@@ -24,6 +25,7 @@ export class LoginPageComponent implements OnInit {
       username: form.username,
       password: form.password
     };
+    this.auth.login(this.loginData).subscribe();
   }
 
   private buildForm() {
