@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="user$ | async as user">
   <ng-container *ngIf="user.authenticated; else logInButton">
     <span>{{user.username}}</span>
 
