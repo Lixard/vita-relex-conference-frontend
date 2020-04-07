@@ -1,11 +1,23 @@
 <div *ngIf="user$ | async as user">
   <ng-container *ngIf="user.authenticated; else logInButton">
-    <span>{{user.username}}</span>
-
-    <button mat-stroked-button
-            (click)="handleLogoutClick()">
-      Log Out
-    </button>
+    <button mat-button [matMenuTriggerFor]="menu">{{user.username}}</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item
+              routerLink="user"
+      >
+        Профиль
+      </button>
+      <button mat-menu-item
+              routerLink="user/schedule"
+      >
+        Расписание
+      </button>
+      <button mat-menu-item
+              (click)="handleLogoutClick()"
+      >
+        Выйти
+      </button>
+    </mat-menu>
   </ng-container>
 
   <ng-template #logInButton>
