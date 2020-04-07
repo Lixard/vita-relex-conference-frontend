@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {switchMap} from 'rxjs/operators';
 import {CurrentUser} from '../../models/current-user.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-menu',
@@ -14,7 +15,7 @@ export class UserMenuComponent implements OnInit {
 
   // user: CurrentUser;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -23,5 +24,6 @@ export class UserMenuComponent implements OnInit {
 
   handleLogoutClick() {
     this.authService.logout().subscribe();
+    this.router.navigateByUrl('/login');
   }
 }
