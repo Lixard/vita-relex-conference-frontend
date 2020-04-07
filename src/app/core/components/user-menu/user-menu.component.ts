@@ -10,22 +10,18 @@ import {CurrentUser} from '../../models/current-user.model';
 })
 export class UserMenuComponent implements OnInit {
 
-  user: CurrentUser;
+  readonly user$ = this.authService.user$;
+
+  // user: CurrentUser;
 
   constructor(private authService: AuthService) {
   }
 
   ngOnInit(): void {
-    this.refresh();
+
   }
 
   handleLogoutClick() {
     this.authService.logout().subscribe();
-    this.refresh();
   }
-
-  refresh() {
-    this.authService.loadProfile().subscribe(result => this.user = result);
-  }
-
 }

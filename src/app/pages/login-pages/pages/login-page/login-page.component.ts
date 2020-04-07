@@ -25,7 +25,7 @@ export class LoginPageComponent implements OnInit {
       username: form.username,
       password: form.password
     };
-    this.auth.login(this.loginData).subscribe();
+    this.auth.login(this.loginData);
   }
 
   private buildForm() {

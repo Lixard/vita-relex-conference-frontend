@@ -22,6 +22,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/conferences-pages/conferences-pages-routing.module').then(m => m.ConferencesPagesRoutingModule)
   },
   {
+    path: 'user',
+    loadChildren: () => import('./pages/user-menu-pages/user-menu-pages-routing.module').then(m => m.UserMenuPagesRoutingModule)
+  },
+  {
     path: 'users',
     component: UserListPageComponent
   }

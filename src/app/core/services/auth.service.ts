@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {APP_INITIALIZER, Injectable, Provider} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {CurrentUser, Role} from '../models/current-user.model';
 import {Observable, ReplaySubject} from 'rxjs';
@@ -20,7 +20,7 @@ export class AuthService {
     return this.user$;
   }
 
-  login(data: LoginData): Observable<void> {
+  login(data: LoginData): Observable<CurrentUser> {
     const params = new HttpParams({
       fromObject: {
         username: data.username,
@@ -32,13 +32,32 @@ export class AuthService {
       'Content-Type': 'application/x-www-form-urlencoded'
     });
 
-    return this.http.post<void>('/auth/login', params.toString(), {
+    this.http.post<void>('/auth/login', params.toString(), {
       headers: myHeaders
-    });
+    }).subscribe();
+    return this.loadProfile();
   }
 
-  logout(): Observable<void> {
-    this.user$.next({authenticated: false} as CurrentUser);
-    return this.http.get<void>('/auth/logout');
+  logout(): Observable<CurrentUser> {
+    this.http.get<void>('/auth/logout').subscribe();
+    this.loadProfile().subscribe();
+    return this.user$;
+  }
+
+  initialize() {
+    return new Promise<void>(resolve => {
+      this.loadProfile();
+      resolve();
+    });
   }
 }
+export function loadCurrentUser(authService: AuthService): () => Promise<void> {
+  return () => authService.initialize();
+}
+
+export const LOAD_CURRENT_USER_INITIALIZER: Provider = {
+  provide: APP_INITIALIZER,
+  useFactory: loadCurrentUser,
+  multi: true,
+  deps: [AuthService]
+};
