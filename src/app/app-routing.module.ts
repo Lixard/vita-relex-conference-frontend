@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {MainPageComponent} from './pages/main-page/main-page.component';
-import {UserListPageComponent} from './pages/user-list-page/user-list-page.component';
 
 const routes: Routes = [
   {
@@ -27,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: 'users',
-    component: UserListPageComponent
+    loadChildren: () => import('./pages/user-list-pages/user-pages-routing.module').then(m => m.UserPagesRoutingModule)
   }
 ];
 
