@@ -27,7 +27,6 @@ export class LoginPageComponent implements OnInit {
       password: form.password
     };
     this.auth.login(this.loginData);
-    location.reload();
   }
 
   private buildForm() {
