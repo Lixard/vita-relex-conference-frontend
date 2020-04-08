@@ -14,7 +14,7 @@ import {ConferencesPagesModule} from './pages/conferences-pages/conferences-page
 import {CoreModule} from './core/core.module';
 import {LoginPagesModule} from './pages/login-pages/login-pages.module';
 import {UserComponent} from './entities/user/components/user/user.component';
-import {UserListPageComponent} from './pages/user-list-page/user-list-page.component';
+import {UserListPageComponent} from './pages/user-list-pages/pages/user-list-page/user-list-page.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';

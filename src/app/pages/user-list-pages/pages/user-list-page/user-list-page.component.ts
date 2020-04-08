@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UserModel} from '../../entities/user/model/user.model';
-import {UserService} from '../../entities/user/service/user.service';
+import {UserModel} from '../../../../entities/user/model/user.model';
+import {UserService} from '../../../../entities/user/service/user.service';
 
 
 @Component({
@@ -10,6 +10,7 @@ import {UserService} from '../../entities/user/service/user.service';
 })
 export class UserListPageComponent implements OnInit {
   users: UserModel[];
+  user: UserModel;
   linkImage: string = null;
   constructor(private userService: UserService) { }
 
