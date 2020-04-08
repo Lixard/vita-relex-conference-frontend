@@ -1,1 +1,5 @@
-<p>schedule-page works!</p>
+<div *ngFor="let event of events">
+  <br>
+  <app-event [event]="event"></app-event>
+  <br>
+</div>

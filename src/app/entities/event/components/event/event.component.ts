@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {EventModel} from '../../models/event.model';
+import {ScheduleService} from '../../../schedule/services/schedule.service';
 
 @Component({
   selector: 'app-event',
@@ -12,7 +13,7 @@ export class EventComponent implements OnInit {
   event: EventModel;
   changeEventVisible = false;
 
-  constructor() { }
+  constructor(private schedule: ScheduleService) { }
 
   ngOnInit(): void {
   }
@@ -23,5 +24,20 @@ export class EventComponent implements OnInit {
 
   hideChangeEvent() {
     this.changeEventVisible = false;
+  }
+
+  addInSchedule() {
+    this.schedule.add(this.event.eventId).subscribe();
+  }
+
+  removeFromSchedule() {
+    this.schedule.remove(this.event.eventId).subscribe();
+  }
+
+  scheduled(): boolean {
+    // if (this.event !== undefined) {
+    //   return this.schedule.scheduled(this.event);
+    // }
+    return false;
   }
 }

@@ -1,27 +1,36 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>
-      {{event.eventName}}
+      {{this.event.eventName}}
     </mat-card-title>
     <mat-card-subtitle>
-      {{event.eventType | eventType}}
+      {{this.event.eventType | eventType}}
     </mat-card-subtitle>
   </mat-card-header>
   <mat-divider></mat-divider>
   <mat-card-content>
     <br>
-    <p>{{event.details.location}}</p>
+    <p>{{this.event.details.location}}</p>
     <br>
-    <div *ngIf="event.details.shortHtmlDescription != undefined"
-         [innerHTML]="event.details.shortHtmlDescription">
+    <div *ngIf="this.event.details.shortHtmlDescription != undefined"
+         [innerHTML]="this.event.details.shortHtmlDescription">
     </div>
   </mat-card-content>
   <mat-card-actions>
-    <a mat-button  routerLink="{{event.eventId}}">
-      Show more about {{event.eventName}}
+    <a mat-button  routerLink="{{this.event.eventId}}">
+      Больше информации о {{this.event.eventName}}
     </a>
-    <button mat-button>
-      Add in  schedule
-    </button>
+
+    <ng-container *ngIf="scheduled(); else add">
+      <button mat-button (click)="removeFromSchedule()">
+        Удалить из расписания
+      </button>
+    </ng-container>
+
+    <ng-template #add>
+      <button mat-button (click)="addInSchedule()">
+        Добавить в расписание
+      </button>
+    </ng-template>
   </mat-card-actions>
 </mat-card>

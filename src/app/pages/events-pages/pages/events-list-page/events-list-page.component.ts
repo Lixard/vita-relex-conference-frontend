@@ -22,8 +22,4 @@ export class EventsListPageComponent implements OnInit {
         this.events = result;
       });
   }
-
-  addInSchedule() {
-    console.log('Added!');
-  }
 }
