@@ -9,18 +9,14 @@ import {LoginData} from '../models/login-data.model';
   providedIn: 'root'
 })
 export class AuthService {
-
- readonly user$ = new ReplaySubject<CurrentUser>(1);
-
   constructor(private http: HttpClient) {
   }
 
   loadProfile(): Observable<CurrentUser> {
-    this.http.get<CurrentUser>(`/auth/this`).subscribe( result => this.user$.next(result), error => this.user$.next(error));
-    return this.user$;
+    return this.http.get<CurrentUser>(`/auth/this`);
   }
 
-  login(data: LoginData): Observable<CurrentUser> {
+  login(data: LoginData): Observable<void> {
     const params = new HttpParams({
       fromObject: {
         username: data.username,
@@ -31,33 +27,12 @@ export class AuthService {
     const myHeaders = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'
     });
-
-    this.http.post<void>('/auth/login', params.toString(), {
+    return this.http.post<void>('/auth/login', params.toString(), {
       headers: myHeaders
-    }).subscribe();
-    return this.loadProfile();
-  }
-
-  logout(): Observable<CurrentUser> {
-    this.http.get<void>('/auth/logout').subscribe();
-    this.loadProfile().subscribe();
-    return this.user$;
-  }
-
-  initialize() {
-    return new Promise<void>(resolve => {
-      this.loadProfile();
-      resolve();
     });
   }
-}
-export function loadCurrentUser(authService: AuthService): () => Promise<void> {
-  return () => authService.initialize();
-}
 
-export const LOAD_CURRENT_USER_INITIALIZER: Provider = {
-  provide: APP_INITIALIZER,
-  useFactory: loadCurrentUser,
-  multi: true,
-  deps: [AuthService]
-};
+  logout(): Observable<void> {
+    return this.http.get<void>('/auth/logout');
+  }
+}
