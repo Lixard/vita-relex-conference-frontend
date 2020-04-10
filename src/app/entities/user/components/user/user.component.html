@@ -1,5 +1,71 @@
-<div>
-  <br>
-  хууууууууууууууууууууууй
-  <br>
+<div class="profile-page">
+  <div class="background">
+    <div class="username">
+      <h3 class="title">{{user.username}}</h3>
+    </div>
+    <div mat-card-avatar class="user-image" (click)="openImage(user.linkImage)"
+         *ngIf="user.linkImage!=null; else elseBlock"
+         [ngStyle]="{ 'background-image': 'url(' + user.linkImage + ')', 'background-size': 'cover'}"></div>
+    <ng-template #elseBlock>
+      <div mat-card-avatar class="user-image"
+           [ngStyle]="{ 'background-image': 'url(https://mycoach.link/uploads/coach/20190923/15692616905d89087ab18e84.94207537.png)'}"></div>
+    </ng-template>
+  </div>
+  <div class="box-shadow">
+    <div class="profile-content">
+      <div class="role">
+        <h6>{{user.role}}</h6>
+      </div>
+      <div class="description text-center">
+        <p> {{user.personalInfo.lastName}}</p>
+        <p> {{user.personalInfo.firstName}}</p>
+        <p> {{user.personalInfo.email}}</p>
+      </div>
+      <div class="profile-tabs">
+        <mat-card class="cards">
+          <mat-card-header>
+            <mat-card-title>Конференции</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image class="main-image"
+               src="https://i.pinimg.com/564x/5a/fe/30/5afe30dd32092976a6bb9cdc6dca7f29.jpg">
+          <mat-card-content>
+            <p>
+              Добавление и редактирование конференций
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <a class="material-icons">add</a>
+          </mat-card-actions>
+        </mat-card>
+        <mat-card class="cards">
+          <mat-card-header>
+            <mat-card-title>Ивенты</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image class="main-image"
+               src="https://i.pinimg.com/564x/7a/ec/15/7aec151e2f80186fd1284f97285ce471.jpg">
+          <mat-card-content>
+            <p>
+              Добавление и редактирование ивентов
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <a class="material-icons">add</a>
+          </mat-card-actions>
+        </mat-card>
+        <mat-card class="cards">
+          <mat-card-header>
+            <mat-card-title>Расписание</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image class="main-image"
+               src="https://i.pinimg.com/564x/b7/4d/a1/b74da13b36e5a265b40066be1c761b9f.jpg">
+          <mat-card-content>
+            <p>
+              Личное расписание пользователя
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <app-image [URL]="linkImage" (click)="closeImage()"></app-image>
 </div>

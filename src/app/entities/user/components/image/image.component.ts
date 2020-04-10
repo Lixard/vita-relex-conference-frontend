@@ -13,5 +13,4 @@ export class ImageComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

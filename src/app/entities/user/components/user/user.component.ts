@@ -14,6 +14,7 @@ export class UserComponent implements OnInit {
   @Input()
   user: UserModel;
   userId: number;
+  linkImage: string = null;
   constructor(private route: ActivatedRoute, private location: Router, private userService: UserService) { }
 
   ngOnInit() {
@@ -24,5 +25,13 @@ export class UserComponent implements OnInit {
         console.log(result);
       });
     });
+  }
+
+  openImage(linkImage: string) {
+    this.linkImage = linkImage;
+  }
+
+  closeImage() {
+    this.linkImage = null;
   }
 }
