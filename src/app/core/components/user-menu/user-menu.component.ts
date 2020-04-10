@@ -3,6 +3,7 @@ import {AuthService} from '../../services/auth.service';
 import {switchMap} from 'rxjs/operators';
 import {CurrentUser} from '../../models/current-user.model';
 import {Router} from '@angular/router';
+import {CurrentUserService} from '../../services/current-user.service';
 
 @Component({
   selector: 'app-user-menu',
@@ -11,11 +12,11 @@ import {Router} from '@angular/router';
 })
 export class UserMenuComponent implements OnInit {
 
-  readonly user$ = this.authService.user$;
+  readonly user$ = this.currentUser.user$;
 
-  // user: CurrentUser;
-
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService,
+              private currentUser: CurrentUserService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -23,7 +24,11 @@ export class UserMenuComponent implements OnInit {
   }
 
   handleLogoutClick() {
-    this.authService.logout().subscribe();
-    this.router.navigateByUrl('/login');
+    this.authService.logout()
+      .pipe(switchMap(() => this.authService.loadProfile()))
+      .subscribe(user => {
+        this.currentUser.user$.next(user);
+        this.router.navigateByUrl('/login');
+      });
   }
 }

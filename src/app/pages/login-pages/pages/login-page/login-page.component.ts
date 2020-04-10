@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LoginData, LoginDataForm} from '../../../../core/models/login-data.model';
 import {AuthService} from '../../../../core/services/auth.service';
 import {Router} from '@angular/router';
+import {switchMap} from 'rxjs/operators';
+import {CurrentUserService} from '../../../../core/services/current-user.service';
 
 @Component({
   selector: 'app-login-page',
@@ -15,18 +17,40 @@ export class LoginPageComponent implements OnInit {
 
   loginData: LoginData;
 
-  constructor(private formBuilder: FormBuilder, private auth: AuthService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder,
+              private auth: AuthService,
+              private currentUser: CurrentUserService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.buildForm();
   }
 
   login(form: LoginDataForm) {
-    this.loginData = {
+    this.auth.login({
       username: form.username,
       password: form.password
-    };
-    this.auth.login(this.loginData);
+    }).pipe(
+      switchMap(() => this.auth.loadProfile())
+    ).subscribe(
+      profile => {
+        this.currentUser.user$.next(profile);
+        this.router.navigateByUrl('/');
+      },
+      () => {
+        this.form.setErrors({
+          server: true
+        });
+        this.form.controls.username.setErrors({
+          'login-incorrect': true
+        });
+        this.form.controls.password.setErrors({
+          'login-incorrect': true
+        });
+      }
+    );
+
+
   }
 
   private buildForm() {

@@ -22,6 +22,8 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { ImageComponent } from './entities/user/components/image/image.component';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
+import {ScheduleModule} from './entities/schedule/schedule.module';
+import {UserMenuPagesModule} from './pages/user-menu-pages/user-menu-pages.module';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
-    NgxImageZoomModule
+    NgxImageZoomModule,
+    ScheduleModule,
+    UserMenuPagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

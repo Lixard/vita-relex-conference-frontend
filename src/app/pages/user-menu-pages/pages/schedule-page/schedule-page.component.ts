@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ScheduleService} from '../../../../entities/schedule/services/schedule.service';
+import {EventModel} from '../../../../entities/event/models/event.model';
 
 @Component({
   selector: 'app-schedule-page',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SchedulePageComponent implements OnInit {
 
-  constructor() { }
+  events: EventModel[];
+
+  constructor(private schedule: ScheduleService) { }
 
   ngOnInit(): void {
+    // @ts-ignore
+    this.schedule.getSchedule().subscribe(result => this.events = result);
+    console.log(this.events);
   }
 
 }
