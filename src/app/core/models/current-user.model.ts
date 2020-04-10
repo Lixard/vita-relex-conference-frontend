@@ -8,14 +8,14 @@ export interface AuthenticatedUser {
   authenticated: true;
   username: string;
   role: Role;
-  userId: number;
+  id: number;
 }
 
 export interface AnonymousUser {
   authenticated: false;
   username: null;
   role: null;
-  userId: null;
+  id: null;
 }
 
 export type CurrentUser = AuthenticatedUser | AnonymousUser;

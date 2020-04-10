@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, ReplaySubject} from 'rxjs';
 import {List} from '../../../core/models/list.model';
 import {EventCreateModel, EventModel} from '../models/event.model';
 
@@ -8,11 +8,15 @@ import {EventCreateModel, EventModel} from '../models/event.model';
   providedIn: 'root'
 })
 export class EventService {
+  readonly events$ = new ReplaySubject<EventModel[]>(1);
 
   constructor(private http: HttpClient) { }
 
-  getEvents(): Observable<List<EventModel>> {
-    return this.http.get<List<EventModel>>('/api/events');
+  refreshEvents() {
+    this.http.get<List<EventModel>>('/api/events').subscribe(result => {
+      // @ts-ignore
+      this.events$.next(result);
+    });
   }
 
   getEvent(eventId: number): Observable<EventModel> {
