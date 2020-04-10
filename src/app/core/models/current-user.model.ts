@@ -1,7 +1,7 @@
 export enum Role {
-  ADMIN,
-  USER,
-  COMPANY_ACCOUNT
+  ADMIN = 'ADMIN',
+  USER = 'USER',
+  COMPANY_ACCOUNT = 'COMPANY_ACCOUNT'
 }
 
 export interface AuthenticatedUser {
