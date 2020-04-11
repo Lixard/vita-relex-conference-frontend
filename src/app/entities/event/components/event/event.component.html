@@ -21,7 +21,7 @@
       Больше информации о {{this.event.eventName}}
     </a>
 
-    <ng-container *ngIf="scheduled(); else add">
+    <ng-container *ngIf="scheduled() | async; else add">
       <button mat-button (click)="removeFromSchedule()">
         Удалить из расписания
       </button>

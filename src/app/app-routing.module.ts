@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {MainPageComponent} from './pages/main-page/main-page.component';
+import {UserMenuPagesGuard} from './pages/user-menu-pages/guards/user-menu-pages.guard';
+import {LoginPagesGuard} from './pages/login-pages/guards/login-pages.guard';
 
 const routes: Routes = [
   {
@@ -10,6 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
+    canActivate: [LoginPagesGuard],
     loadChildren: () => import('./pages/login-pages/login-pages-routing.module').then(m => m.LoginPagesRoutingModule)
   },
   {
@@ -22,6 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'user',
+    canActivate: [UserMenuPagesGuard],
     loadChildren: () => import('./pages/user-menu-pages/user-menu-pages-routing.module').then(m => m.UserMenuPagesRoutingModule)
   },
   {

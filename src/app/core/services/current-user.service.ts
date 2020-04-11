@@ -26,8 +26,9 @@ export class CurrentUserService {
       map(user => {
         if (!user.authenticated) {
           return false;
+        } else {
+          return roles.includes(user.role);
         }
-        return roles.includes(user.role);
       })
     );
   }

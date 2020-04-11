@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EventModel} from '../../../../entities/event/models/event.model';
 import {EventService} from '../../../../entities/event/services/event.service';
+import {ScheduleService} from '../../../../entities/schedule/services/schedule.service';
 
 @Component({
   selector: 'app-events',
@@ -9,17 +10,13 @@ import {EventService} from '../../../../entities/event/services/event.service';
 })
 export class EventsListPageComponent implements OnInit {
 
-  events: EventModel[];
-  panelOpenState: boolean;
+  readonly events$ = this.eventService.events$;
 
-  constructor(private eventService: EventService) { }
+  constructor(private eventService: EventService,
+              private schedule: ScheduleService) { }
 
   ngOnInit(): void {
-    this.eventService.getEvents()
-      .subscribe(result => {
-        // У меня сгорело. Работает не так как должно
-        // @ts-ignore
-        this.events = result;
-      });
+    this.schedule.refreshSchedule();
+    this.eventService.refreshEvents();
   }
 }

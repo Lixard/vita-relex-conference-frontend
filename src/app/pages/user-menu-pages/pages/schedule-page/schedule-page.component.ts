@@ -9,14 +9,12 @@ import {EventModel} from '../../../../entities/event/models/event.model';
 })
 export class SchedulePageComponent implements OnInit {
 
-  events: EventModel[];
+  readonly events$ = this.schedule.schedule$;
 
   constructor(private schedule: ScheduleService) { }
 
   ngOnInit(): void {
-    // @ts-ignore
-    this.schedule.getSchedule().subscribe(result => this.events = result);
-    console.log(this.events);
+    this.schedule.refreshSchedule();
   }
 
 }
