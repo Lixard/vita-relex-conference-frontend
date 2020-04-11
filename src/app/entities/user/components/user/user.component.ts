@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {UserModel} from '../../model/user.model';
+import {UserCreateModel, UserModel} from '../../models/user.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../service/user.service';
+import {ConferenceCreateModel} from '../../../conference/models/conference.model';
 
 
 
@@ -15,6 +16,8 @@ export class UserComponent implements OnInit {
   user: UserModel;
   userId: number;
   linkImage: string = null;
+  toggle = false;
+  toggleChangeUser = false;
   constructor(private route: ActivatedRoute, private location: Router, private userService: UserService) { }
 
   ngOnInit() {
@@ -33,5 +36,25 @@ export class UserComponent implements OnInit {
 
   closeImage() {
     this.linkImage = null;
+  }
+
+  openAddConference() {
+   this.toggle = true;
+  }
+
+  closeAddConference() {
+    this.toggle = false;
+  }
+
+  openChangeUser() {
+    this.toggleChangeUser = true;
+  }
+  hideChangeUser() {
+    this.toggleChangeUser = false;
+  }
+
+  endCreating($event: UserCreateModel) {
+    console.log($event);
+    this.hideChangeUser();
   }
 }

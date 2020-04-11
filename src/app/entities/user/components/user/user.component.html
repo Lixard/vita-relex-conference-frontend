@@ -2,6 +2,14 @@
   <div class="background">
     <div class="username">
       <h3 class="title">{{user.username}}</h3>
+      <mat-menu #appMenu="matMenu">
+        <button mat-menu-item (click)="openChangeUser()"
+                *ngIf="!toggleChangeUser">Редактировать страницу</button>
+        <button mat-menu-item >Удалить страницу</button>
+      </mat-menu>
+      <button mat-icon-button [matMenuTriggerFor]="appMenu">
+        <mat-icon class="edit">more_vert</mat-icon>
+      </button>
     </div>
     <div mat-card-avatar class="user-image" (click)="openImage(user.linkImage)"
          *ngIf="user.linkImage!=null; else elseBlock"
@@ -33,9 +41,6 @@
               Добавление и редактирование конференций
             </p>
           </mat-card-content>
-          <mat-card-actions>
-            <a class="material-icons">add</a>
-          </mat-card-actions>
         </mat-card>
         <mat-card class="cards">
           <mat-card-header>
@@ -48,9 +53,6 @@
               Добавление и редактирование ивентов
             </p>
           </mat-card-content>
-          <mat-card-actions>
-            <a class="material-icons">add</a>
-          </mat-card-actions>
         </mat-card>
         <mat-card class="cards">
           <mat-card-header>
@@ -66,6 +68,11 @@
         </mat-card>
       </div>
     </div>
+    <app-image [URL]="linkImage" (click)="closeImage()"></app-image>
+    <app-user-editor  [user]="this.user"
+                     *ngIf="toggleChangeUser"
+                     (endChanging)="endCreating($event)">
+   </app-user-editor>
   </div>
-  <app-image [URL]="linkImage" (click)="closeImage()"></app-image>
 </div>
+

@@ -2,7 +2,7 @@ import {Component, OnInit, Output} from '@angular/core';
 import {ConferenceCreateForm, ConferenceCreateModel} from '../../entities/conference/models/conference.model';
 import {ConferenceService} from '../../entities/conference/services/conference.service';
 import {ConferenceDetailsModel} from '../../entities/conference/models/conference-details.model';
-import {UserModel} from '../../entities/user/model/user.model';
+import {UserModel} from '../../entities/user/models/user.model';
 import {List} from '../../core/models/list.model';
 import {UserService} from '../../entities/user/service/user.service';
 
