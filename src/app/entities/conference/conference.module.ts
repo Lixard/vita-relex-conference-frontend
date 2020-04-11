@@ -13,6 +13,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {EditorModule} from '@tinymce/tinymce-angular';
 import {HttpClientModule} from '@angular/common/http';
 import {MatNativeDateModule} from '@angular/material/core';
+import {EventModule} from '../event/event.module';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -34,7 +36,9 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatDatepickerModule,
     EditorModule,
     HttpClientModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    EventModule,
+    MatExpansionModule
   ]
 })
 export class ConferenceModule { }

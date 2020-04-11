@@ -1,0 +1,28 @@
+<br>
+<ng-container *ngIf="canCreateConference() | async">
+  <ng-container *ngIf="!createConferenceVisible; else hideEventEditor">
+    <button mat-button
+            (click)="showCreateConference()">
+      Создать конференцию
+    </button>
+  </ng-container>
+  <ng-template #hideEventEditor>
+    <button mat-button
+            (click)="hideCreateConference()">
+      Отмена
+    </button>
+  </ng-template>
+  <br>
+  <app-conference-editor *ngIf="createConferenceVisible"
+                         (endChanging)="createConference($event)">
+  </app-conference-editor>
+  <br>
+  <mat-divider></mat-divider>
+  <br>
+</ng-container>
+<div *ngFor="let conference of conferences">
+  <app-conference [conference]="conference"
+                  [isDashboardMode]="true"></app-conference>
+  <br>
+</div>
+

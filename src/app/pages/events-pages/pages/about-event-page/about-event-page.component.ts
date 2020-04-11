@@ -10,7 +10,6 @@ import {EventService} from '../../../../entities/event/services/event.service';
 })
 export class AboutEventPageComponent implements OnInit {
   event: EventModel;
-  changeEventVisible = false;
 
   constructor(private route: ActivatedRoute, private eventService: EventService) { }
 
@@ -21,19 +20,5 @@ export class AboutEventPageComponent implements OnInit {
       this.event = event;
     });
 
-  }
-
-  showChangeEvent() {
-    this.changeEventVisible = true;
-  }
-
-  hideChangeEvent() {
-    this.changeEventVisible = false;
-  }
-
-  changeEvent($event: EventCreateModel) {
-    console.log($event);
-    this.hideChangeEvent();
-    // this.eventService.change(this.event.eventId, $event);
   }
 }

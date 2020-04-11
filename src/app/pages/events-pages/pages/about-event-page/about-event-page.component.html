@@ -21,24 +21,10 @@
     <div [innerHTML]="event.details.htmlDescription">
     </div>
   </mat-card-content>
-  <mat-card-actions *ngIf="true">
-    <a mat-button  routerLink="/conferences/{{event.conferenceId}}">
-      Show conference info
+  <mat-card-actions>
+    <a mat-stroked-button  routerLink="/conferences/{{event.conferenceId}}">
+      Перейти к конференции
     </a>
-    <button mat-button
-            *ngIf="!changeEventVisible"
-            (click)="showChangeEvent()">
-      Change event
-    </button>
-    <button mat-button
-            *ngIf="changeEventVisible"
-            (click)="hideChangeEvent()">
-      Close change event place
-    </button>
   </mat-card-actions>
 </mat-card>
-<app-event-editor [event]="this.event"
-                  *ngIf="changeEventVisible"
-                  (endChanging)="changeEvent($event)"
-></app-event-editor>
 
