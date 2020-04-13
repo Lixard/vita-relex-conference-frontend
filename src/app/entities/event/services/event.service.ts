@@ -23,11 +23,15 @@ export class EventService {
     return this.http.get<EventModel>('/api/events/' + eventId);
   }
 
-  createEvent(event: EventCreateModel) {
-    this.http.post('/api/events', event);
+  createEvent(event: EventCreateModel): Observable<void>  {
+    return this.http.post<void>('/api/events', event);
   }
 
-  change(eventId: number, event: EventCreateModel) {
-    this.http.put('/api/events/' + eventId, event);
+  change(eventId: number, event: EventCreateModel): Observable<void>  {
+    return this.http.put<void>('/api/events/' + eventId, event);
+  }
+
+  delete(eventId: number): Observable<void> {
+    return this.http.delete<void>('/api/events/' + eventId + '/delete');
   }
 }

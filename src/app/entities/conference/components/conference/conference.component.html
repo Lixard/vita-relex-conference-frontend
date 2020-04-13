@@ -11,9 +11,91 @@
     <br>
   </mat-card-content>
   <mat-card-actions>
-    <a mat-button
-       routerLink="{{conference.conferenceId}}">
-      Show more about {{conference.conferenceName}}
+    <a mat-stroked-button
+       routerLink="/conferences/{{conference.conferenceId}}">
+      Больше информации о {{conference.conferenceName}}
     </a>
+
+    <ng-container *ngIf="isDashboardMode">
+
+      <ng-container *ngIf="!createEventVisible; else hideEventEditor">
+        <button mat-stroked-button
+                (click)="showCreateEvent()">
+          Создать ивент
+        </button>
+      </ng-container>
+      <ng-template #hideEventEditor>
+        <button mat-stroked-button
+                (click)="hideCreateEvent()">
+          Отмена
+        </button>
+      </ng-template>
+
+      <ng-container *ngIf="!changeConferenceVisible; else hideConferenceEditor">
+        <button mat-stroked-button
+                (click)="showChangeConference()">
+          Редактировать конференцию
+        </button>
+      </ng-container>
+      <ng-template #hideConferenceEditor>
+        <button mat-stroked-button
+                (click)="hideChangeConference()">
+          Отмена
+        </button>
+      </ng-template>
+
+      <ng-container *ngIf="canDeleteConference()">
+
+        <ng-container *ngIf="!conference.deleted; else resurrect">
+          <button mat-stroked-button
+                  color="accent"
+                  (click)="deleteThisConference()">
+            Удалить конференцию
+          </button>
+        </ng-container>
+
+        <ng-template #resurrect>
+          <button  mat-stroked-button
+                   color="accent"
+                  (click)="resurrectThisConference()">
+            Восстановить конференцию
+          </button>
+      </ng-template>
+
+      </ng-container>
+
+    </ng-container>
   </mat-card-actions>
+  <ng-container *ngIf="isDashboardMode">
+    <app-conference-editor *ngIf="changeConferenceVisible && !createEventVisible"
+                           [conference]="conference"
+                           (endChanging)="changeConference($event)">
+    </app-conference-editor>
+
+    <app-event-editor *ngIf="createEventVisible && !changeConferenceVisible"
+                      (endChanging)="createEvent($event)"
+                      [conferenceId]="conference.conferenceId">
+    </app-event-editor>
+
+    <mat-expansion-panel *ngIf="events.length" (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Список мероприятий
+        </mat-panel-title>
+        <mat-panel-description>
+          {{panelOpenState ? 'Скрыть' : 'Показать'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div *ngFor="let event of events">
+        <br>
+        <app-event [event]="event"
+                   [isDashboardMode]="true"></app-event>
+        <br>
+      </div>
+
+    </mat-expansion-panel>
+  </ng-container>
 </mat-card>
+

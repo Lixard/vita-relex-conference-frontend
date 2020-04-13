@@ -19,6 +19,10 @@ export class ConferenceService {
     return this.http.get<ConferenceModel>(`/api/conferences/${id}`);
   }
 
+  getConferencesByUserId(id: number): Observable<List<ConferenceModel>> {
+    return this.http.get<List<ConferenceModel>>(`/api/users/${id}/conferences`);
+  }
+
   getEventsByConferenceId(id: number): Observable<List<Event>> {
     return this.http.get<List<Event>>(`/api/conferences/${id}/events`);
   }
@@ -31,4 +35,15 @@ export class ConferenceService {
     return this.http.post<ConferenceModel>('/api/conferences', conference);
   }
 
+  delete(conferenceId: number): Observable<void> {
+    return this.http.delete<void>(`/api/conferences/${conferenceId}/delete`);
+  }
+
+  getConferencesWhereUserIsOwner(id: number): Observable<List<ConferenceModel>> {
+    return this.http.get<List<ConferenceModel>>(`/api/users/${id}/conferences/owned`);
+  }
+
+  resurrect(conferenceId: number) {
+    return this.http.patch<void>(`/api/conferences/${conferenceId}/resurrect`, null);
+  }
 }

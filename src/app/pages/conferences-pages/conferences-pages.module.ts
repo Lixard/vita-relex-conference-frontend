@@ -10,6 +10,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {EventModule} from '../../entities/event/event.module';
+import {FlexLayoutModule} from '@angular/flex-layout';
 import { ConferencePhotoArchivePageComponent } from './pages/conference-photo-archive-page/conference-photo-archive-page.component';
 import {PhotoComponent} from '../../entities/photo/components/photo/photo.component';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -42,12 +43,11 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatDividerModule,
     MatToolbarModule,
     MatButtonModule,
-    EventModule,
+    FlexLayoutModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     EditorModule,
     MatInputModule,
-    MatGridListModule,
     MatIconModule,
     MatDialogModule
   ],

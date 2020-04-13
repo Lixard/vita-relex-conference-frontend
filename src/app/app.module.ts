@@ -24,10 +24,11 @@ import { ImageComponent } from './entities/user/components/image/image.component
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import {ScheduleModule} from './entities/schedule/schedule.module';
 import {UserMenuPagesModule} from './pages/user-menu-pages/user-menu-pages.module';
-import {MatListModule} from '@angular/material/list';
+import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatMenuModule} from '@angular/material/menu';
 import { UserEditorComponent } from './entities/user/components/user-editor/user-editor.component';
 import {EditorModule} from '@tinymce/tinymce-angular';
+import {MatListModule} from '@angular/material/list';
 
 
 
@@ -64,7 +65,8 @@ import {EditorModule} from '@tinymce/tinymce-angular';
     MatListModule,
     MatMenuModule,
     EditorModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

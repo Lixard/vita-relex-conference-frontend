@@ -33,6 +33,12 @@ export class CurrentUserService {
     );
   }
 
+  canDeleteConference(id: number): boolean {
+    let result;
+    this.user$.subscribe( user => result = user.id === id);
+    return result;
+  }
+
 }
 
 export function loadCurrentUser(currentUserService: CurrentUserService): () => Promise<void> {

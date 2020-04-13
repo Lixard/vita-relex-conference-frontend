@@ -53,11 +53,11 @@ export class ConferenceEditorComponent implements OnInit {
       ...this.conference,
       conferenceName: value.conferenceName,
       details:   {
-        ...this.conference.details,
         htmlDescription: value.htmlDescription,
         location: value.location,
         dateStart: moment(value.dateStart).toISOString(),
         dateEnd: moment(value.dateEnd).toISOString(),
+        createdAt: moment().toISOString()
       }};
     console.log(this.changedConference);
     this.endChanging.emit(this.changedConference);

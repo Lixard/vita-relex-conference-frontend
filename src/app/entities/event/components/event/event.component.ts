@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {EventModel} from '../../models/event.model';
+import {EventCreateModel, EventModel} from '../../models/event.model';
 import {ScheduleService} from '../../../schedule/services/schedule.service';
 import {Observable} from 'rxjs';
+import {EventService} from '../../services/event.service';
 
 @Component({
   selector: 'app-event',
@@ -14,7 +15,12 @@ export class EventComponent implements OnInit {
   event: EventModel;
   changeEventVisible = false;
 
-  constructor(private schedule: ScheduleService) { }
+  @Input()
+  isDashboardMode = false;
+
+
+  constructor(private schedule: ScheduleService,
+              private eventService: EventService) { }
 
   ngOnInit(): void {
   }
@@ -39,5 +45,14 @@ export class EventComponent implements OnInit {
 
   scheduled(): Observable<boolean> {
     return this.schedule.scheduled(this.event);
+  }
+
+  deleteThisEvent() {
+    this.eventService.delete(this.event.eventId).subscribe();
+  }
+
+  changeEvent($event: EventCreateModel) {
+    this.eventService.change(this.event.eventId, $event).subscribe();
+    this.hideChangeEvent();
   }
 }

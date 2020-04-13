@@ -4,6 +4,7 @@ export interface ConferenceModel {
   conferenceId: number;
   conferenceName: string;
   owner: number;
+  deleted?: boolean;
   details: ConferenceDetailsModel;
 }
 

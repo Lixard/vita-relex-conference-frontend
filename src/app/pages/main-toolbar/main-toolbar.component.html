@@ -13,18 +13,8 @@
   <a mat-button routerLink="users">
     Users
   </a>
-  <button mat-button
-          (click)="openCreateConference()"
-          *ngIf="!createConferenceVision">
-    Create new conference
-  </button>
-  <button mat-button
-          (click)="hideCreateConference()"
-          *ngIf="createConferenceVision">
-    Close create new conference
-  </button>
   <div class="fill"></div>
-
+<!--TODO move this to component-->
   <form #form="ngForm">
     <mat-form-field appearance="outline">
       <label>
@@ -35,6 +25,3 @@
   </form>
   <app-user-menu></app-user-menu>
 </mat-toolbar>
-<app-conference-editor (endChanging)="endCreating($event)"
-                       *ngIf="createConferenceVision"
-></app-conference-editor>

@@ -17,20 +17,45 @@
     </div>
   </mat-card-content>
   <mat-card-actions>
-    <a mat-button  routerLink="{{this.event.eventId}}">
+    <a mat-stroked-button  routerLink="/events/{{this.event.eventId}}">
       Больше информации о {{this.event.eventName}}
     </a>
 
     <ng-container *ngIf="scheduled() | async; else add">
-      <button mat-button (click)="removeFromSchedule()">
+      <button mat-stroked-button (click)="removeFromSchedule()">
         Удалить из расписания
       </button>
     </ng-container>
 
     <ng-template #add>
-      <button mat-button (click)="addInSchedule()">
+      <button mat-stroked-button (click)="addInSchedule()">
         Добавить в расписание
       </button>
     </ng-template>
+    <ng-container *ngIf="isDashboardMode">
+
+      <ng-container *ngIf="!changeEventVisible; else add">
+        <button mat-stroked-button (click)="showChangeEvent()">
+          Редактировать ивент
+        </button>
+      </ng-container>
+      <ng-template #add>
+        <button mat-stroked-button (click)="hideChangeEvent()">
+          Отмена
+        </button>
+      </ng-template>
+      <button mat-stroked-button color="accent" (click)="deleteThisEvent()">
+        Удалить ивент
+      </button>
+      </ng-container>
   </mat-card-actions>
+  <ng-container *ngIf="isDashboardMode">
+
+    <app-event-editor *ngIf="changeEventVisible"
+                      (endChanging)="changeEvent($event)"
+                      [event]="event"
+                      [conferenceId]="event.conferenceId">
+    </app-event-editor>
+
+  </ng-container>
 </mat-card>
