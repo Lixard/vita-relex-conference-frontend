@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {EventsListPageComponent} from '../events-pages/pages/events-list-page/events-list-page.component';
-import {AboutEventPageComponent} from '../events-pages/pages/about-event-page/about-event-page.component';
 import {ConferencesListPageComponent} from './pages/conferences-list-page/conferences-list-page.component';
 import {AboutConferencePageComponent} from './pages/about-conference-page/about-conference-page.component';
+import {ConferencePhotoArchivePageComponent} from './pages/conference-photo-archive-page/conference-photo-archive-page.component';
+import {PhotoComponent} from '../../entities/photo/components/photo/photo.component';
 
 
 const routes: Routes = [
@@ -15,6 +15,14 @@ const routes: Routes = [
   {
     path: ':id',
     component: AboutConferencePageComponent
+  },
+  {
+    path: ':id/album',
+    component: ConferencePhotoArchivePageComponent
+  },
+  {
+    path: ':id/album/photoId',
+    component: PhotoComponent
   }
 ];
 

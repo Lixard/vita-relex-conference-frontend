@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {UserCreateModel, UserModel} from '../../models/user.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../service/user.service';
-import {ConferenceCreateModel} from '../../../conference/models/conference.model';
 
 
 
@@ -37,15 +36,6 @@ export class UserComponent implements OnInit {
   closeImage() {
     this.linkImage = null;
   }
-
-  openAddConference() {
-   this.toggle = true;
-  }
-
-  closeAddConference() {
-    this.toggle = false;
-  }
-
   openChangeUser() {
     this.toggleChangeUser = true;
   }

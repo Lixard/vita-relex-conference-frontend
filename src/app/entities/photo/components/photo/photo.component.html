@@ -1,0 +1,18 @@
+<mat-card class="cards" *ngIf="!deleted">
+  <mat-card-header>
+    <button mat-button color="accent" class="mat-button-delete" (click)="deletePhoto(photo.conferenceId,photo.photoId)"> <mat-icon>delete</mat-icon>
+    Удалить
+    </button>
+  </mat-card-header>
+  <img mat-card-image class="main-image"
+       src="{{photo.url}}">
+  <mat-card-content>
+    <p>
+     {{photo.description}}
+    </p>
+    <p>
+      {{photo.createdAt}}
+    </p>
+  </mat-card-content>
+</mat-card>
+

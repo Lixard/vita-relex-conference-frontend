@@ -30,6 +30,7 @@ import { UserEditorComponent } from './entities/user/components/user-editor/user
 import {EditorModule} from '@tinymce/tinymce-angular';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
