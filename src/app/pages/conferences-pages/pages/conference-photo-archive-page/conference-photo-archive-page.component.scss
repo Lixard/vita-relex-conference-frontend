@@ -1,0 +1,25 @@
+.photos{
+  display: inline-flex;
+}
+.photo-wrapper{
+  flex-grow: 1;
+  margin-top: 10%;
+  margin-left: 1vw;
+  border-radius: 6px;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2);
+}
+
+.buttons{
+  display: flex;
+  margin-top: 1%;
+  margin-left: 2%;
+}
+.button-delete{
+  margin-left: 1vw;
+}
+
+.emptyAlbum{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}

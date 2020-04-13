@@ -20,6 +20,7 @@
     <br>
     <div [innerHTML]="conference.details.htmlDescription">
     </div>
+    <a mat-button routerLink="/conferences/{{conference.conferenceId}}/album"> Фото</a>
   </mat-card-content>
 </mat-card>
 <mat-toolbar color="primary">

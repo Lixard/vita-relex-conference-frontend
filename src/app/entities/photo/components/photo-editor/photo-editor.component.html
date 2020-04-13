@@ -1,0 +1,23 @@
+<div class="'container">
+<form [formGroup]="form"  >
+  <mat-card>
+    <mat-card-content>
+      <mat-form-field  appearance="outline">
+        <mat-label>Добавьте описание</mat-label>
+                <input  matInput
+               formControlName="description">
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-stroked-button color="primary"
+         [disabled]="!form.valid"
+        (click)="savePhoto(form.value)" >
+        Сохранить
+      </button>
+      <input #imageInput hidden="true" type="file" onclick="this.value=null" (change)="uploadPhoto(imageInput)" accept="image/*"/>
+      <button mat-stroked-button color="primary" (click)="imageInput.click()">Загрузить</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+</div>
+

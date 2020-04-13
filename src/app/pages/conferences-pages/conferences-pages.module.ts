@@ -11,12 +11,29 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {EventModule} from '../../entities/event/event.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { ConferencePhotoArchivePageComponent } from './pages/conference-photo-archive-page/conference-photo-archive-page.component';
+import {PhotoComponent} from '../../entities/photo/components/photo/photo.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {EditorModule} from '@tinymce/tinymce-angular';
+import {PhotoEditorComponent} from '../../entities/photo/components/photo-editor/photo-editor.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatIconModule} from '@angular/material/icon';
+import { ConfirmDialogComponent } from './pages/confirm-dialog/confirm-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+
+
 
 
 @NgModule({
   declarations: [
     AboutConferencePageComponent,
-    ConferencesListPageComponent
+    ConferencesListPageComponent,
+    ConferencePhotoArchivePageComponent,
+    PhotoComponent,
+    PhotoEditorComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     CommonModule,
@@ -26,8 +43,13 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatDividerModule,
     MatToolbarModule,
     MatButtonModule,
-    EventModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    EditorModule,
+    MatInputModule,
+    MatIconModule,
+    MatDialogModule
   ],
   exports: [
     AboutConferencePageComponent,

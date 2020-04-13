@@ -18,13 +18,19 @@ import {UserListPageComponent} from './pages/user-list-pages/pages/user-list-pag
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { ImageComponent } from './entities/user/components/image/image.component';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import {ScheduleModule} from './entities/schedule/schedule.module';
 import {UserMenuPagesModule} from './pages/user-menu-pages/user-menu-pages.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {MatMenuModule} from '@angular/material/menu';
+import { UserEditorComponent } from './entities/user/components/user-editor/user-editor.component';
+import {EditorModule} from '@tinymce/tinymce-angular';
+import {MatListModule} from '@angular/material/list';
+
+
 
 @NgModule({
   declarations: [
@@ -33,7 +39,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MainToolbarComponent,
     UserComponent,
     UserListPageComponent,
-    ImageComponent
+    ImageComponent,
+    UserEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +62,10 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     NgxImageZoomModule,
     ScheduleModule,
     UserMenuPagesModule,
+    MatListModule,
+    MatMenuModule,
+    EditorModule,
+    ReactiveFormsModule,
     FlexLayoutModule
   ],
   providers: [],

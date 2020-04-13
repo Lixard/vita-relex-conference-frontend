@@ -43,7 +43,7 @@
 }
 
 .cards {
-  max-width: 250px;
+  max-width: 370px;
   margin-top: 50px;
   margin-left: 50px;
   border-radius: 6px;
@@ -78,8 +78,13 @@ mat-card-avatar {
 
 .username {
   order: 1;
+  display: flex;
 }
 
+.edit{
+  margin-top: 30px;
+  color:#3C4858;
+}
 .role {
   display: flex;
   align-content: center;

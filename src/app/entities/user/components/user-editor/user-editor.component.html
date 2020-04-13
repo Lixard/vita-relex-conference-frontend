@@ -1,0 +1,44 @@
+<div class = "wrapper">
+<form [formGroup]="form" enctype="multipart/form-data">
+  <mat-card>
+    <mat-card-content>
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput
+               [required]="true"
+               formControlName="username">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Фамилия</mat-label>
+        <input matInput
+               [required]="true"
+               formControlName="lastName">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Имя</mat-label>
+        <input matInput
+               [required]="true"
+               formControlName="firstName">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput
+               [required]="true"
+               formControlName="email">
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-stroked-button color="accent" (click)="changeUser(form.value)">
+        Change
+      </button>
+<!--      <button mat-stroked-button color="accent" (click)="hideChangeUser()"-->
+<!--              *ngIf="toggleChangeUser">-->
+<!--        Cancel-->
+<!--      </button>-->
+    </mat-card-actions>
+  </mat-card>
+</form>
+</div>
