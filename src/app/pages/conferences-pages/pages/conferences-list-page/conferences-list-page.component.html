@@ -1,5 +1,19 @@
-<div *ngFor="let conference of conferences">
-  <app-conference [conference]="conference"></app-conference>
-  <br>
+<div class="conferences"
+     fxLayout="row wrap"
+     fxLayout.xs="column"
+     fxLayoutAlign="center"
+     fxLayoutGap="15px">
+  <mat-card *ngFor="let conference of conferences" class="conference-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{conference.conferenceName}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="https://www.timacad.ru/uploads/media/cache/full_image/uploads/images/20190516/1557989444_35110be17b335260b304bc48e66f668b.jpg" alt="Conference avatar">
+    <mat-card-content>
+      <p>
+        Краткое описание
+      </p>
+    </mat-card-content>
+  </mat-card>
 </div>
 

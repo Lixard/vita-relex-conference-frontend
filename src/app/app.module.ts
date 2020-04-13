@@ -24,6 +24,7 @@ import { ImageComponent } from './entities/user/components/image/image.component
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import {ScheduleModule} from './entities/schedule/schedule.module';
 import {UserMenuPagesModule} from './pages/user-menu-pages/user-menu-pages.module';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {UserMenuPagesModule} from './pages/user-menu-pages/user-menu-pages.modul
     MatInputModule,
     NgxImageZoomModule,
     ScheduleModule,
-    UserMenuPagesModule
+    UserMenuPagesModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

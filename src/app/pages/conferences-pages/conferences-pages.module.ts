@@ -10,6 +10,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {EventModule} from '../../entities/event/event.module';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {EventModule} from '../../entities/event/event.module';
     MatDividerModule,
     MatToolbarModule,
     MatButtonModule,
-    EventModule
+    EventModule,
+    FlexLayoutModule
   ],
   exports: [
     AboutConferencePageComponent,
