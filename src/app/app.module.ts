@@ -69,6 +69,9 @@ import {MatListModule} from '@angular/material/list';
     FlexLayoutModule
   ],
   providers: [],
+  exports: [
+    UserComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
