@@ -3,7 +3,7 @@
     <button mat-button [matMenuTriggerFor]="menu">{{user.username}}</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item
-              routerLink="user"
+              routerLink="users/{{user.id}}"
       >
         Профиль
       </button>

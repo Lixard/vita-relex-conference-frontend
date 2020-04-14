@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import {switchMap} from 'rxjs/operators';
-import {CurrentUser} from '../../models/current-user.model';
+import {AuthenticatedUser, CurrentUser} from '../../models/current-user.model';
 import {Router} from '@angular/router';
 import {CurrentUserService} from '../../services/current-user.service';
+import {UserModel} from '../../../entities/user/models/user.model';
 
 @Component({
   selector: 'app-user-menu',
@@ -13,6 +14,7 @@ import {CurrentUserService} from '../../services/current-user.service';
 export class UserMenuComponent implements OnInit {
 
   readonly user$ = this.currentUser.user$;
+  user: AuthenticatedUser;
 
   constructor(private authService: AuthService,
               private currentUser: CurrentUserService,
@@ -20,7 +22,9 @@ export class UserMenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.user$.subscribe((user: AuthenticatedUser) => {
+      this.user = user;
+    });
   }
 
   handleLogoutClick() {

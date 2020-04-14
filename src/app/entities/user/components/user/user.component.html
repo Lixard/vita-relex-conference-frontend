@@ -1,7 +1,7 @@
 <div class="profile-page">
   <div class="background">
     <div class="username">
-      <h3 class="title">{{user.username}}</h3>
+      <h3 class="title">{{user?.username}}</h3>
       <mat-menu #appMenu="matMenu">
         <button mat-menu-item (click)="openChangeUser()"
                 *ngIf="!toggleChangeUser">Редактировать страницу</button>
@@ -11,23 +11,23 @@
         <mat-icon class="edit">more_vert</mat-icon>
       </button>
     </div>
-    <div mat-card-avatar class="user-image" (click)="openImage(user.linkImage)"
-         *ngIf="user.linkImage!=null; else elseBlock"
+    <div mat-card-avatar class="user-image" (click)="openImage(user?.linkImage)"
+         *ngIf="user?.linkImage!=null; else elseBlock"
          [ngStyle]="{ 'background-image': 'url(' + user.linkImage + ')', 'background-size': 'cover'}"></div>
     <ng-template #elseBlock>
       <div mat-card-avatar class="user-image"
-           [ngStyle]="{ 'background-image': 'url(https://mycoach.link/uploads/coach/20190923/15692616905d89087ab18e84.94207537.png)'}"></div>
+           [ngStyle]="{ 'background-image': 'url(https://mycoach.link/uploads/coach/20190923/15692616905d89087ab18e84.94207537.png)', 'background-size': 'cover'}"></div>
     </ng-template>
   </div>
   <div class="box-shadow">
     <div class="profile-content">
       <div class="role">
-        <h6>{{user.role}}</h6>
+        <h6>{{user?.role}}</h6>
       </div>
       <div class="description text-center">
-        <p> {{user.personalInfo.lastName}}</p>
-        <p> {{user.personalInfo.firstName}}</p>
-        <p> {{user.personalInfo.email}}</p>
+        <p> {{user?.personalInfo.lastName}}</p>
+        <p> {{user?.personalInfo.firstName}}</p>
+        <p> {{user?.personalInfo.email}}</p>
       </div>
       <div class="profile-tabs">
         <mat-card class="cards">

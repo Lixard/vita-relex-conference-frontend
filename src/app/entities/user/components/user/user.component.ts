@@ -15,7 +15,6 @@ export class UserComponent implements OnInit {
   user: UserModel;
   userId: number;
   linkImage: string = null;
-  toggle = false;
   toggleChangeUser = false;
   constructor(private route: ActivatedRoute, private location: Router, private userService: UserService) { }
 
