@@ -1,0 +1,21 @@
+<div>
+  <mat-list>
+    <mat-label>Список организаторов: </mat-label>
+    <mat-list-item *ngFor="let organizer of organizers">
+      <h3>{{organizer.username}}</h3>
+      <div class="fill"></div>
+      <button mat-stroked-button (click)="removeOrganizer(organizer.userId)">Удалить организатора</button>
+    </mat-list-item>
+  </mat-list>
+  <br>
+  <mat-label>Список пользователей: </mat-label>
+  <mat-list>
+    <mat-list-item *ngFor="let user of users">
+      <h3>{{user.username}}</h3>
+      <div class="fill"></div>
+      <button mat-stroked-button (click)="addOrganizer(user.userId)">
+        Добавить организатора
+      </button>
+    </mat-list-item>
+  </mat-list>
+</div>

@@ -15,11 +15,13 @@ import {HttpClientModule} from '@angular/common/http';
 import {MatNativeDateModule} from '@angular/material/core';
 import {EventModule} from '../event/event.module';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {OrganizersListComponent} from './components/organizers-list/organizers-list.component';
+import {MatListModule} from '@angular/material/list';
 
 
 
 @NgModule({
-  declarations: [ConferenceComponent, ConferenceEditorComponent],
+  declarations: [ConferenceComponent, ConferenceEditorComponent, OrganizersListComponent, OrganizersListComponent],
   exports: [
     ConferenceComponent,
     ConferenceEditorComponent
@@ -38,7 +40,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     HttpClientModule,
     MatNativeDateModule,
     EventModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatListModule
   ]
 })
 export class ConferenceModule { }

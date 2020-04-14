@@ -25,6 +25,7 @@ export class ConferenceComponent implements OnInit {
   changeConferenceVisible = false;
   createEventVisible = false;
   panelOpenState = false;
+  organizersListVisible = false;
 
   constructor(private conferenceService: ConferenceService,
               private eventService: EventService,
@@ -79,5 +80,13 @@ export class ConferenceComponent implements OnInit {
 
   canDeleteConference(): boolean {
     return this.currentUser.canDeleteConference(this.conference.owner);
+  }
+
+  showOrganizerList() {
+    this.organizersListVisible = true;
+  }
+
+  hideOrganizerList() {
+    this.organizersListVisible = false;
   }
 }

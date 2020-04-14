@@ -44,6 +44,19 @@
         </button>
       </ng-template>
 
+      <ng-container *ngIf="!organizersListVisible; else hideOrganizerListButton">
+        <button mat-stroked-button
+                (click)="showOrganizerList()">
+          Список организаторов
+        </button>
+      </ng-container>
+      <ng-template #hideOrganizerListButton>
+        <button mat-stroked-button
+                (click)="hideOrganizerList()">
+          Отмена
+        </button>
+      </ng-template>
+
       <ng-container *ngIf="canDeleteConference()">
 
         <ng-container *ngIf="!conference.deleted; else resurrect">
@@ -67,6 +80,10 @@
     </ng-container>
   </mat-card-actions>
   <ng-container *ngIf="isDashboardMode">
+    <app-organizers-list *ngIf="organizersListVisible"
+                         [conference]="conference">
+    </app-organizers-list>
+
     <app-conference-editor *ngIf="changeConferenceVisible && !createEventVisible"
                            [conference]="conference"
                            (endChanging)="changeConference($event)">
