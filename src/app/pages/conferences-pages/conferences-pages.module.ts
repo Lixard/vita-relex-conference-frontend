@@ -18,7 +18,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {EditorModule} from '@tinymce/tinymce-angular';
 import {PhotoEditorComponent} from '../../entities/photo/components/photo-editor/photo-editor.component';
 import {MatInputModule} from '@angular/material/input';
-import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import { ConfirmDialogComponent } from './pages/confirm-dialog/confirm-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -35,22 +34,23 @@ import {MatDialogModule} from '@angular/material/dialog';
     PhotoEditorComponent,
     ConfirmDialogComponent
   ],
-  imports: [
-    CommonModule,
-    ConferencesPagesRoutingModule,
-    ConferenceModule,
-    MatCardModule,
-    MatDividerModule,
-    MatToolbarModule,
-    MatButtonModule,
-    FlexLayoutModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    EditorModule,
-    MatInputModule,
-    MatIconModule,
-    MatDialogModule
-  ],
+    imports: [
+        CommonModule,
+        ConferencesPagesRoutingModule,
+        ConferenceModule,
+        MatCardModule,
+        MatDividerModule,
+        MatToolbarModule,
+        MatButtonModule,
+        FlexLayoutModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        EditorModule,
+        MatInputModule,
+        MatIconModule,
+        MatDialogModule,
+        EventModule
+    ],
   exports: [
     AboutConferencePageComponent,
     ConferencesListPageComponent
