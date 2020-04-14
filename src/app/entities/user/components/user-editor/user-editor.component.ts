@@ -11,7 +11,7 @@ import {UserService} from '../../service/user.service';
 export class UserEditorComponent implements OnInit {
 
   form: FormGroup;
-
+  toggleCancel = true;
   @Input()
   user: UserModel;
   @Input()
@@ -50,6 +50,10 @@ export class UserEditorComponent implements OnInit {
       this.user = result;
       console.log(result);
     });
+    this.endChanging.emit(this.changedUser);
+  }
+
+  hideChangeUser() {
     this.endChanging.emit(this.changedUser);
   }
 }
