@@ -29,6 +29,12 @@ export class PhotoService {
     return this.http.post('/api/conferences/' + conferenceId + '/album', formData);
   }
 
+  updatePhoto(image: File, userId: number) {
+    const formData = new FormData();
+    formData.append('file', image, image.name);
+    return this.http.post('/api/users/' + userId + '/photo', formData);
+  }
+
   deletePhoto(conferenceId: number, photoId: number) {
     return this.http.delete('/api/conferences/' + conferenceId + '/album/' + photoId);
   }

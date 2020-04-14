@@ -11,7 +11,6 @@ import {UserService} from '../../service/user.service';
 export class UserEditorComponent implements OnInit {
 
   form: FormGroup;
-  toggleCancel = true;
   @Input()
   user: UserModel;
   @Input()
@@ -40,7 +39,6 @@ export class UserEditorComponent implements OnInit {
 
   changeUser(value: UserCreateForm) {
     this.changedUser = {
-      username: value.username,
       personalInfo:   {
         firstName: value.firstName,
         lastName: value.lastName,
@@ -48,7 +46,6 @@ export class UserEditorComponent implements OnInit {
       }};
     this.userService.changeUser(this.user.userId, this.changedUser).subscribe((result: UserModel) => {
       this.user = result;
-      console.log(result);
     });
     this.endChanging.emit(this.changedUser);
   }

@@ -37,5 +37,6 @@ export class OrganizersListComponent implements OnInit {
 
   addOrganizer(userId: number) {
     this.conferenceService.addOrganizer(this.conference.conferenceId, userId).subscribe();
+    console.log(this.conference.conferenceId, userId);
   }
 }

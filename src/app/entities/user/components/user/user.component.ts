@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {UserCreateModel, UserModel} from '../../models/user.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../service/user.service';
+import {PhotoService} from '../../../photo/services/photo.service';
 
 
 
@@ -11,13 +12,15 @@ import {UserService} from '../../service/user.service';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
+  toggle = false;
   @Input()
   user: UserModel;
   userId: number;
   linkImage: string = null;
   @Input()
   toggleChangeUser = false;
-  constructor(private route: ActivatedRoute, private location: Router, private userService: UserService) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(private route: ActivatedRoute, private location: Router, private userService: UserService, private photoService: PhotoService) { }
 
   ngOnInit() {
       this.route.params.subscribe(params => {
@@ -44,7 +47,7 @@ export class UserComponent implements OnInit {
   }
 
   endCreating($event: UserCreateModel) {
-    console.log($event);
+    this.user.personalInfo = $event.personalInfo;
     this.hideChangeUser();
   }
 }

@@ -26,7 +26,6 @@ export class PhotoEditorComponent implements OnInit {
   photos: PhotoModel[];
   @Output()
   endChanging = new EventEmitter<PhotoCreateModel>();
-  photoModel: PhotoModel;
   selectedFile: ImageSnippet;
   ngOnInit(): void {
     this.buildForm();
@@ -50,7 +49,7 @@ export class PhotoEditorComponent implements OnInit {
   }
 
   savePhoto(value: PhotoCreateForm) {
-    if (this.selectedFile == null){
+    if (this.selectedFile == null) {
       window.alert('Вы не загрузили изображение!');
     }
     const conferenceId = parseInt(this.route.snapshot.paramMap.get('id'), 10);

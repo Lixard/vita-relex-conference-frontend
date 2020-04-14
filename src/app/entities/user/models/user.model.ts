@@ -8,12 +8,10 @@ export interface UserModel {
   personalInfo: PersonalInfoModel;
 }
 export interface UserCreateModel {
-  username: string;
   personalInfo: PersonalInfoModel;
 }
 
 export class UserCreateForm {
-  username: string;
   firstName: string;
   lastName: string;
   email: string;
