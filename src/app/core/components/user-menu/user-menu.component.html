@@ -1,4 +1,4 @@
-<div *ngIf="user$ | async as user">
+<div *ngIf="user$ | async as user" fxLayout="row" fxLayoutGap="5px">
   <ng-container *ngIf="user.authenticated; else logInButton">
     <button mat-button [matMenuTriggerFor]="menu">{{user.username}}</button>
     <mat-menu #menu="matMenu">
@@ -26,12 +26,18 @@
   </ng-container>
 
   <ng-template #logInButton>
-    <a *ngIf="!user.authenticated"
-       mat-flat-button
-       color="accent"
-       routerLink="login"
+    <a class="loginButton"
+      mat-flat-button
+      color="accent"
+      routerLink="login"
     >
       Log In
+    </a>
+    <a class="registerButton"
+      mat-flat-button
+      color="accent"
+      routerLink="register"
+    >Register
     </a>
   </ng-template>
 </div>
