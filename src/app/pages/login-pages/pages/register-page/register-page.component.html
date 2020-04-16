@@ -1,0 +1,58 @@
+<div class="register">
+  <form [formGroup]="form">
+    <mat-card class="register-card">
+      <mat-card-content>
+        <div fxLayout="column">
+          <mat-form-field>
+            <mat-label>Никнейм</mat-label>
+            <input matInput
+                   [required]="true"
+                   formControlName="username">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Пароль</mat-label>
+            <input matInput
+                   type="password"
+                   [required]="true"
+                   formControlName="password">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Имя</mat-label>
+            <input matInput
+                   [required]="true"
+                   formControlName="firstName">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Фамилия</mat-label>
+            <input matInput
+                   [required]="true"
+                   formControlName="lastName">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput
+                   type="email"
+                   [required]="true"
+                   formControlName="email">
+          </mat-form-field>
+           <mat-form-field>
+             <mat-label>Роль</mat-label>
+             <mat-select [required]="true"
+                         formControlName="role">
+<!--               <mat-option *ngFor="let role of roles | keyvalue" value="">{{role.value}}</mat-option>-->
+               <mat-option value="{{roles.USER}}">Пользователь</mat-option>
+               <mat-option value="{{roles.COMPANY_ACCOUNT}}">Представитель компании</mat-option>
+             </mat-select>
+           </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button
+                [disabled]="!form.valid"
+                (click)="register(form.value)"
+        >Отправить
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>
