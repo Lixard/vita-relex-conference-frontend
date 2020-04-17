@@ -13,6 +13,7 @@ export class RegisterPageComponent implements OnInit {
   form: FormGroup;
   user: UserModel;
   readonly roles = [RegisterRoles.USER, RegisterRoles.COMPANY_ACCOUNT];
+  hide = true;
 
   constructor(private fb: FormBuilder, private registerService: RegisterService) {
     this.buildForm();
@@ -29,7 +30,7 @@ export class RegisterPageComponent implements OnInit {
       firstName: this.fb.control('', Validators.required),
       lastName: this.fb.control('', Validators.required),
       email: this.fb.control('', [Validators.required, Validators.email]),
-      role: this.fb.control(undefined)
+      role: this.fb.control(undefined, Validators.required)
     });
   }
 

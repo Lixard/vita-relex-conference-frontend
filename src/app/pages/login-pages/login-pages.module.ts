@@ -12,24 +12,26 @@ import {RegisterPageComponent} from './pages/register-page/register-page.compone
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatSelectModule} from '@angular/material/select';
 import {UserModule} from '../../entities/user/user.module';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     LoginPageComponent,
     RegisterPageComponent
   ],
-  imports: [
-    CommonModule,
-    LoginPagesRoutingModule,
-    ReactiveFormsModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    FlexLayoutModule,
-    MatSelectModule,
-    UserModule
-  ],
+    imports: [
+        CommonModule,
+        LoginPagesRoutingModule,
+        ReactiveFormsModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        FlexLayoutModule,
+        MatSelectModule,
+        UserModule,
+        MatIconModule
+    ],
   exports: [
     LoginPageComponent,
     RegisterPageComponent
