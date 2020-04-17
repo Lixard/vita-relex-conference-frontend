@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {RegisterRoles} from '../../../../entities/user/models/user.model';
+import {RegisterRoles} from '../models/user.model';
 
 @Pipe({
   name: 'userRoles'

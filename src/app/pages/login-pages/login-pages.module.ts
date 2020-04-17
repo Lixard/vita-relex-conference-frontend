@@ -11,13 +11,12 @@ import {MatButtonModule} from '@angular/material/button';
 import {RegisterPageComponent} from './pages/register-page/register-page.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatSelectModule} from '@angular/material/select';
-import {UserRolesPipe} from './pages/register-page/user-roles.pipe';
+import {UserModule} from '../../entities/user/user.module';
 
 @NgModule({
   declarations: [
     LoginPageComponent,
-    RegisterPageComponent,
-    UserRolesPipe
+    RegisterPageComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +27,8 @@ import {UserRolesPipe} from './pages/register-page/user-roles.pipe';
     MatInputModule,
     MatButtonModule,
     FlexLayoutModule,
-    MatSelectModule
+    MatSelectModule,
+    UserModule
   ],
   exports: [
     LoginPageComponent,
