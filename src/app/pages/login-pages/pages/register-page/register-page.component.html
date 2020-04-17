@@ -39,9 +39,7 @@
              <mat-label>Роль</mat-label>
              <mat-select [required]="true"
                          formControlName="role">
-<!--               <mat-option *ngFor="let role of roles | keyvalue" value="">{{role.value}}</mat-option>-->
-               <mat-option value="{{roles.USER}}">Пользователь</mat-option>
-               <mat-option value="{{roles.COMPANY_ACCOUNT}}">Представитель компании</mat-option>
+               <mat-option *ngFor="let role of roles" value="{{role}}">{{role | userRoles}}</mat-option>
              </mat-select>
            </mat-form-field>
         </div>

@@ -12,8 +12,7 @@ export class RegisterPageComponent implements OnInit {
 
   form: FormGroup;
   user: UserModel;
-  roles = RegisterRoles;
-  something: string;
+  readonly roles = [RegisterRoles.USER, RegisterRoles.COMPANY_ACCOUNT];
 
   constructor(private fb: FormBuilder, private registerService: RegisterService) {
     this.buildForm();
