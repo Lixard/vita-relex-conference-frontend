@@ -18,6 +18,7 @@ export class RegisterPageComponent implements OnInit {
   user: UserModel;
   readonly roles = [RegisterRoles.USER, RegisterRoles.COMPANY_ACCOUNT];
   hidePassword = true;
+  formSubmitAttempt = false;
 
   constructor(private fb: FormBuilder,
               private registerService: RegisterService,
@@ -43,27 +44,33 @@ export class RegisterPageComponent implements OnInit {
   }
 
   register(form: UserRegistrationForm) {
-    this.user = {
-      username: form.username,
-      password: form.password,
-      role: form.role,
-      personalInfo: {
-        firstName: form.firstName,
-        lastName: form.lastName,
-        email: form.email
-      }
-    } as unknown as UserModel;
-    this.registerService.registerUser(this.user).subscribe(() => {
-      this.auth.login({
+    if (this.form.valid) {
+      this.user = {
         username: form.username,
-        password: form.password
-      }).pipe(switchMap(() => this.auth.loadProfile())).subscribe(() => {
-        this.auth.loadProfile().subscribe(
-          (profile) => {
-            this.currentUser.user$.next(profile);
-            this.router.navigateByUrl(`/users/${profile.id}`);
-          });
+        password: form.password,
+        role: form.role,
+        personalInfo: {
+          firstName: form.firstName,
+          lastName: form.lastName,
+          email: form.email
+        }
+      } as unknown as UserModel;
+      this.registerService.registerUser(this.user).subscribe(() => {
+        this.auth.login({
+          username: form.username,
+          password: form.password
+        }).pipe(switchMap(() => this.auth.loadProfile())).subscribe(() => {
+          this.auth.loadProfile().subscribe(
+            (profile) => {
+              this.currentUser.user$.next(profile);
+              this.router.navigateByUrl(`/users/${profile.id}`);
+            });
+        });
       });
-    });
+    }
+  }
+
+  onSubmit() {
+    this.formSubmitAttempt = true;
   }
 }

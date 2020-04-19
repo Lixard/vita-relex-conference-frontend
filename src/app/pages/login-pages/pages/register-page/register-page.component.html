@@ -1,5 +1,5 @@
 <div class="register">
-  <form [formGroup]="form">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-card class="register-card">
       <mat-card-content>
         <div fxLayout="column">
@@ -7,10 +7,10 @@
             <mat-label>Никнейм</mat-label>
             <input matInput
                    formControlName="username">
-            <mat-error *ngIf="form.get('username').hasError('required')"
+            <mat-error *ngIf="form.get('username').hasError('required') && formSubmitAttempt"
             >Укажите никнейм
             </mat-error>
-            <mat-error *ngIf="form.get('username').hasError('maxlength')"
+            <mat-error *ngIf="form.get('username').hasError('maxlength') && formSubmitAttempt"
             >Не может быть больше 50 символов
             </mat-error>
           </mat-form-field>
@@ -19,10 +19,10 @@
             <input matInput
                    formControlName="password"
                    [type]="hidePassword ? 'password' : 'text'">
-            <mat-error *ngIf="form.get('password').hasError('required')"
+            <mat-error *ngIf="form.get('password').hasError('required') && formSubmitAttempt"
             >Укажите пароль
             </mat-error>
-            <mat-error *ngIf="form.get('password').hasError('minlength')"
+            <mat-error *ngIf="form.get('password').hasError('minlength') && formSubmitAttempt"
             >Не может быть меньше 8 символов
             </mat-error>
             <button mat-icon-button matSuffix
@@ -36,10 +36,10 @@
             <mat-label>Имя</mat-label>
             <input matInput
                    formControlName="firstName">
-            <mat-error *ngIf="form.get('firstName').hasError('required')"
+            <mat-error *ngIf="form.get('firstName').hasError('required') && formSubmitAttempt"
             >Укажите имя
             </mat-error>
-            <mat-error *ngIf="form.get('firstName').hasError('maxlength')"
+            <mat-error *ngIf="form.get('firstName').hasError('maxlength') && formSubmitAttempt"
             >Не может быть больше 50 символов
             </mat-error>
           </mat-form-field>
@@ -47,10 +47,10 @@
             <mat-label>Фамилия</mat-label>
             <input matInput
                    formControlName="lastName">
-            <mat-error *ngIf="form.get('lastName').hasError('required')"
+            <mat-error *ngIf="form.get('lastName').hasError('required') && formSubmitAttempt"
             >Укажите фамилию
             </mat-error>
-            <mat-error *ngIf="form.get('lastName').hasError('maxlength')"
+            <mat-error *ngIf="form.get('lastName').hasError('maxlength') && formSubmitAttempt"
             >Не может быть больше 50 символов
             </mat-error>
           </mat-form-field>
@@ -59,11 +59,14 @@
             <input matInput
                    type="email"
                    formControlName="email">
-            <mat-error *ngIf="form.get('email').hasError('required')"
+            <mat-error *ngIf="form.get('email').hasError('required') && formSubmitAttempt"
             >Укажите email
             </mat-error>
-            <mat-error *ngIf="form.get('email').hasError('maxlength')"
+            <mat-error *ngIf="form.get('email').hasError('maxlength') && formSubmitAttempt"
             >Не может быть больше 50 символов
+            </mat-error>
+            <mat-error *ngIf="form.get('email').hasError('email') && formSubmitAttempt"
+            >Некорректный email
             </mat-error>
           </mat-form-field>
           <mat-form-field>
@@ -71,15 +74,15 @@
             <mat-select formControlName="role">
               <mat-option *ngFor="let role of roles" value="{{role}}">{{role | userRoles}}</mat-option>
             </mat-select>
-            <mat-error *ngIf="form.get('role').hasError('required')"
+            <mat-error *ngIf="form.get('role').hasError('required') && formSubmitAttempt"
             >Укажите роль
             </mat-error>
           </mat-form-field>
         </div>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button
-                [disabled]="!form.valid"
+        <button mat-flat-button
+                type="submit"
                 (click)="register(form.value)"
         >Отправить
         </button>
