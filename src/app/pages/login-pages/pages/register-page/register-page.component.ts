@@ -33,12 +33,12 @@ export class RegisterPageComponent implements OnInit {
 
   private buildForm(): void {
     this.form = this.fb.group({
-      username: this.fb.control('', Validators.required),
-      password: this.fb.control('', Validators.required),
-      firstName: this.fb.control('', Validators.required),
-      lastName: this.fb.control('', Validators.required),
-      email: this.fb.control('', [Validators.required, Validators.email]),
-      role: this.fb.control(undefined)
+      username: this.fb.control('', [Validators.required, Validators.maxLength(50)]),
+      password: this.fb.control('', [Validators.required, Validators.minLength(8)]),
+      firstName: this.fb.control('', [Validators.required, Validators.maxLength(50)]),
+      lastName: this.fb.control('', [Validators.required, Validators.maxLength(50)]),
+      email: this.fb.control('', [Validators.required, Validators.email, Validators.maxLength(50)]),
+      role: this.fb.control(undefined, Validators.required)
     });
   }
 
