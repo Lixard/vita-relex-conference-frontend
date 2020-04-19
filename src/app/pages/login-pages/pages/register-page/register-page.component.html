@@ -12,12 +12,13 @@
           <mat-form-field>
             <mat-label>Пароль</mat-label>
             <input matInput
-                   [type]="hide ? 'password' : 'text'">
+                   formControlName="password"
+                   [type]="hidePassword ? 'password' : 'text'">
             <button mat-icon-button matSuffix
-                    (click)="hide = !hide"
+                    (click)="hidePassword = !hidePassword"
                     [attr.aria-label]="'Hide password'"
-                    [attr.aria-pressed]="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    [attr.aria-pressed]="hidePassword">
+              <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
           </mat-form-field>
           <mat-form-field>
@@ -39,13 +40,13 @@
                    [required]="true"
                    formControlName="email">
           </mat-form-field>
-           <mat-form-field>
-             <mat-label>Роль</mat-label>
-             <mat-select [required]="true"
-                         formControlName="role">
-               <mat-option *ngFor="let role of roles" value="{{role}}">{{role | userRoles}}</mat-option>
-             </mat-select>
-           </mat-form-field>
+          <mat-form-field>
+            <mat-label>Роль</mat-label>
+            <mat-select [required]="true"
+                        formControlName="role">
+              <mat-option *ngFor="let role of roles" value="{{role}}">{{role | userRoles}}</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
       </mat-card-content>
       <mat-card-actions>
