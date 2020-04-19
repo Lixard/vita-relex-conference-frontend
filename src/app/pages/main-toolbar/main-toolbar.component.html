@@ -15,13 +15,13 @@
   </a>
   <div class="fill"></div>
 <!--TODO move this to component-->
-  <form #form="ngForm">
-    <mat-form-field appearance="outline">
-      <label>
-        <input matInput placeholder="Поиск" (keydown.enter)="searchTemplate($event.target.value)" routerLink="users">
-      </label>
-      <mat-icon matSuffix>account_circle</mat-icon>
-    </mat-form-field>
-  </form>
+<!--  <form #form="ngForm">-->
+<!--    <mat-form-field appearance="outline">-->
+<!--      <label>-->
+<!--        <input matInput placeholder="Поиск" (keydown.enter)="searchTemplate($event.target.value)" routerLink="users">-->
+<!--      </label>-->
+<!--      <mat-icon matSuffix>account_circle</mat-icon>-->
+<!--    </mat-form-field>-->
+<!--  </form>-->
   <app-user-menu></app-user-menu>
 </mat-toolbar>

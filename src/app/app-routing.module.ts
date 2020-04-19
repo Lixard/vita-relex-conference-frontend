@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {MainPageComponent} from './pages/main-page/main-page.component';
 import {UserMenuPagesGuard} from './pages/user-menu-pages/guards/user-menu-pages.guard';
 import {LoginPagesGuard} from './pages/login-pages/guards/login-pages.guard';
@@ -11,7 +11,7 @@ const routes: Routes = [
     component: MainPageComponent
   },
   {
-    path: 'login',
+    path: '',
     canActivate: [LoginPagesGuard],
     loadChildren: () => import('./pages/login-pages/login-pages-routing.module').then(m => m.LoginPagesRoutingModule)
   },
