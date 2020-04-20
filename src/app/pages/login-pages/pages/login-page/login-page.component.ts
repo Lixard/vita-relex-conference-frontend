@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LoginData, LoginDataForm} from '../../../../core/models/login-data.model';
 import {AuthService} from '../../../../core/services/auth.service';
@@ -16,6 +16,7 @@ export class LoginPageComponent implements OnInit {
   form: FormGroup;
 
   loginData: LoginData;
+  hidePassword = true;
 
   constructor(private formBuilder: FormBuilder,
               private auth: AuthService,
@@ -41,9 +42,11 @@ export class LoginPageComponent implements OnInit {
         this.form.setErrors({
           server: true
         });
+        this.form.controls.username.reset();
         this.form.controls.username.setErrors({
           'login-incorrect': true
         });
+        this.form.controls.password.reset();
         this.form.controls.password.setErrors({
           'login-incorrect': true
         });
