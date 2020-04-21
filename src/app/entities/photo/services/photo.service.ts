@@ -41,4 +41,10 @@ export class PhotoService {
   deleteAlbum(conferenceId: number) {
     return this.http.delete('/api/conferences/' + conferenceId + '/album');
   }
+
+  uploadAvatar(userId: number, image: File) {
+    const formData = new FormData();
+    formData.append('file', image, image.name);
+    return this.http.put('/api/users/' + userId + '/photo', formData);
+  }
 }

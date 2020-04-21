@@ -29,6 +29,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import { UserEditorComponent } from './entities/user/components/user-editor/user-editor.component';
 import {EditorModule} from '@tinymce/tinymce-angular';
 import {MatListModule} from '@angular/material/list';
+import {UserRolesPipe} from './entities/user/pipes/user-roles.pipe';
+import {AvatarEditorComponent} from './entities/user/components/avatar-editor/avatar-editor.component';
 
 
 
@@ -40,7 +42,8 @@ import {MatListModule} from '@angular/material/list';
     UserComponent,
     UserListPageComponent,
     ImageComponent,
-    UserEditorComponent
+    UserEditorComponent,
+    AvatarEditorComponent
   ],
   imports: [
     BrowserModule,

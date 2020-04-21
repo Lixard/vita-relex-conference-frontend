@@ -51,9 +51,10 @@ import {MatDialogModule} from '@angular/material/dialog';
         MatDialogModule,
         EventModule
     ],
-  exports: [
-    AboutConferencePageComponent,
-    ConferencesListPageComponent
-  ]
+    exports: [
+        AboutConferencePageComponent,
+        ConferencesListPageComponent,
+        PhotoEditorComponent
+    ]
 })
 export class ConferencesPagesModule { }

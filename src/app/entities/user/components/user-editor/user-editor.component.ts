@@ -50,7 +50,7 @@ export class UserEditorComponent implements OnInit {
     this.endChanging.emit(this.changedUser);
   }
 
-  hideChangeUser() {
+    hideChangeUser() {
     this.endChanging.emit(this.changedUser);
   }
 }

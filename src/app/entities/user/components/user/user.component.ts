@@ -11,13 +11,14 @@ import {PhotoService} from '../../../photo/services/photo.service';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  toggle = false;
+
   @Input()
   user: UserModel;
   userId: number;
   linkImage: string = null;
   @Input()
   toggleChangeUser = false;
+  toggle = false;
   // tslint:disable-next-line:max-line-length
   constructor(private route: ActivatedRoute, private location: Router, private userService: UserService, private photoService: PhotoService) { }
 
@@ -46,10 +47,19 @@ export class UserComponent implements OnInit {
   }
 
   endCreating($event: UserCreateModel) {
-    this.user.personalInfo = $event.personalInfo;
+    if ($event != null) {
+      this.user.personalInfo = $event.personalInfo;
+    }
     this.hideChangeUser();
   }
 
   openUploadImage() {
+    this.toggle = true;
+  }
+  endChangeAvatar($event: string) {
+    if ($event != null) {
+      this.user.linkImage = $event;
+    }
+    this.toggle = false;
   }
 }

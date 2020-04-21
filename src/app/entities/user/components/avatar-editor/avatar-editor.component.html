@@ -1,0 +1,18 @@
+<div class="wrapper">
+    <mat-card>
+      <mat-card-actions>
+        <button mat-stroked-button color="primary"
+                (click)="saveAvatar()" >
+          Сохранить
+        </button>
+        <input #imageInput hidden="true" type="file" onclick="this.value=null" (change)="uploadAvatar(imageInput)" accept="image/*"/>
+        <button mat-stroked-button color="primary" (click)="imageInput.click()">Загрузить</button>
+        <button mat-stroked-button color="primary"
+                (click)="closeEditor()" >
+          Отмена
+        </button>
+      </mat-card-actions>
+    </mat-card>
+</div>
+
+
