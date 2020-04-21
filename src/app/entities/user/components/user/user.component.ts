@@ -5,7 +5,6 @@ import {UserService} from '../../service/user.service';
 import {PhotoService} from '../../../photo/services/photo.service';
 
 
-
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -49,5 +48,8 @@ export class UserComponent implements OnInit {
   endCreating($event: UserCreateModel) {
     this.user.personalInfo = $event.personalInfo;
     this.hideChangeUser();
+  }
+
+  openUploadImage() {
   }
 }

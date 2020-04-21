@@ -1,27 +1,27 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="mat-elevation-z4" color="primary">
   <a mat-button routerLink="/">
     <h1>
-      Conference project
+      Организация конфереций
     </h1>
   </a>
   <a mat-button routerLink="events">
-    All events
+    Все мероприятия
   </a>
   <a mat-button routerLink="conferences">
-    Conferences
+    Конференции
   </a>
   <a mat-button routerLink="users">
-    Users
+    Пользователи
   </a>
   <div class="fill"></div>
 <!--TODO move this to component-->
-  <form #form="ngForm">
-    <mat-form-field appearance="outline">
-      <label>
-        <input matInput placeholder="Поиск" (keydown.enter)="searchTemplate($event.target.value)" routerLink="users">
-      </label>
-      <mat-icon matSuffix>account_circle</mat-icon>
-    </mat-form-field>
-  </form>
+<!--  <form #form="ngForm">-->
+<!--    <mat-form-field appearance="outline">-->
+<!--      <label>-->
+<!--        <input matInput placeholder="Поиск" (keydown.enter)="searchTemplate($event.target.value)" routerLink="users">-->
+<!--      </label>-->
+<!--      <mat-icon matSuffix>account_circle</mat-icon>-->
+<!--    </mat-form-field>-->
+<!--  </form>-->
   <app-user-menu></app-user-menu>
 </mat-toolbar>
