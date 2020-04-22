@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ConferenceComponent } from './components/conference/conference.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ConferenceComponent} from './components/conference/conference.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
@@ -17,7 +17,7 @@ import {EventModule} from '../event/event.module';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {OrganizersListComponent} from './components/organizers-list/organizers-list.component';
 import {MatListModule} from '@angular/material/list';
-
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 
 @NgModule({
@@ -41,7 +41,8 @@ import {MatListModule} from '@angular/material/list';
     MatNativeDateModule,
     EventModule,
     MatExpansionModule,
-    MatListModule
+    MatListModule,
+    FlexLayoutModule
   ]
 })
 export class ConferenceModule { }
