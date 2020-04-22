@@ -1,5 +1,15 @@
-<div *ngFor="let event of events$ | async ">
-  <br>
-  <app-event [event]="event"></app-event>
-  <br>
-</div>
+<ng-container *ngIf="events$ | async as events">
+  <ng-container *ngIf="events.length; else scheduleIsEmpty">
+    <div *ngFor="let event of events">
+      <br>
+      <app-event [event]="event"></app-event>
+      <br>
+    </div>
+  </ng-container>
+  <ng-template #scheduleIsEmpty>
+    <br>
+    <div class="scheduleIsEmpty">
+      Вы ещё не добавили в свое расписание никаких мероприятий
+    </div>
+  </ng-template>
+</ng-container>
