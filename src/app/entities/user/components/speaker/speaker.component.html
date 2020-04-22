@@ -1,0 +1,11 @@
+<a class="mat-card" mat-ripple routerLink="/users/{{user.userId}}" id="card">
+  <mat-card-content>
+    <div fxLayout="row" fxLayoutGap="10px">
+      <img class="user-avatar" *ngIf="user.linkImage !== null; else elseBlock" src="{{user.linkImage}}" alt="av">
+      <ng-template #elseBlock>
+        <img class="user-avatar" src="https://mycoach.link/uploads/coach/20190923/15692616905d89087ab18e84.94207537.png" alt="av">
+      </ng-template>
+      <p>{{user.username}}</p>
+    </div>
+  </mat-card-content>
+</a>
