@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {EventTypePipe} from './pipes/event-type.pipe';
 import {EventComponent} from './components/event/event.component';
 import {EventEditorComponent} from './components/event-editor/event-editor.component';
@@ -11,9 +11,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {EditorModule} from '@tinymce/tinymce-angular';
 import {MatInputModule} from '@angular/material/input';
-import {ActivatedRoute, RouterModule} from '@angular/router';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-
+import {RouterModule} from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {UserModule} from '../user/user.module';
 
 
 @NgModule({
@@ -34,6 +35,8 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     MatInputModule,
     RouterModule,
     HttpClientModule,
+    FlexLayoutModule,
+    UserModule,
   ],
   exports: [
     EventTypePipe,

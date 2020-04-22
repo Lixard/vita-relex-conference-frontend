@@ -1,4 +1,4 @@
-<mat-card >
+<mat-card>
   <mat-card-header>
     <mat-card-title>
       {{conference.conferenceName}}
@@ -68,12 +68,12 @@
         </ng-container>
 
         <ng-template #resurrect>
-          <button  mat-stroked-button
-                   color="accent"
+          <button mat-stroked-button
+                  color="accent"
                   (click)="resurrectThisConference()">
             Восстановить конференцию
           </button>
-      </ng-template>
+        </ng-template>
 
       </ng-container>
 
@@ -105,13 +105,16 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
 
-      <div *ngFor="let event of events">
-        <br>
-        <app-event [event]="event"
-                   [isDashboardMode]="true"></app-event>
-        <br>
+      <div fxLayout="column"
+           fxLayoutAlign="center center"
+           fxLayoutGap="15px">
+        <div *ngFor="let event of events">
+          <br>
+          <app-event [event]="event"
+                     [isDashboardMode]="true"></app-event>
+          <br>
+        </div>
       </div>
-
     </mat-expansion-panel>
   </ng-container>
 </mat-card>

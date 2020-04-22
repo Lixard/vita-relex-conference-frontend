@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {UserCreateForm, UserCreateModel, UserModel} from '../models/user.model';
+import {UserCreateModel, UserModel} from '../models/user.model';
 import {List} from '../../../core/models/list.model';
 
 
@@ -24,5 +24,9 @@ export class UserService {
   }
   changeUser(id: number, user: UserCreateModel): Observable<UserModel> {
     return this.http.put<UserModel>('/api/users/' + id, user);
+  }
+
+  getSpeakersByEventId(id: number): Observable<List<UserModel>> {
+    return this.http.get<List<UserModel>>(`/api/events/${id}/speakers`);
   }
 }

@@ -1,7 +1,7 @@
-import {APP_INITIALIZER, Injectable, Provider} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {CurrentUser, Role} from '../models/current-user.model';
-import {Observable, ReplaySubject} from 'rxjs';
+import {CurrentUser} from '../models/current-user.model';
+import {Observable} from 'rxjs';
 import {LoginData} from '../models/login-data.model';
 
 
@@ -13,7 +13,7 @@ export class AuthService {
   }
 
   loadProfile(): Observable<CurrentUser> {
-    return this.http.get<CurrentUser>(`/auth/this`);
+    return this.http.get<CurrentUser>(`/api/auth/this`);
   }
 
   login(data: LoginData): Observable<void> {
@@ -27,12 +27,12 @@ export class AuthService {
     const myHeaders = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'
     });
-    return this.http.post<void>('/auth/login', params.toString(), {
+    return this.http.post<void>('/api/auth/login', params.toString(), {
       headers: myHeaders
     });
   }
 
   logout(): Observable<void> {
-    return this.http.get<void>('/auth/logout');
+    return this.http.get<void>('/api/auth/logout');
   }
 }

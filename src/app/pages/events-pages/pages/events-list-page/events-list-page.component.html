@@ -4,8 +4,13 @@
     <input matInput ngModel (ngModelChange)="handleFilterChange($event)">
   </mat-form-field>
 </div>
-<div *ngFor="let event of filteredEvents$ | async">
-  <br>
-  <app-event [event]="event"></app-event>
-  <br>
+<div fxLayout="column"
+     fxLayoutAlign="center center"
+     fxLayoutGap="15px">
+  <div *ngFor="let event of filteredEvents$ | async"
+  >
+    <br>
+    <app-event [event]="event"></app-event>
+    <br>
+  </div>
 </div>
