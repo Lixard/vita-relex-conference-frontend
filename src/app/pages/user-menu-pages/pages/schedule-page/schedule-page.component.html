@@ -1,15 +1,20 @@
-<ng-container *ngIf="events$ | async as events">
-  <ng-container *ngIf="events.length; else scheduleIsEmpty">
-    <div *ngFor="let event of events">
+<div fxLayout="column"
+     fxLayoutAlign="center center"
+     fxLayoutGap="15px">
+  <ng-container *ngIf="events$ | async as events">
+    <ng-container *ngIf="events.length; else scheduleIsEmpty">
+      <div *ngFor="let event of events">
+        <br>
+        <app-event [event]="event"></app-event>
+        <br>
+      </div>
+    </ng-container>
+    <ng-template #scheduleIsEmpty>
       <br>
-      <app-event [event]="event"></app-event>
-      <br>
-    </div>
+      <div class="scheduleIsEmpty">
+        Вы ещё не добавили в свое расписание никаких мероприятий
+      </div>
+    </ng-template>
   </ng-container>
-  <ng-template #scheduleIsEmpty>
-    <br>
-    <div class="scheduleIsEmpty">
-      Вы ещё не добавили в свое расписание никаких мероприятий
-    </div>
-  </ng-template>
-</ng-container>
+</div>
+

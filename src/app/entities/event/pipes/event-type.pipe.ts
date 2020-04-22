@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 import {EventType} from '../models/event.model';
 
 @Pipe({
@@ -12,15 +12,15 @@ export class EventTypePipe implements PipeTransform {
     }
     switch (value) {
       case EventType.MEETUP:
-        return 'Meet up';
+        return 'Митап';
       case EventType.LECTURE:
-        return 'Lecture';
+        return 'Лекция';
       case EventType.SEMINAR:
-        return 'Seminar';
+        return 'Семинар';
       case EventType.PRODUCT_PRESENTATION:
-        return 'Product presentation';
+        return 'Презентация продукта';
       case EventType.ENTERTAINING_EVENT:
-        return 'Entertaining event';
+        return 'Развлекательное мероприятие';
     }
   }
 
