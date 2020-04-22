@@ -6,6 +6,12 @@
     <mat-card-subtitle>
       {{this.event.eventType | eventType}}
     </mat-card-subtitle>
+    <mat-card-subtitle>
+      Время начала: {{event.details.timeStart | date: 'EEEE, d MMMM, y, h:mm':'UTC+3':'ru'}}
+    </mat-card-subtitle>
+    <mat-card-subtitle>
+      Время окончания: {{event.details.timeEnd | date: 'EEEE, d MMMM, y, h:mm':'UTC+3': 'ru'}}
+    </mat-card-subtitle>
   </mat-card-header>
   <mat-divider></mat-divider>
   <mat-card-content>
@@ -24,6 +30,7 @@
       <app-speaker id="speaker-card" *ngFor="let speaker of speakers" [user]="speaker"></app-speaker>
     </div>
   </mat-card-content>
+  <mat-divider></mat-divider>
   <mat-card-actions>
     <a mat-stroked-button routerLink="/events/{{this.event.eventId}}">
       Больше информации
