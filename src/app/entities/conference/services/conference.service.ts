@@ -69,8 +69,8 @@ export class ConferenceService {
 
   addOrganizer(conferenceIdInput: number, userIdInput: number) {
     return this.http.post<void>(`/api/users/assign/conference`, {
-      userId: conferenceIdInput,
-      conferenceId: userIdInput
+      userId: userIdInput,
+      conferenceId: conferenceIdInput
     });
   }
 }

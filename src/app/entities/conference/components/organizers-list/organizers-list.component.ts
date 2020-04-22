@@ -3,6 +3,7 @@ import {ConferenceModel} from '../../models/conference.model';
 import {UserModel} from '../../../user/models/user.model';
 import {ConferenceService} from '../../services/conference.service';
 import {UserService} from '../../../user/service/user.service';
+import {ReplaySubject} from 'rxjs';
 
 @Component({
   selector: 'app-organizers-list',
@@ -13,30 +14,40 @@ export class OrganizersListComponent implements OnInit {
 
   @Input()
   conference: ConferenceModel;
-  organizers: UserModel[];
-  users: UserModel[];
+  readonly organizers$ = new ReplaySubject<UserModel[]>(1);
+  readonly users$ = new ReplaySubject<UserModel[]>(1);
 
   constructor(private conferenceService: ConferenceService,
               private userService: UserService) { }
 
   ngOnInit(): void {
-    this.conferenceService.getOrganizers(this.conference.conferenceId).subscribe( result => {
-      // @ts-ignore
-      this.organizers = result;
-        }
-    );
+    this.refreshOrganizers();
+    this.refreshUsers();
+  }
+
+  private refreshUsers() {
     this.userService.getUsers().subscribe(result => {
       // @ts-ignore
-      this.users = result;
+      this.users$.next(result);
+    });
+  }
+
+  private refreshOrganizers() {
+    this.conferenceService.getOrganizers(this.conference.conferenceId).subscribe(result => {
+      // @ts-ignore
+      this.organizers$.next(result);
     });
   }
 
   removeOrganizer(userId: number) {
     this.conferenceService.removeOrganizer(this.conference.conferenceId, userId).subscribe();
+    this.refreshOrganizers();
+    this.refreshUsers();
   }
 
   addOrganizer(userId: number) {
     this.conferenceService.addOrganizer(this.conference.conferenceId, userId).subscribe();
-    console.log(this.conference.conferenceId, userId);
+    this.refreshOrganizers();
+    this.refreshUsers();
   }
 }

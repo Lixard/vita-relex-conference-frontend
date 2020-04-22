@@ -1,7 +1,7 @@
 <div>
   <mat-list>
     <mat-label>Список организаторов: </mat-label>
-    <mat-list-item *ngFor="let organizer of organizers">
+    <mat-list-item *ngFor="let organizer of organizers$ | async">
       <h3>{{organizer.username}}</h3>
       <div class="fill"></div>
       <button mat-stroked-button (click)="removeOrganizer(organizer.userId)">Удалить организатора</button>
@@ -10,7 +10,7 @@
   <br>
   <mat-label>Список пользователей: </mat-label>
   <mat-list>
-    <mat-list-item *ngFor="let user of users">
+    <mat-list-item *ngFor="let user of users$ | async">
       <h3>{{user.username}}</h3>
       <div class="fill"></div>
       <button mat-stroked-button (click)="addOrganizer(user.userId)">
