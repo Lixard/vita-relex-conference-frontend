@@ -34,8 +34,6 @@
         <p> {{user?.personalInfo.firstName}}</p>
         <p> {{user?.personalInfo.email}}</p>
       </div>
-      <app-avatar-editor *ngIf="toggle"
-      (endChanging)="endChangeAvatar($event)"></app-avatar-editor>
       <div class="profile-tabs">
         <mat-card class="cards">
           <mat-card-header>
@@ -80,6 +78,8 @@
                      *ngIf="toggleChangeUser"
                      (endChanging)="endCreating($event)">
    </app-user-editor>
+    <app-avatar-editor *ngIf="toggle"
+                       (endChanging)="endChangeAvatar($event)"></app-avatar-editor>
   </div>
 </div>
 

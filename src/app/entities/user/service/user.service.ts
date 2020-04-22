@@ -29,4 +29,7 @@ export class UserService {
   getSpeakersByEventId(id: number): Observable<List<UserModel>> {
     return this.http.get<List<UserModel>>(`/api/events/${id}/speakers`);
   }
+  search(template: string): Observable<List<UserModel>> {
+    return this.http.get<List<UserModel>>('/api/users', {params: new HttpParams().set('search', template)});
+  }
 }
