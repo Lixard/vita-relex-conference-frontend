@@ -3,6 +3,8 @@ import {EventCreateModel, EventModel} from '../../models/event.model';
 import {ScheduleService} from '../../../schedule/services/schedule.service';
 import {Observable} from 'rxjs';
 import {EventService} from '../../services/event.service';
+import {UserService} from '../../../user/service/user.service';
+import {UserModel} from '../../../user/models/user.model';
 
 @Component({
   selector: 'app-event',
@@ -15,14 +17,23 @@ export class EventComponent implements OnInit {
   event: EventModel;
   changeEventVisible = false;
 
+  speakers: UserModel[];
+
   @Input()
   isDashboardMode = false;
 
 
   constructor(private schedule: ScheduleService,
-              private eventService: EventService) { }
+              private eventService: EventService,
+              private userService: UserService) { }
 
   ngOnInit(): void {
+    this.getEventOrganizers();
+  }
+
+  getEventOrganizers() {
+    // @ts-ignore
+    this.userService.getSpeakersByEventId(this.event.eventId).subscribe(value => this.speakers = value);
   }
 
   showChangeEvent() {

@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card id="event">
   <mat-card-header>
     <mat-card-title>
       {{this.event.eventName}}
@@ -15,10 +15,18 @@
     <div *ngIf="this.event.details.shortHtmlDescription != undefined"
          [innerHTML]="this.event.details.shortHtmlDescription">
     </div>
+    <mat-divider></mat-divider>
+    <br>
+    <div>Спикеры:</div>
+    <br>
+    <div fxLayout="row wrap"
+         fxLayoutGap="35px">
+      <app-speaker id="speaker-card" *ngFor="let speaker of speakers" [user]="speaker"></app-speaker>
+    </div>
   </mat-card-content>
   <mat-card-actions>
-    <a mat-stroked-button  routerLink="/events/{{this.event.eventId}}">
-      Больше информации о {{this.event.eventName}}
+    <a mat-stroked-button routerLink="/events/{{this.event.eventId}}">
+      Больше информации
     </a>
 
     <ng-container *ngIf="scheduled() | async; else add">
@@ -47,7 +55,7 @@
       <button mat-stroked-button color="accent" (click)="deleteThisEvent()">
         Удалить ивент
       </button>
-      </ng-container>
+    </ng-container>
   </mat-card-actions>
   <ng-container *ngIf="isDashboardMode">
 
