@@ -1,19 +1,30 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, ReplaySubject} from 'rxjs';
 import {ConferenceCreateModel, ConferenceModel} from '../models/conference.model';
 import {List} from '../../../core/models/list.model';
 import {UserModel} from '../../user/models/user.model';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConferenceService {
+  readonly conferences$ = new ReplaySubject<ConferenceModel[]>(1);
 
   constructor(private http: HttpClient) { }
 
-  getConferences(): Observable<List<ConferenceModel>> {
-    return this.http.get<List<ConferenceModel>>('/api/conferences');
+  refreshConferences() {
+    this.http.get<List<ConferenceModel>>('/api/conferences').subscribe(result => {
+      // @ts-ignore
+      this.conferences$.next(result);
+    });
+  }
+
+  getConferences(value: string): Observable<ConferenceModel[]> {
+    return this.conferences$.pipe(
+      map( conferences => conferences.filter( conference => conference.conferenceName.toLowerCase().includes(value.toLowerCase())))
+    );
   }
 
   getConferenceById(id: number): Observable<ConferenceModel> {

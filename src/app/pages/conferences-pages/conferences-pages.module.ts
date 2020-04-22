@@ -13,7 +13,7 @@ import {EventModule} from '../../entities/event/event.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { ConferencePhotoArchivePageComponent } from './pages/conference-photo-archive-page/conference-photo-archive-page.component';
 import {PhotoComponent} from '../../entities/photo/components/photo/photo.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, NgForm, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {EditorModule} from '@tinymce/tinymce-angular';
 import {PhotoEditorComponent} from '../../entities/photo/components/photo-editor/photo-editor.component';
@@ -49,7 +49,8 @@ import {MatDialogModule} from '@angular/material/dialog';
         MatInputModule,
         MatIconModule,
         MatDialogModule,
-        EventModule
+        EventModule,
+        FormsModule
     ],
     exports: [
         AboutConferencePageComponent,

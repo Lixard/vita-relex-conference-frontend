@@ -1,9 +1,15 @@
+<div>
+  <mat-form-field>
+    <mat-label>Название конференции</mat-label>
+    <input matInput ngModel (ngModelChange)="handleFilterChange($event)">
+  </mat-form-field>
+</div>
 <div class="conferences"
      fxLayout="row wrap"
      fxLayout.xs="column"
      fxLayoutAlign="center"
      fxLayoutGap="15px">
-  <mat-card *ngFor="let conference of conferences" class="conference-card">
+  <mat-card *ngFor="let conference of conferences$ | async" class="conference-card">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>{{conference.conferenceName}}</mat-card-title>
