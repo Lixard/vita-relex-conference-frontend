@@ -3,6 +3,7 @@ import {EventCreateModel, EventModel} from '../../models/event.model';
 import {ScheduleService} from '../../../schedule/services/schedule.service';
 import {Observable} from 'rxjs';
 import {EventService} from '../../services/event.service';
+import {CurrentUserService} from '../../../../core/services/current-user.service';
 
 @Component({
   selector: 'app-event',
@@ -18,9 +19,13 @@ export class EventComponent implements OnInit {
   @Input()
   isDashboardMode = false;
 
+  currentUser: CurrentUserService;
 
   constructor(private schedule: ScheduleService,
-              private eventService: EventService) { }
+              private eventService: EventService,
+              currentUser: CurrentUserService) {
+    this.currentUser = currentUser;
+  }
 
   ngOnInit(): void {
   }

@@ -20,7 +20,7 @@
     <a mat-stroked-button  routerLink="/events/{{this.event.eventId}}">
       Больше информации о {{this.event.eventName}}
     </a>
-
+    <ng-container *ngIf="currentUser.isAuthorized()">
     <ng-container *ngIf="scheduled() | async; else add">
       <button mat-stroked-button (click)="removeFromSchedule()">
         Удалить из расписания
@@ -33,7 +33,6 @@
       </button>
     </ng-template>
     <ng-container *ngIf="isDashboardMode">
-
       <ng-container *ngIf="!changeEventVisible; else add">
         <button mat-stroked-button (click)="showChangeEvent()">
           Редактировать ивент
@@ -48,6 +47,7 @@
         Удалить ивент
       </button>
       </ng-container>
+    </ng-container>
   </mat-card-actions>
   <ng-container *ngIf="isDashboardMode">
 

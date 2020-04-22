@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable, ReplaySubject} from 'rxjs';
+import {filter, map} from 'rxjs/operators';
 import {List} from '../../../core/models/list.model';
 import {EventCreateModel, EventModel} from '../models/event.model';
 
@@ -33,5 +34,11 @@ export class EventService {
 
   delete(eventId: number): Observable<void> {
     return this.http.delete<void>('/api/events/' + eventId + '/delete');
+  }
+
+  getEvents(value: string): Observable<EventModel[]> {
+    return this.events$.pipe(
+      map( events => events.filter( event => event.eventName.toLowerCase().includes(value.toLowerCase())))
+    );
   }
 }

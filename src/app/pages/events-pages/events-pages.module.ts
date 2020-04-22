@@ -7,6 +7,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import {EventModule} from '../../entities/event/event.module';
+import {MatInputModule} from '@angular/material/input';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import {EventModule} from '../../entities/event/event.module';
     MatCardModule,
     MatDividerModule,
     MatButtonModule,
-    EventModule
+    EventModule,
+    MatInputModule,
+    FormsModule
   ],
   exports: [
     AboutEventPageComponent,

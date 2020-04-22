@@ -39,6 +39,13 @@ export class CurrentUserService {
     return result;
   }
 
+  isAuthorized(): Observable<boolean> {
+    return this.user$.pipe(
+      map(user => {
+        return user.authenticated;
+      })
+    );
+  }
 }
 
 export function loadCurrentUser(currentUserService: CurrentUserService): () => Promise<void> {

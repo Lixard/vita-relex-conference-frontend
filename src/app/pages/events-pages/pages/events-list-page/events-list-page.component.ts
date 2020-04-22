@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {EventModel} from '../../../../entities/event/models/event.model';
 import {EventService} from '../../../../entities/event/services/event.service';
 import {ScheduleService} from '../../../../entities/schedule/services/schedule.service';
+import {combineLatest, Observable, ReplaySubject} from 'rxjs';
+import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
+import {EventModel} from '../../../../entities/event/models/event.model';
 
 @Component({
   selector: 'app-events',
@@ -10,7 +12,9 @@ import {ScheduleService} from '../../../../entities/schedule/services/schedule.s
 })
 export class EventsListPageComponent implements OnInit {
 
-  readonly events$ = this.eventService.events$;
+  search: string;
+  filteredEvents$: Observable<EventModel[]>;
+  private filter$ = new ReplaySubject<string>(1);
 
   constructor(private eventService: EventService,
               private schedule: ScheduleService) { }
@@ -18,5 +22,17 @@ export class EventsListPageComponent implements OnInit {
   ngOnInit(): void {
     this.schedule.refreshSchedule();
     this.eventService.refreshEvents();
+    const filter$ = this.filter$.pipe(
+      debounceTime(100),
+      distinctUntilChanged()
+    );
+    this.filteredEvents$ = combineLatest([filter$, this.eventService.events$]).pipe(
+      switchMap(([filterValue]) => this.eventService.getEvents(filterValue)),
+    );
+    this.filter$.next('');
+  }
+
+  handleFilterChange(value: string) {
+    this.filter$.next(value);
   }
 }

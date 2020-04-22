@@ -14,20 +14,16 @@ export class ScheduleService {
 
   readonly schedule$ = new ReplaySubject<EventModel[]>(1);
 
-  isCorrect = false;
-
   constructor(private http: HttpClient, private currentUser: CurrentUserService) {
   }
 
   add(event: number): Observable<void> {
-    this.isCorrect = false;
     let user;
     this.currentUser.user$.subscribe(CurrentUser => user = CurrentUser.id);
     return this.http.post<void>('/api/events/subscribe', {eventId: event, userId: user});
   }
 
   remove(event: number): Observable<void> {
-    this.isCorrect = false;
     let user;
     this.currentUser.user$.subscribe(CurrentUser => user = CurrentUser.id);
     return this.http.delete<void>('/api/users/' + user + '/schedule/' + event + '/delete');
