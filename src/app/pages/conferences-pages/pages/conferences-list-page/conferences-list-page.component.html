@@ -1,6 +1,6 @@
-<div>
-  <mat-form-field>
-    <mat-label>Название конференции</mat-label>
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-form-field id="search">
+    <mat-label>Поиск по названию конференции</mat-label>
     <input matInput ngModel (ngModelChange)="handleFilterChange($event)">
   </mat-form-field>
 </div>
