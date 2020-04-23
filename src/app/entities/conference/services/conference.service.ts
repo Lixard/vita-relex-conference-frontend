@@ -5,6 +5,8 @@ import {ConferenceCreateModel, ConferenceModel} from '../models/conference.model
 import {List} from '../../../core/models/list.model';
 import {UserModel} from '../../user/models/user.model';
 import {map} from 'rxjs/operators';
+import {CurrentUserService} from '../../../core/services/current-user.service';
+import {Role} from '../../../core/models/current-user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,8 @@ import {map} from 'rxjs/operators';
 export class ConferenceService {
   readonly conferences$ = new ReplaySubject<ConferenceModel[]>(1);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private currentUser: CurrentUserService) {
+  }
 
   refreshConferences() {
     this.http.get<List<ConferenceModel>>('/api/conferences').subscribe(result => {
@@ -52,6 +55,9 @@ export class ConferenceService {
   }
 
   getConferencesWhereUserIsOwner(id: number): Observable<List<ConferenceModel>> {
+    if (this.currentUser.hasRole(Role.ADMIN)) {
+      return this.http.get<List<ConferenceModel>>('/api/conferences');
+    }
     return this.http.get<List<ConferenceModel>>(`/api/users/${id}/conferences/owned`);
   }
 
