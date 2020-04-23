@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ConferenceCreateForm, ConferenceCreateModel, ConferenceModel} from '../../models/conference.model';
-import {ConferenceService} from '../../services/conference.service';
 import * as moment from 'moment';
 
 @Component({
@@ -21,7 +20,7 @@ export class ConferenceEditorComponent implements OnInit {
 
   changedConference: ConferenceCreateModel;
 
-  constructor(private formBuilder: FormBuilder, private conferenceService: ConferenceService) {
+  constructor(private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
@@ -31,17 +30,19 @@ export class ConferenceEditorComponent implements OnInit {
   private buildForm() {
     if (this.conference === undefined) {
       this.form = this.formBuilder.group({
-        conferenceName: this.formBuilder.control(undefined, [Validators.max(50), Validators.required]),
+        conferenceName: this.formBuilder.control(undefined, [Validators.maxLength(50), Validators.required]),
         htmlDescription:  this.formBuilder.control(undefined, [Validators.required]),
-        location:  this.formBuilder.control(undefined, [Validators.max(50), Validators.required]),
+        shortDescription: this.formBuilder.control(undefined, [Validators.maxLength(255)]),
+        location:  this.formBuilder.control(undefined, [Validators.maxLength(50), Validators.required]),
         dateStart:  this.formBuilder.control(undefined, [ Validators.required]),
         dateEnd:  this.formBuilder.control(undefined, [ Validators.required]),
       });
     } else {
       this.form = this.formBuilder.group({
-        conferenceName: this.formBuilder.control(this.conference.conferenceName, [Validators.max(50), Validators.required]),
+        conferenceName: this.formBuilder.control(this.conference.conferenceName, [Validators.maxLength(50), Validators.required]),
         htmlDescription: this.formBuilder.control(this.conference.details.htmlDescription, [Validators.required]),
-        location: this.formBuilder.control(this.conference.details.location, [Validators.max(50), Validators.required]),
+        shortDescription: this.formBuilder.control(this.conference.details.shortDescription, [Validators.maxLength(255)]),
+        location: this.formBuilder.control(this.conference.details.location, [Validators.maxLength(50), Validators.required]),
         dateStart: this.formBuilder.control(moment(this.conference.details.dateStart).toDate(), [Validators.required]),
         dateEnd: this.formBuilder.control(moment(this.conference.details.dateEnd).toDate(), [Validators.required]),
       });
@@ -53,7 +54,9 @@ export class ConferenceEditorComponent implements OnInit {
       ...this.conference,
       conferenceName: value.conferenceName,
       details:   {
+        linkImage: this.conference.details.linkImage,
         htmlDescription: value.htmlDescription,
+        shortDescription: value.shortDescription,
         location: value.location,
         dateStart: moment(value.dateStart).toISOString(),
         dateEnd: moment(value.dateEnd).toISOString(),

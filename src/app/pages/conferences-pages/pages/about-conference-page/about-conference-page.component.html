@@ -1,33 +1,35 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>
-      <h2>
-        {{conference.conferenceName}}
-      </h2>
-    </mat-card-title>
-  </mat-card-header>
-  <mat-divider></mat-divider>
-  <mat-card-content>
-    <br>
-    <h3>Location:</h3>
-    {{conference.details.location}}
-    <br>
-    <br>
+<div fxLayout="column" fxLayoutAlign="center center">
+  <mat-card id="conference">
+    <mat-card-header>
+      <mat-card-title>
+        <h2>
+          {{conference.conferenceName}}
+        </h2>
+      </mat-card-title>
+    </mat-card-header>
     <mat-divider></mat-divider>
-    <br>
-    <h2>About {{conference.conferenceName}}</h2>
-    <mat-divider></mat-divider>
-    <br>
-    <div [innerHTML]="conference.details.htmlDescription">
-    </div>
-    <a mat-button routerLink="/conferences/{{conference.conferenceId}}/album"> Фото</a>
-  </mat-card-content>
-</mat-card>
-<mat-toolbar color="primary">
-  <h1>
-    Events within {{conference.conferenceName}}
-  </h1>
-</mat-toolbar>
+    <mat-card-content>
+      <br>
+      <h3>Location:</h3>
+      {{conference.details.location}}
+      <br>
+      <br>
+      <mat-divider></mat-divider>
+      <br>
+      <h2>About {{conference.conferenceName}}</h2>
+      <mat-divider></mat-divider>
+      <br>
+      <div [innerHTML]="conference.details.htmlDescription">
+      </div>
+      <a mat-button routerLink="/conferences/{{conference.conferenceId}}/album"> Фото</a>
+    </mat-card-content>
+  </mat-card>
+  <mat-toolbar color="primary">
+    <h1>
+      Events within {{conference.conferenceName}}
+    </h1>
+  </mat-toolbar>
+</div>
 
 <div fxLayout="column"
      fxLayoutAlign="center center"

@@ -17,6 +17,8 @@ export interface ConferenceCreateModel {
 export class ConferenceCreateForm {
   conferenceName: string;
   htmlDescription: string;
+  linkImage: string;
+  shortDescription: string;
   location: string;
   dateStart: string;
   dateEnd: string;

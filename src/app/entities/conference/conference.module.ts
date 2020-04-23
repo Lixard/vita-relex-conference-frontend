@@ -21,7 +21,12 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 
 
 @NgModule({
-  declarations: [ConferenceComponent, ConferenceEditorComponent, OrganizersListComponent, OrganizersListComponent],
+  declarations: [
+    ConferenceComponent,
+    ConferenceEditorComponent,
+    OrganizersListComponent,
+    OrganizersListComponent
+  ],
   exports: [
     ConferenceComponent,
     ConferenceEditorComponent
