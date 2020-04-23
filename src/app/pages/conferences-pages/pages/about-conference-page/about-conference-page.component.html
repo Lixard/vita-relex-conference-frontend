@@ -6,17 +6,27 @@
           {{conference.conferenceName}}
         </h2>
       </mat-card-title>
+      <mat-card-subtitle>
+        Время начала: {{conference.details.dateStart | date: 'EEEE, d MMMM, y, h:mm':'UTC+3':'ru'}}
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+        Время окончания: {{conference.details.dateEnd | date: 'EEEE, d MMMM, y, h:mm':'UTC+3': 'ru'}}
+      </mat-card-subtitle>
     </mat-card-header>
     <mat-divider></mat-divider>
     <mat-card-content>
       <br>
-      <h3>Location:</h3>
-      {{conference.details.location}}
+      <h3>Место проведения мероприятия: {{conference.details.location}}</h3>
       <br>
       <br>
+      <img class="image" *ngIf="conference.details.linkImage !== null; else elseBlock" src="{{conference.details.linkImage}}" alt="av">
+      <ng-template #elseBlock>
+        <img class="image" src="https://www.timacad.ru/uploads/media/cache/full_image/uploads/images/20190516/1557989444_35110be17b335260b304bc48e66f668b.jpg" alt="Conference avatar">
+      </ng-template>
+
       <mat-divider></mat-divider>
       <br>
-      <h2>About {{conference.conferenceName}}</h2>
+      <h2 fxLayoutAlign="center center">Описание конференции "{{conference.conferenceName}}"</h2>
       <mat-divider></mat-divider>
       <br>
       <div [innerHTML]="conference.details.htmlDescription">
@@ -24,9 +34,9 @@
       <a mat-button routerLink="/conferences/{{conference.conferenceId}}/album"> Фото</a>
     </mat-card-content>
   </mat-card>
-  <mat-toolbar color="primary">
+  <mat-toolbar color="primary" fxLayoutAlign="center center">
     <h1>
-      Events within {{conference.conferenceName}}
+      Мероприятия конференции "{{conference.conferenceName}}"
     </h1>
   </mat-toolbar>
 </div>
