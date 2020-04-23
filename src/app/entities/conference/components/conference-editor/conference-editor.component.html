@@ -3,21 +3,27 @@
     <mat-card-content>
 
       <mat-form-field>
-        <mat-label>Conference name</mat-label>
+        <mat-label>Название конференции</mat-label>
         <input matInput
                [required]="true"
                formControlName="conferenceName">
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Location</mat-label>
+        <mat-label>Адрес</mat-label>
         <input matInput
                [required]="true"
                formControlName="location">
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Start date</mat-label>
+        <mat-label>Краткое описание</mat-label>
+        <input matInput
+               formControlName="shortDescription">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Дата начала</mat-label>
         <input matInput
                [matDatepicker]="dateStart"
                formControlName="dateStart"
@@ -27,7 +33,7 @@
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>End date</mat-label>
+        <mat-label>Дата конца</mat-label>
         <input matInput
                [matDatepicker]="dateEnd"
                formControlName="dateEnd"
@@ -46,7 +52,7 @@
       <button mat-stroked-button color="accent"
               [disabled]="!form.valid"
               (click)="changeConference(form.value)">
-        Change
+        Добавить
       </button>
     </mat-card-actions>
   </mat-card>
