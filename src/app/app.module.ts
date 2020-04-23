@@ -1,10 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MainPageComponent } from './pages/main-page/main-page.component';
-import { MainToolbarComponent } from './pages/main-toolbar/main-toolbar.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MainPageComponent} from './pages/main-page/main-page.component';
+import {MainToolbarComponent} from './pages/main-toolbar/main-toolbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {ConferenceModule} from './entities/conference/conference.module';
@@ -20,19 +20,20 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
-import { ImageComponent } from './entities/user/components/image/image.component';
-import { NgxImageZoomModule } from 'ngx-image-zoom';
+import {ImageComponent} from './entities/user/components/image/image.component';
+import {NgxImageZoomModule} from 'ngx-image-zoom';
 import {ScheduleModule} from './entities/schedule/schedule.module';
 import {UserMenuPagesModule} from './pages/user-menu-pages/user-menu-pages.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatMenuModule} from '@angular/material/menu';
-import { UserEditorComponent } from './entities/user/components/user-editor/user-editor.component';
+import {UserEditorComponent} from './entities/user/components/user-editor/user-editor.component';
 import {EditorModule} from '@tinymce/tinymce-angular';
 import {MatListModule} from '@angular/material/list';
-import {UserRolesPipe} from './entities/user/pipes/user-roles.pipe';
 import {AvatarEditorComponent} from './entities/user/components/avatar-editor/avatar-editor.component';
+import {registerLocaleData} from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
 
-
+registerLocaleData(localeRu, 'ru');
 
 @NgModule({
   declarations: [
