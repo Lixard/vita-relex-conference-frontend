@@ -6,7 +6,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import {ConferencesPagesRoutingModule} from '../../pages/conferences-pages/conferences-pages-routing.module';
 import {ConferenceEditorComponent} from './components/conference-editor/conference-editor.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -42,7 +42,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     EventModule,
     MatExpansionModule,
     MatListModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule
   ]
 })
 export class ConferenceModule { }

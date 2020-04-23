@@ -3,7 +3,8 @@ import {ConferenceModel} from '../../models/conference.model';
 import {UserModel} from '../../../user/models/user.model';
 import {ConferenceService} from '../../services/conference.service';
 import {UserService} from '../../../user/service/user.service';
-import {ReplaySubject} from 'rxjs';
+import {combineLatest, Observable, ReplaySubject} from 'rxjs';
+import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-organizers-list',
@@ -17,12 +18,25 @@ export class OrganizersListComponent implements OnInit {
   readonly organizers$ = new ReplaySubject<UserModel[]>(1);
   readonly users$ = new ReplaySubject<UserModel[]>(1);
 
+  search: string;
+  filteredUsers$: Observable<UserModel[]>;
+  private filter$ = new ReplaySubject<string>(1);
+
   constructor(private conferenceService: ConferenceService,
               private userService: UserService) { }
 
   ngOnInit(): void {
     this.refreshOrganizers();
     this.refreshUsers();
+    const filter$ = this.filter$.pipe(
+      debounceTime(100),
+      distinctUntilChanged()
+    );
+    // @ts-ignore
+    this.filteredUsers$ = combineLatest([filter$, this.users$]).pipe(
+      switchMap(([filterValue]) => this.userService.findUsers(filterValue)),
+    );
+    this.filter$.next('');
   }
 
   private refreshUsers() {
@@ -49,5 +63,9 @@ export class OrganizersListComponent implements OnInit {
     this.conferenceService.addOrganizer(this.conference.conferenceId, userId).subscribe();
     this.refreshOrganizers();
     this.refreshUsers();
+  }
+
+  handleFilterChange(value: string) {
+    this.filter$.next(value);
   }
 }

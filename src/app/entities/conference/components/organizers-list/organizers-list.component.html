@@ -8,9 +8,14 @@
     </mat-list-item>
   </mat-list>
   <br>
+  <mat-form-field id="search">
+    <mat-label>Поиск по пользователям</mat-label>
+    <input matInput ngModel (ngModelChange)="handleFilterChange($event)">
+  </mat-form-field>
+  <br>
   <mat-label>Список пользователей: </mat-label>
   <mat-list>
-    <mat-list-item *ngFor="let user of users$ | async">
+    <mat-list-item *ngFor="let user of filteredUsers$ | async">
       <h3>{{user.username}}</h3>
       <div class="fill"></div>
       <button mat-stroked-button (click)="addOrganizer(user.userId)">
