@@ -6,7 +6,7 @@ import {EventEditorComponent} from './components/event-editor/event-editor.compo
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {EditorModule} from '@tinymce/tinymce-angular';
@@ -15,13 +15,16 @@ import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {UserModule} from '../user/user.module';
+import {SpeakersListComponent} from './components/speakers-list/speakers-list.component';
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
   declarations: [
     EventTypePipe,
     EventComponent,
-    EventEditorComponent
+    EventEditorComponent,
+    SpeakersListComponent
   ],
   imports: [
     CommonModule,
@@ -37,6 +40,8 @@ import {UserModule} from '../user/user.module';
     HttpClientModule,
     FlexLayoutModule,
     UserModule,
+    MatListModule,
+    FormsModule
   ],
   exports: [
     EventTypePipe,

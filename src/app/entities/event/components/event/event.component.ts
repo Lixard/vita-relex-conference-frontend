@@ -24,6 +24,7 @@ export class EventComponent implements OnInit {
   isDashboardMode = false;
 
   currentUser: CurrentUserService;
+  speakersListVisible = false;
 
   constructor(private schedule: ScheduleService,
               private eventService: EventService,
@@ -70,5 +71,13 @@ export class EventComponent implements OnInit {
   changeEvent($event: EventCreateModel) {
     this.eventService.change(this.event.eventId, $event).subscribe();
     this.hideChangeEvent();
+  }
+
+  showSpeakersList() {
+    this.speakersListVisible = true;
+  }
+
+  hideSpeakersList() {
+    this.speakersListVisible = false;
   }
 }

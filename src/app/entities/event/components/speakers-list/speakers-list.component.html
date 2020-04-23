@@ -1,0 +1,26 @@
+<div>
+  <mat-list>
+    <mat-label>Список спикеров:</mat-label>
+    <mat-list-item *ngFor="let speaker of speakers$ | async">
+      <h3>{{speaker.username}}</h3>
+      <div class="fill"></div>
+      <button mat-stroked-button (click)="removeSpeaker(speaker.userId)">Удалить спикера</button>
+    </mat-list-item>
+  </mat-list>
+  <br>
+  <mat-form-field id="search">
+    <mat-label>Поиск по пользователям</mat-label>
+    <input matInput ngModel (ngModelChange)="handleFilterChange($event)">
+  </mat-form-field>
+  <br>
+  <mat-label>Список пользователей:</mat-label>
+  <mat-list>
+    <mat-list-item *ngFor="let user of filteredUsers$ | async">
+      <h3>{{user.username}}</h3>
+      <div class="fill"></div>
+      <button mat-stroked-button (click)="addSpeaker(user.userId)">
+        Добавить спикера
+      </button>
+    </mat-list-item>
+  </mat-list>
+</div>

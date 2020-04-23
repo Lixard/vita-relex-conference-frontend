@@ -48,20 +48,30 @@
       </button>
     </ng-template>
     <ng-container *ngIf="isDashboardMode">
-      <ng-container *ngIf="!changeEventVisible; else add">
+      <ng-container *ngIf="!changeEventVisible; else cancelEventEditor">
         <button mat-stroked-button (click)="showChangeEvent()">
           Редактировать ивент
         </button>
       </ng-container>
-      <ng-template #add>
+      <ng-template #cancelEventEditor>
         <button mat-stroked-button (click)="hideChangeEvent()">
+          Отмена
+        </button>
+      </ng-template>
+      <ng-container *ngIf="!speakersListVisible; else cancelSpeakersList">
+        <button mat-stroked-button (click)="showSpeakersList()">
+          Показать список спикеров
+        </button>
+      </ng-container>
+      <ng-template #cancelSpeakersList>
+        <button mat-stroked-button (click)="hideSpeakersList()">
           Отмена
         </button>
       </ng-template>
       <button mat-stroked-button color="accent" (click)="deleteThisEvent()">
         Удалить ивент
       </button>
-      </ng-container>
+    </ng-container>
     </ng-container>
   </mat-card-actions>
   <ng-container *ngIf="isDashboardMode">
@@ -72,5 +82,8 @@
                       [conferenceId]="event.conferenceId">
     </app-event-editor>
 
+    <app-speakers-list *ngIf="speakersListVisible"
+                       [event]="event">
+    </app-speakers-list>
   </ng-container>
 </mat-card>
