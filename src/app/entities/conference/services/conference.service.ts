@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable, ReplaySubject} from 'rxjs';
 import {ConferenceCreateModel, ConferenceModel} from '../models/conference.model';
@@ -59,15 +59,15 @@ export class ConferenceService {
     return this.http.get<List<UserModel>>(`/api/conferences/${id}/organizers`);
   }
 
-  resurrect(conferenceId: number) {
+  resurrect(conferenceId: number): Observable<void> {
     return this.http.patch<void>(`/api/conferences/${conferenceId}/resurrect`, null);
   }
 
-  removeOrganizer(conferenceId: number, userId: number) {
+  removeOrganizer(conferenceId: number, userId: number): Observable<void> {
     return this.http.delete<void>(`/api/conferences/${conferenceId}/organizers/${userId}/delete`);
   }
 
-  addOrganizer(conferenceIdInput: number, userIdInput: number) {
+  addOrganizer(conferenceIdInput: number, userIdInput: number): Observable<void> {
     return this.http.post<void>(`/api/users/assign/conference`, {
       userId: userIdInput,
       conferenceId: conferenceIdInput
