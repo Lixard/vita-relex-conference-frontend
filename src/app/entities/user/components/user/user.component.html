@@ -5,12 +5,12 @@
       <mat-menu #userMenu="matMenu">
         <button mat-menu-item  [matMenuTriggerFor] = "editProfile"
                 >Редактировать страницу</button>
-        <button mat-menu-item >Удалить страницу</button>
+<!--        <button mat-menu-item >Удалить страницу</button>-->
       </mat-menu>
       <mat-menu #editProfile страницу="userMenu">
         <button mat-menu-item (click)="openChangeUser()">Редактировать информацию</button>
         <button mat-menu-item (click)="openUploadImage()">Изменить фото</button>
-        <button mat-menu-item>Изменить пароль</button>
+<!--        <button mat-menu-item>Изменить пароль</button>-->
       </mat-menu>
       <button mat-icon-button [matMenuTriggerFor]="userMenu">
         <mat-icon class="edit">more_vert</mat-icon>
@@ -35,39 +35,31 @@
         <p> {{user?.personalInfo.email}}</p>
       </div>
       <div class="profile-tabs">
+<!--        <mat-card class="cards">-->
+<!--          <mat-card-header>-->
+<!--            <a mat-button routerLink="myConferences">-->
+<!--              <mat-card-title>Конференции</mat-card-title>-->
+<!--            </a>-->
+<!--          </mat-card-header>-->
+<!--          <img mat-card-image class="main-image"-->
+<!--               src="https://i.pinimg.com/564x/b7/4d/a1/b74da13b36e5a265b40066be1c761b9f.jpg">-->
+<!--          <mat-card-content>-->
+<!--            <p>-->
+<!--              Конференции пользователя-->
+<!--            </p>-->
+<!--          </mat-card-content>-->
+<!--        </mat-card>-->
         <mat-card class="cards">
           <mat-card-header>
-            <mat-card-title>Конференции</mat-card-title>
-          </mat-card-header>
-          <img mat-card-image class="main-image"
-               src="https://i.pinimg.com/564x/5a/fe/30/5afe30dd32092976a6bb9cdc6dca7f29.jpg">
-          <mat-card-content>
-            <p>
-              Добавление и редактирование конференций
-            </p>
-          </mat-card-content>
-        </mat-card>
-        <mat-card class="cards">
-          <mat-card-header>
-            <mat-card-title>Ивенты</mat-card-title>
+            <a mat-button routerLink="/user/schedule">
+            <mat-card-title>Расписание</mat-card-title>
+            </a>
           </mat-card-header>
           <img mat-card-image class="main-image"
                src="https://i.pinimg.com/564x/7a/ec/15/7aec151e2f80186fd1284f97285ce471.jpg">
           <mat-card-content>
             <p>
-              Добавление и редактирование ивентов
-            </p>
-          </mat-card-content>
-        </mat-card>
-        <mat-card class="cards">
-          <mat-card-header>
-            <mat-card-title>Расписание</mat-card-title>
-          </mat-card-header>
-          <img mat-card-image class="main-image"
-               src="https://i.pinimg.com/564x/b7/4d/a1/b74da13b36e5a265b40066be1c761b9f.jpg">
-          <mat-card-content>
-            <p>
-              Личное расписание пользователя
+              Список ивентов пользователя
             </p>
           </mat-card-content>
         </mat-card>
