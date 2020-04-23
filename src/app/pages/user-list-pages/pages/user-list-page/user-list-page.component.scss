@@ -1,11 +1,6 @@
 p {
   font-family: Lato;
 }
-.user-card {
-  max-width: 100%;
-  margin: 10px;
-  background-color:thistle;
-}
 
 .user-image {
   background-size: cover;
@@ -14,6 +9,21 @@ p {
   color: gray;
   margin-left: 200px;
 }
-
-
+.user-card {
+  max-width: 100%;
+  margin: 10px;
+  background-color:thistle;
+}
+.users-list-card {
+  align-items: center;
+  justify-content: center;
+  margin: 25px;
+  max-width: 100%;
+  width: 70%;
+  align-items: center;
+}
+ .input{
+   margin-top: 2%;
+   margin-left: 1%;
+ }
 

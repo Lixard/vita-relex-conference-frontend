@@ -29,4 +29,12 @@ export class UserListPageComponent implements OnInit {
   closeImage() {
     this.linkImage = null;
   }
+
+  handleFilterChange($event: any) {
+    // @ts-ignore
+    this.userService.search($event).subscribe((result: UserModel[]) => {
+      this.users = result;
+      console.log(result);
+    });
+  }
 }
