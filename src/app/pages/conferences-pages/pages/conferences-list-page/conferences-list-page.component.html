@@ -11,16 +11,18 @@
      fxLayoutGap="15px">
   <mat-card *ngFor="let conference of conferences$ | async" class="conference-card">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>{{conference.conferenceName}}</mat-card-title>
     </mat-card-header>
-    <img mat-card-image src="https://www.timacad.ru/uploads/media/cache/full_image/uploads/images/20190516/1557989444_35110be17b335260b304bc48e66f668b.jpg" alt="Conference avatar">
+    <img class="image" *ngIf="conference.details.linkImage !== null; else elseBlock" src="{{conference.details.linkImage}}" alt="av">
+    <ng-template #elseBlock>
+      <img class="image" src="https://www.timacad.ru/uploads/media/cache/full_image/uploads/images/20190516/1557989444_35110be17b335260b304bc48e66f668b.jpg" alt="Conference avatar">
+    </ng-template>
     <mat-card-content>
       <p>
-        Краткое описание
+        {{conference.details.shortDescription}}
       </p>
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions class="md-card-actions">
       <a mat-button routerLink="{{conference.conferenceId}}">Профиль</a>
     </mat-card-actions>
   </mat-card>
